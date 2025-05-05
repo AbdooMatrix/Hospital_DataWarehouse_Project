@@ -119,15 +119,6 @@ CREATE TABLE Staging.Billing (
 );
 GO
 
--- Create Error Log Table
-CREATE TABLE ETL_Error_Log (
-    Error_Id INT IDENTITY(1,1) PRIMARY KEY,
-    Table_Name VARCHAR(50),
-    Error_Message VARCHAR(500),
-    Error_Date DATETIME DEFAULT GETDATE()
-);
-GO
-
 -- Create Main Schema Dimension Tables
 
 CREATE TABLE Dim_Patient (
@@ -192,11 +183,9 @@ CREATE TABLE Dim_Ambulance (
 GO
 
 CREATE TABLE Dim_Location (
-    Location_Id INT PRIMARY KEY,
+    Location_Id NVARCHAR(200) PRIMARY KEY,
     Pickup_Location NVARCHAR(100),
     Drop_Off_Location NVARCHAR(100),
-    City NVARCHAR(50),
-    Region NVARCHAR(50)
 );
 GO
 
@@ -239,7 +228,7 @@ CREATE TABLE Fact_Ambulance_Services (
     Patient_Id INT,
     Date_Id INT,
     Ambulance_Id INT,
-    Location_Id INT,
+    Location_Id NVARCHAR(200),
     Distance_Traveled DECIMAL(10, 2),
     Service_Duration INT,
     Service_Cost DECIMAL(10, 2),
@@ -248,21 +237,4 @@ CREATE TABLE Fact_Ambulance_Services (
     FOREIGN KEY (Ambulance_Id) REFERENCES Dim_Ambulance(Ambulance_Id),
     FOREIGN KEY (Location_Id) REFERENCES Dim_Location(Location_Id)
 );
-GO
-
--- Add Indexes for Performance
-CREATE INDEX IX_Fact_Patient_Admissions_Patient_Id ON Fact_Patient_Admissions(Patient_Id);
-CREATE INDEX IX_Fact_Patient_Admissions_Date_Id ON Fact_Patient_Admissions(Date_Id);
-CREATE INDEX IX_Fact_Patient_Admissions_Room_Id ON Fact_Patient_Admissions(Room_Id);
-CREATE INDEX IX_Fact_Patient_Admissions_Department_Id ON Fact_Patient_Admissions(Department_Id);
-
-CREATE INDEX IX_Fact_Prescription_Fulfillment_Patient_Id ON Fact_Prescription_Fulfillment(Patient_Id);
-CREATE INDEX IX_Fact_Prescription_Fulfillment_Date_Id ON Fact_Prescription_Fulfillment(Date_Id);
-CREATE INDEX IX_Fact_Prescription_Fulfillment_Medicine_Id ON Fact_Prescription_Fulfillment(Medicine_Id);
-CREATE INDEX IX_Fact_Prescription_Fulfillment_Pharmacy_Id ON Fact_Prescription_Fulfillment(Pharmacy_Id);
-
-CREATE INDEX IX_Fact_Ambulance_Services_Patient_Id ON Fact_Ambulance_Services(Patient_Id);
-CREATE INDEX IX_Fact_Ambulance_Services_Date_Id ON Fact_Ambulance_Services(Date_Id);
-CREATE INDEX IX_Fact_Ambulance_Services_Ambulance_Id ON Fact_Ambulance_Services(Ambulance_Id);
-CREATE INDEX IX_Fact_Ambulance_Services_Location_Id ON Fact_Ambulance_Services(Location_Id);
 GO
