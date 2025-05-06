@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="HospitalDWH_Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="123"
-  DTS:VersionGUID="{DF94170A-653D-4213-BC4F-C49895EE064A}">
+  DTS:VersionBuild="125"
+  DTS:VersionGUID="{45017065-D38E-4980-94F2-2FA44173C465}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -294,12 +294,6 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT_Load_Dimensions\Dim_Date.Inputs[OLE DB Destination Input].Columns[Date_Id]"
-                      cachedDataType="i4"
-                      cachedName="Date_Id"
-                      externalMetadataColumnId="Package\DFT_Load_Dimensions\Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Date_Id]"
-                      lineageId="Package\DFT_Load_Dimensions\Derived Column.Outputs[Derived Column Output].Columns[Date_Id]" />
-                    <inputColumn
                       refId="Package\DFT_Load_Dimensions\Dim_Date.Inputs[OLE DB Destination Input].Columns[Month]"
                       cachedDataType="i4"
                       cachedName="Month"
@@ -328,10 +322,6 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT_Load_Dimensions\Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Date_Id]"
-                      dataType="i4"
-                      name="Date_Id" />
-                    <externalMetadataColumn
                       refId="Package\DFT_Load_Dimensions\Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Full_Date]"
                       dataType="wstr"
                       length="10"
@@ -348,6 +338,10 @@
                       refId="Package\DFT_Load_Dimensions\Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Day]"
                       dataType="i4"
                       name="Day" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Dimensions\Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Date_Key]"
+                      dataType="i4"
+                      name="Date_Key" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1038,8 +1032,7 @@
                       name="First_Name" />
                     <externalMetadataColumn
                       refId="Package\DFT_Load_Dimensions\Dim_Staff.Inputs[OLE DB Destination Input].ExternalColumns[Last_Name]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="Last_Name" />
                   </externalMetadataColumns>
@@ -3466,87 +3459,87 @@ WHERE created_at IS NOT NULL</property>
               name="Derived Column Output"
               startId="Package\DFT_Load_Dimensions\Derived Column.Outputs[Derived Column Output]" />
             <path
-              refId="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output4]"
+              refId="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output]"
               endId="Package\DFT_Load_Dimensions\Dim_Room.Inputs[OLE DB Destination Input]"
               name="Lookup No Match Output"
               startId="Package\DFT_Load_Dimensions\Lookup 6.Outputs[Lookup No Match Output]" />
             <path
-              refId="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output3]"
+              refId="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output1]"
               endId="Package\DFT_Load_Dimensions\Dim_Patient.Inputs[OLE DB Destination Input]"
               name="Lookup No Match Output"
               startId="Package\DFT_Load_Dimensions\Lookup.Outputs[Lookup No Match Output]" />
             <path
-              refId="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output5]"
+              refId="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output2]"
               endId="Package\DFT_Load_Dimensions\Dim_Staff.Inputs[OLE DB Destination Input]"
               name="Lookup No Match Output"
               startId="Package\DFT_Load_Dimensions\Lookup 7.Outputs[Lookup No Match Output]" />
             <path
-              refId="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output1]"
+              refId="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output3]"
               endId="Package\DFT_Load_Dimensions\Dim_Doctor.Inputs[OLE DB Destination Input]"
               name="Lookup No Match Output"
               startId="Package\DFT_Load_Dimensions\Lookup 1.Outputs[Lookup No Match Output]" />
             <path
-              refId="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output]"
+              refId="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output4]"
               endId="Package\DFT_Load_Dimensions\Dim_Medincine.Inputs[OLE DB Destination Input]"
               name="Lookup No Match Output"
               startId="Package\DFT_Load_Dimensions\Lookup 2.Outputs[Lookup No Match Output]" />
             <path
-              refId="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output2]"
+              refId="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output5]"
               endId="Package\DFT_Load_Dimensions\Dim_Date.Inputs[OLE DB Destination Input]"
               name="Lookup No Match Output"
               startId="Package\DFT_Load_Dimensions\Lookup 5.Outputs[Lookup No Match Output]" />
             <path
-              refId="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output]"
-              endId="Package\DFT_Load_Dimensions\Sort 2.Inputs[Sort Input]"
+              refId="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output5]"
+              endId="Package\DFT_Load_Dimensions\Sort.Inputs[Sort Input]"
               name="OLE DB Source Output"
-              startId="Package\DFT_Load_Dimensions\Staging_Medicine.Outputs[OLE DB Source Output]" />
+              startId="Package\DFT_Load_Dimensions\Staging_Patients.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output4]"
+              endId="Package\DFT_Load_Dimensions\Sort 6.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Dimensions\Staging_Staff.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output3]"
+              endId="Package\DFT_Load_Dimensions\Sort 5.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Dimensions\Staging_Rooms.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output1]"
               endId="Package\DFT_Load_Dimensions\Sort 1.Inputs[Sort Input]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Dimensions\Staging_Doctors.Outputs[OLE DB Source Output]" />
             <path
+              refId="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_Dimensions\Sort 2.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Dimensions\Staging_Medicine.Outputs[OLE DB Source Output]" />
+            <path
               refId="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output2]"
               endId="Package\DFT_Load_Dimensions\Derived Column.Inputs[Derived Column Input]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Dimensions\Union_Staging_Dates.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output4]"
-              endId="Package\DFT_Load_Dimensions\Sort 5.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Dimensions\Staging_Rooms.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output5]"
-              endId="Package\DFT_Load_Dimensions\Sort 6.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Dimensions\Staging_Staff.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output3]"
-              endId="Package\DFT_Load_Dimensions\Sort.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Dimensions\Staging_Patients.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Dimensions.Paths[Sort Output4]"
-              endId="Package\DFT_Load_Dimensions\Lookup 7.Inputs[Lookup Input]"
-              name="Sort Output"
-              startId="Package\DFT_Load_Dimensions\Sort 6.Outputs[Sort Output]" />
-            <path
-              refId="Package\DFT_Load_Dimensions.Paths[Sort Output]"
-              endId="Package\DFT_Load_Dimensions\Lookup 2.Inputs[Lookup Input]"
-              name="Sort Output"
-              startId="Package\DFT_Load_Dimensions\Sort 2.Outputs[Sort Output]" />
-            <path
-              refId="Package\DFT_Load_Dimensions.Paths[Sort Output1]"
-              endId="Package\DFT_Load_Dimensions\Lookup.Inputs[Lookup Input]"
-              name="Sort Output"
-              startId="Package\DFT_Load_Dimensions\Sort.Outputs[Sort Output]" />
-            <path
-              refId="Package\DFT_Load_Dimensions.Paths[Sort Output2]"
+              refId="Package\DFT_Load_Dimensions.Paths[Sort Output3]"
               endId="Package\DFT_Load_Dimensions\Lookup 1.Inputs[Lookup Input]"
               name="Sort Output"
               startId="Package\DFT_Load_Dimensions\Sort 1.Outputs[Sort Output]" />
             <path
-              refId="Package\DFT_Load_Dimensions.Paths[Sort Output3]"
+              refId="Package\DFT_Load_Dimensions.Paths[Sort Output]"
+              endId="Package\DFT_Load_Dimensions\Lookup 7.Inputs[Lookup Input]"
+              name="Sort Output"
+              startId="Package\DFT_Load_Dimensions\Sort 6.Outputs[Sort Output]" />
+            <path
+              refId="Package\DFT_Load_Dimensions.Paths[Sort Output1]"
+              endId="Package\DFT_Load_Dimensions\Lookup 2.Inputs[Lookup Input]"
+              name="Sort Output"
+              startId="Package\DFT_Load_Dimensions\Sort 2.Outputs[Sort Output]" />
+            <path
+              refId="Package\DFT_Load_Dimensions.Paths[Sort Output2]"
+              endId="Package\DFT_Load_Dimensions\Lookup.Inputs[Lookup Input]"
+              name="Sort Output"
+              startId="Package\DFT_Load_Dimensions\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\DFT_Load_Dimensions.Paths[Sort Output4]"
               endId="Package\DFT_Load_Dimensions\Lookup 6.Inputs[Lookup Input]"
               name="Sort Output"
               startId="Package\DFT_Load_Dimensions\Sort 5.Outputs[Sort Output]" />
@@ -3739,12 +3732,6 @@ WHERE created_at IS NOT NULL</property>
                       cachedName="doctor_id"
                       externalMetadataColumnId="Package\DFT_Load_Facts\Fact_Appointments.Inputs[OLE DB Destination Input].ExternalColumns[Doctor_Id]"
                       lineageId="Package\DFT_Load_Facts\Staging_Appointments.Outputs[OLE DB Source Output].Columns[doctor_id]" />
-                    <inputColumn
-                      refId="Package\DFT_Load_Facts\Fact_Appointments.Inputs[OLE DB Destination Input].Columns[Appointment_Date_Key]"
-                      cachedDataType="i4"
-                      cachedName="Appointment_Date_Key"
-                      externalMetadataColumnId="Package\DFT_Load_Facts\Fact_Appointments.Inputs[OLE DB Destination Input].ExternalColumns[Date_Id]"
-                      lineageId="Package\DFT_Load_Facts\Derived Column.Outputs[Derived Column Output].Columns[Appointment_Date_Key]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3761,9 +3748,9 @@ WHERE created_at IS NOT NULL</property>
                       dataType="i4"
                       name="Patient_Id" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load_Facts\Fact_Appointments.Inputs[OLE DB Destination Input].ExternalColumns[Date_Id]"
+                      refId="Package\DFT_Load_Facts\Fact_Appointments.Inputs[OLE DB Destination Input].ExternalColumns[Appointment_Date_Key]"
                       dataType="i4"
-                      name="Date_Id" />
+                      name="Appointment_Date_Key" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -4266,12 +4253,12 @@ WHERE created_at IS NOT NULL</property>
               name="Derived Column Output"
               startId="Package\DFT_Load_Facts\Derived Column.Outputs[Derived Column Output]" />
             <path
-              refId="Package\DFT_Load_Facts.Paths[OLE DB Source Output1]"
+              refId="Package\DFT_Load_Facts.Paths[OLE DB Source Output]"
               endId="Package\DFT_Load_Facts\Derived Column.Inputs[Derived Column Input]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Facts\Staging_Appointments.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\DFT_Load_Facts.Paths[OLE DB Source Output]"
+              refId="Package\DFT_Load_Facts.Paths[OLE DB Source Output1]"
               endId="Package\DFT_Load_Facts\Fact_Pharmacy.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Facts\Staging_Pharmacy.Outputs[OLE DB Source Output]" />
@@ -7097,13 +7084,13 @@ FROM     Staff</property>
           Id="Package\Clear_Staging_Tables"
           TopLeft="179.111111111111,13.0505050505051" />
         <NodeLayout
-          Size="158.4,41.6"
-          Id="Package\DFT_Load_Facts"
-          TopLeft="205.454545454545,308.181818181818" />
-        <NodeLayout
           Size="195.2,41.6"
           Id="Package\DFT_Load_Dimensions"
           TopLeft="179.090909090909,202.727272727273" />
+        <NodeLayout
+          Size="158.4,41.6"
+          Id="Package\DFT_Load_Facts"
+          TopLeft="205.454545454545,308.181818181818" />
         <NodeLayout
           Size="174.4,41.6"
           Id="Package\DFT_Load_Staging"
@@ -7178,104 +7165,38 @@ FROM     Staff</property>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\DFT_Load_Facts">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="166.4,41.6"
-          Id="Package\DFT_Load_Facts\Staging_Pharmacy"
-          TopLeft="72.9999989122152,26.9999995976687" />
-        <NodeLayout
-          Size="151.2,41.6"
-          Id="Package\DFT_Load_Facts\Fact_Pharmacy"
-          TopLeft="81.9999987781048,147.999997794628" />
-        <EdgeLayout
-          Id="Package\DFT_Load_Facts.Paths[OLE DB Source Output]"
-          TopLeft="156.89999884516,68.5999995976687">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,79.3999981969595"
-              Start="0,0"
-              End="0,71.8999981969595">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,71.8999981969595" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="183.2,41.6"
-          Id="Package\DFT_Load_Facts\Staging_Appointments"
-          TopLeft="305.999995440245,29.9999995529652" />
-        <NodeLayout
-          Size="168,41.6"
-          Id="Package\DFT_Load_Facts\Fact_Appointments"
-          TopLeft="311.999995350837,191.999997138977" />
-        <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\DFT_Load_Facts\Derived Column"
-          TopLeft="320.999995216727,109.999998360872" />
-        <EdgeLayout
-          Id="Package\DFT_Load_Facts.Paths[OLE DB Source Output1]"
-          TopLeft="397.499995328486,71.5999995529652">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,38.3999988079072"
-              Start="0,0"
-              End="0,30.8999988079072">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.8999988079072" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Facts.Paths[Derived Column Output]"
-          TopLeft="396.699995283782,151.599998360872">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,40.3999987781048"
-              Start="0,0"
-              End="0,32.8999987781048">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.8999987781048" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <TaskHost
     design-time-name="Package\DFT_Load_Dimensions">
     <LayoutInfo>
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="106.4,41.6"
+          Id="Package\DFT_Load_Dimensions\Sort 6"
+          TopLeft="798.999988093972,118.99999858439" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\DFT_Load_Dimensions\Staging_Rooms"
+          TopLeft="586.999991253018,27.9999995827675" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\DFT_Load_Dimensions\Dim_Medincine"
+          TopLeft="402,343" />
+        <NodeLayout
+          Size="120.8,41.6"
+          Id="Package\DFT_Load_Dimensions\Lookup 6"
+          TopLeft="607.999990940094,219.999996721745" />
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\DFT_Load_Dimensions\Staging_Doctors"
+          TopLeft="209,24" />
+        <NodeLayout
+          Size="124,41.6"
+          Id="Package\DFT_Load_Dimensions\Dim_Staff"
+          TopLeft="788.999988242984,340.999995276332" />
+        <NodeLayout
+          Size="106.4,41.6"
+          Id="Package\DFT_Load_Dimensions\Sort 5"
+          TopLeft="610.999990895391,116.999998256564" />
         <NodeLayout
           Size="108,41.6"
           Id="Package\DFT_Load_Dimensions\Sort 1"
@@ -7285,30 +7206,6 @@ FROM     Staff</property>
           Id="Package\DFT_Load_Dimensions\Lookup 2"
           TopLeft="412,227" />
         <NodeLayout
-          Size="161.6,41.6"
-          Id="Package\DFT_Load_Dimensions\Staging_Patients"
-          TopLeft="31,21" />
-        <NodeLayout
-          Size="124,41.6"
-          Id="Package\DFT_Load_Dimensions\Lookup 5"
-          TopLeft="1007.72726415911,230.090914589437" />
-        <NodeLayout
-          Size="155.2,41.6"
-          Id="Package\DFT_Load_Dimensions\Dim_Medincine"
-          TopLeft="402,343" />
-        <NodeLayout
-          Size="160,41.6"
-          Id="Package\DFT_Load_Dimensions\Staging_Doctors"
-          TopLeft="209,24" />
-        <NodeLayout
-          Size="115.2,41.6"
-          Id="Package\DFT_Load_Dimensions\Lookup"
-          TopLeft="59,230" />
-        <NodeLayout
-          Size="108,41.6"
-          Id="Package\DFT_Load_Dimensions\Sort 2"
-          TopLeft="422,115" />
-        <NodeLayout
           Size="128,41.6"
           Id="Package\DFT_Load_Dimensions\Dim_Date"
           TopLeft="999.545445977287,333.727278225801" />
@@ -7317,29 +7214,211 @@ FROM     Staff</property>
           Id="Package\DFT_Load_Dimensions\Dim_Patient"
           TopLeft="43,341" />
         <NodeLayout
-          Size="124,41.6"
-          Id="Package\DFT_Load_Dimensions\Lookup 1"
-          TopLeft="225,228" />
-        <NodeLayout
-          Size="185.6,41.6"
-          Id="Package\DFT_Load_Dimensions\Union_Staging_Dates"
-          TopLeft="981.931809613651,34.2954600439834" />
+          Size="120.8,41.6"
+          Id="Package\DFT_Load_Dimensions\Lookup 7"
+          TopLeft="791.999988198281,219.999997079372" />
         <NodeLayout
           Size="167.2,41.6"
           Id="Package\DFT_Load_Dimensions\Staging_Medicine"
           TopLeft="391,27" />
         <NodeLayout
+          Size="140.8,41.6"
+          Id="Package\DFT_Load_Dimensions\Staging_Staff"
+          TopLeft="787.999988257885,31.9999998807907" />
+        <NodeLayout
+          Size="115.2,41.6"
+          Id="Package\DFT_Load_Dimensions\Lookup"
+          TopLeft="59,230" />
+        <NodeLayout
           Size="136.8,41.6"
           Id="Package\DFT_Load_Dimensions\Dim_Doctor"
           TopLeft="222,345" />
+        <NodeLayout
+          Size="124,41.6"
+          Id="Package\DFT_Load_Dimensions\Lookup 5"
+          TopLeft="1007.72726415911,230.090914589437" />
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\DFT_Load_Dimensions\Staging_Patients"
+          TopLeft="31,21" />
+        <NodeLayout
+          Size="108,41.6"
+          Id="Package\DFT_Load_Dimensions\Sort 2"
+          TopLeft="422,115" />
+        <NodeLayout
+          Size="130.4,41.6"
+          Id="Package\DFT_Load_Dimensions\Dim_Room"
+          TopLeft="603.999990999699,340.999994918704" />
         <NodeLayout
           Size="99.2,41.6"
           Id="Package\DFT_Load_Dimensions\Sort"
           TopLeft="63,116" />
         <NodeLayout
+          Size="185.6,41.6"
+          Id="Package\DFT_Load_Dimensions\Union_Staging_Dates"
+          TopLeft="981.931809613651,34.2954600439834" />
+        <NodeLayout
           Size="158.4,41.6"
           Id="Package\DFT_Load_Dimensions\Derived Column"
           TopLeft="993.18180961365,134.295460043983" />
+        <NodeLayout
+          Size="124,41.6"
+          Id="Package\DFT_Load_Dimensions\Lookup 1"
+          TopLeft="225,228" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Dimensions.Paths[Sort Output2]"
+          TopLeft="114.5,158">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,72"
+              Start="0,0"
+              End="0,64.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Dimensions.Paths[Sort Output1]"
+          TopLeft="475,157">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70"
+              Start="0,0"
+              End="0,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Dimensions.Paths[Sort Output]"
+          TopLeft="852.299988146126,160.59999858439">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.3999984949828"
+              Start="0,0"
+              End="0,51.8999984949828">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.8999984949828" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output5]"
+          TopLeft="112.25,63">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53"
+              Start="0,0"
+              End="0,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output4]"
+          TopLeft="855.299988175929,73.5999998807907">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.399998703599"
+              Start="0,0"
+              End="0,37.899998703599">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.899998703599" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output3]"
+          TopLeft="663.799991074205,69.5999995827675">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.3999986737967"
+              Start="0,0"
+              End="0,39.8999986737967">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.8999986737967" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output2]"
+          TopLeft="1073.55680961365,76.2954600439835">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output1]"
           TopLeft="285.5,66">
@@ -7385,31 +7464,7 @@ FROM     Staff</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output3]"
-          TopLeft="114.5,272">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,69"
-              Start="0,0"
-              End="0,61.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,61.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-55.80638671875,24.9453125,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output2]"
+          Id="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output5]"
           TopLeft="1066.6363550682,272.090914589437">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7433,7 +7488,31 @@ FROM     Staff</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output1]"
+          Id="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output4]"
+          TopLeft="476.75,269">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74"
+              Start="0,0"
+              End="0,66.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,27.4453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output3]"
           TopLeft="288.75,270">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7457,26 +7536,74 @@ FROM     Staff</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output]"
-          TopLeft="476.75,269">
+          Id="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output2]"
+          TopLeft="851.699988220632,261.599997079372">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,74"
+              EndConnector="0,79.3999981969594"
               Start="0,0"
-              End="0,66.5">
+              End="0,71.8999981969594">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,66.5" />
+                    End="0,71.8999981969594" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-55.80638671875,27.4453125,111.6127734375,11.609375"
+              BoundingBox="-55.80638671875,30.1453115984797,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output1]"
+          TopLeft="114.5,272">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69"
+              Start="0,0"
+              End="0,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,24.9453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output]"
+          TopLeft="668.799990969896,261.599996721745">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,79.3999981969597"
+              Start="0,0"
+              End="0,71.8999981969597">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,71.8999981969597" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,30.1453115984799,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7503,151 +7630,7 @@ FROM     Staff</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[Sort Output2]"
-          TopLeft="284.5,159">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,69"
-              Start="0,0"
-              End="0,61.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,61.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[Sort Output1]"
-          TopLeft="114.5,158">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,72"
-              Start="0,0"
-              End="0,64.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,64.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[Sort Output]"
-          TopLeft="475,157">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,70"
-              Start="0,0"
-              End="0,62.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,62.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output3]"
-          TopLeft="112.25,63">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,53"
-              Start="0,0"
-              End="0,45.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,45.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output2]"
-          TopLeft="1073.55680961365,76.2954600439835">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,58"
-              Start="0,0"
-              End="0,50.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,50.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\DFT_Load_Dimensions\Staging_Rooms"
-          TopLeft="586.999991253018,27.9999995827675" />
-        <NodeLayout
-          Size="106.4,41.6"
-          Id="Package\DFT_Load_Dimensions\Sort 5"
-          TopLeft="610.999990895391,116.999998256564" />
-        <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output4]"
-          TopLeft="663.799991074205,69.5999995827675">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,47.3999986737967"
-              Start="0,0"
-              End="0,39.8999986737967">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,39.8999986737967" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="120.8,41.6"
-          Id="Package\DFT_Load_Dimensions\Lookup 6"
-          TopLeft="607.999990940094,219.999996721745" />
-        <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[Sort Output3]"
+          Id="Package\DFT_Load_Dimensions.Paths[Sort Output4]"
           TopLeft="666.299990917742,158.599998256564">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7668,123 +7651,59 @@ FROM     Staff</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="130.4,41.6"
-          Id="Package\DFT_Load_Dimensions\Dim_Room"
-          TopLeft="603.999990999699,340.999994918704" />
         <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output4]"
-          TopLeft="668.799990969896,261.599996721745">
+          Id="Package\DFT_Load_Dimensions.Paths[Sort Output3]"
+          TopLeft="284.5,159">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,79.3999981969597"
+              EndConnector="0,69"
               Start="0,0"
-              End="0,71.8999981969597">
+              End="0,61.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,71.8999981969597" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-55.80638671875,30.1453115984799,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="140.8,41.6"
-          Id="Package\DFT_Load_Dimensions\Staging_Staff"
-          TopLeft="787.999988257885,31.9999998807907" />
-        <NodeLayout
-          Size="106.4,41.6"
-          Id="Package\DFT_Load_Dimensions\Sort 6"
-          TopLeft="798.999988093972,118.99999858439" />
-        <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output5]"
-          TopLeft="855.299988175929,73.5999998807907">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,45.399998703599"
-              Start="0,0"
-              End="0,37.899998703599">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.899998703599" />
+                    End="0,61.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="120.8,41.6"
-          Id="Package\DFT_Load_Dimensions\Lookup 7"
-          TopLeft="791.999988198281,219.999997079372" />
-        <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[Sort Output4]"
-          TopLeft="852.299988146126,160.59999858439">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,59.3999984949828"
-              Start="0,0"
-              End="0,51.8999984949828">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,51.8999984949828" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="124,41.6"
-          Id="Package\DFT_Load_Dimensions\Dim_Staff"
-          TopLeft="788.999988242984,340.999995276332" />
-        <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[Lookup No Match Output5]"
-          TopLeft="851.699988220632,261.599997079372">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,79.3999981969594"
-              Start="0,0"
-              End="0,71.8999981969594">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,71.8999981969594" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-55.80638671875,30.1453115984797,111.6127734375,11.609375"
-              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Dimensions\Lookup 2">
+    design-time-name="Package\DFT_Load_Dimensions\Staging_Rooms">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Dimensions\Dim_Medincine">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Dimensions\Lookup 6">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -7807,55 +7726,6 @@ FROM     Staff</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Dimensions\Staging_Patients">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Dimensions\Lookup 5">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Dimensions\Dim_Medincine">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\DFT_Load_Dimensions\Staging_Doctors">
     <Properties>
       <Property>
@@ -7869,7 +7739,20 @@ FROM     Staff</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Dimensions\Lookup">
+    design-time-name="Package\DFT_Load_Dimensions\Dim_Staff">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Dimensions\Lookup 2">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -7918,7 +7801,7 @@ FROM     Staff</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Dimensions\Lookup 1">
+    design-time-name="Package\DFT_Load_Dimensions\Lookup 7">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -7941,14 +7824,6 @@ FROM     Staff</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Dimensions\Union_Staging_Dates">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\DFT_Load_Dimensions\Staging_Medicine">
     <Properties>
       <Property>
@@ -7962,7 +7837,269 @@ FROM     Staff</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Dimensions\Staging_Staff">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Dimensions\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\DFT_Load_Dimensions\Dim_Doctor">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Dimensions\Lookup 5">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Dimensions\Staging_Patients">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Dimensions\Dim_Room">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Dimensions\Union_Staging_Dates">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Dimensions\Lookup 1">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT_Load_Facts">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="166.4,41.6"
+          Id="Package\DFT_Load_Facts\Staging_Pharmacy"
+          TopLeft="72.9999989122152,26.9999995976687" />
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\DFT_Load_Facts\Fact_Pharmacy"
+          TopLeft="81.9999987781048,147.999997794628" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Facts.Paths[OLE DB Source Output1]"
+          TopLeft="156.89999884516,68.5999995976687">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,79.3999981969595"
+              Start="0,0"
+              End="0,71.8999981969595">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,71.8999981969595" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="183.2,41.6"
+          Id="Package\DFT_Load_Facts\Staging_Appointments"
+          TopLeft="305.999995440245,29.9999995529652" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\DFT_Load_Facts\Fact_Appointments"
+          TopLeft="311.999995350837,191.999997138977" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\DFT_Load_Facts\Derived Column"
+          TopLeft="320.999995216727,109.999998360872" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Facts.Paths[OLE DB Source Output]"
+          TopLeft="397.499995328486,71.5999995529652">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.3999988079072"
+              Start="0,0"
+              End="0,30.8999988079072">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.8999988079072" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Facts.Paths[Derived Column Output]"
+          TopLeft="396.699995283782,151.599998360872">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.3999987781048"
+              Start="0,0"
+              End="0,32.8999987781048">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.8999987781048" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Facts\Staging_Appointments">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Facts\Fact_Appointments">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Facts\Fact_Pharmacy">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Facts\Staging_Pharmacy">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7980,53 +8117,143 @@ FROM     Staff</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="167.2,41.6"
-          Id="Package\DFT_Load_Staging\Staging_Medicine"
-          TopLeft="676.363636363636,130" />
+          Size="152,41.6"
+          Id="Package\DFT_Load_Staging\Staging_Billing"
+          TopLeft="260.000012020269,340.169696993804" />
+        <NodeLayout
+          Size="147.2,41.6"
+          Id="Package\DFT_Load_Staging\Staging_Room"
+          TopLeft="448.333308837481,342.33333095279" />
         <NodeLayout
           Size="150.4,41.6"
           Id="Package\DFT_Load_Staging\Source_Billing"
           TopLeft="263.636375656634,235.624242448349" />
         <NodeLayout
-          Size="190.4,41.6"
-          Id="Package\DFT_Load_Staging\Staging_Appointments"
-          TopLeft="458.181818181818,131.818181818182" />
+          Size="200.8,41.6"
+          Id="Package\DFT_Load_Staging\Staging_Cleaning_Service"
+          TopLeft="788.333290260701,343.19999761343" />
         <NodeLayout
-          Size="161.6,41.6"
-          Id="Package\DFT_Load_Staging\Staging_Patients"
-          TopLeft="64.2727272727273,135.636363636364" />
-        <NodeLayout
-          Size="168.8,41.6"
-          Id="Package\DFT_Load_Staging\Source_Pharmacy"
-          TopLeft="67.5757686854008,233.763636381716" />
-        <NodeLayout
-          Size="164,41.6"
-          Id="Package\DFT_Load_Staging\Source_Medicine"
-          TopLeft="677.272727272727,15.4545454545455" />
-        <NodeLayout
-          Size="172,41.6"
-          Id="Package\DFT_Load_Staging\Staging_Pharmacy"
-          TopLeft="67.5757686854008,343.763636381716" />
-        <NodeLayout
-          Size="160,41.6"
-          Id="Package\DFT_Load_Staging\Staging_Doctors"
-          TopLeft="264.545454545455,132.727272727273" />
+          Size="138.4,41.6"
+          Id="Package\DFT_Load_Staging\Source_Staff"
+          TopLeft="618.333299549091,236.599998354713" />
         <NodeLayout
           Size="160,41.6"
           Id="Package\DFT_Load_Staging\Source_Patients"
           TopLeft="64.7272727272727,13.6363636363636" />
         <NodeLayout
+          Size="198.4,41.6"
+          Id="Package\DFT_Load_Staging\Source_Cleaning_Service"
+          TopLeft="791.666623411909,236.599998354713" />
+        <NodeLayout
+          Size="167.2,41.6"
+          Id="Package\DFT_Load_Staging\Staging_Medicine"
+          TopLeft="678.030303005467,132.499999962747" />
+        <NodeLayout
+          Size="140.8,41.6"
+          Id="Package\DFT_Load_Staging\Staging_Staff"
+          TopLeft="620.833299412497,342.33333095279" />
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\DFT_Load_Staging\Staging_Patients"
+          TopLeft="64.2727272727273,135.636363636364" />
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\DFT_Load_Staging\Staging_Doctors"
+          TopLeft="264.545454545455,132.727272727273" />
+        <NodeLayout
           Size="158.4,41.6"
           Id="Package\DFT_Load_Staging\Source_Doctors"
           TopLeft="262.727272727273,12.7272727272727" />
+        <NodeLayout
+          Size="190.4,41.6"
+          Id="Package\DFT_Load_Staging\Staging_Appointments"
+          TopLeft="458.181818181818,131.818181818182" />
+        <NodeLayout
+          Size="168.8,41.6"
+          Id="Package\DFT_Load_Staging\Source_Pharmacy"
+          TopLeft="67.5757686854008,233.763636381716" />
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\DFT_Load_Staging\Staging_Pharmacy"
+          TopLeft="67.5757686854008,343.763636381716" />
+        <NodeLayout
+          Size="164,41.6"
+          Id="Package\DFT_Load_Staging\Source_Medicine"
+          TopLeft="677.272727272727,15.4545454545455" />
         <NodeLayout
           Size="187.2,41.6"
           Id="Package\DFT_Load_Staging\Source_Appointments"
           TopLeft="460,15.4545454545455" />
         <NodeLayout
-          Size="152,41.6"
-          Id="Package\DFT_Load_Staging\Staging_Billing"
-          TopLeft="260.000012020269,340.169696993804" />
+          Size="144.8,41.6"
+          Id="Package\DFT_Load_Staging\Source_Room"
+          TopLeft="441.666642535065,234.866665033433" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output8]"
+          TopLeft="889.799956836305,278.199998354713">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64.9999992587168"
+              Start="0,0"
+              End="0,57.4999992587168">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.4999992587168" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output7]"
+          TopLeft="689.383299480794,278.199998354713">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64.1333325980769"
+              Start="0,0"
+              End="0,56.6333325980769">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.6333325980769" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output6]"
+          TopLeft="517.999975686273,276.466665033433">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65.8666659193572"
+              Start="0,0"
+              End="0,58.3666659193572">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.3666659193572" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output5]"
           TopLeft="145,55.6363636363636">
@@ -8095,18 +8322,18 @@ FROM     Staff</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output2]"
-          TopLeft="759.568181818182,57.4545454545455">
+          TopLeft="760.451515139097,57.0545454545455">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,72.5454545454545"
+              EndConnector="0,75.4454545082016"
               Start="0,0"
-              End="0,65.0454545454545">
+              End="0,67.9454545082016">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,65.0454545454545" />
+                    End="0,67.9454545082016" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8159,101 +8386,24 @@ FROM     Staff</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="144.8,41.6"
-          Id="Package\DFT_Load_Staging\Source_Room"
-          TopLeft="441.666642535065,234.866665033433" />
-        <NodeLayout
-          Size="147.2,41.6"
-          Id="Package\DFT_Load_Staging\Staging_Room"
-          TopLeft="448.333308837481,342.33333095279" />
-        <EdgeLayout
-          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output6]"
-          TopLeft="517.999975686273,276.466665033433">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,65.8666659193572"
-              Start="0,0"
-              End="0,58.3666659193572">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,58.3666659193572" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="138.4,41.6"
-          Id="Package\DFT_Load_Staging\Source_Staff"
-          TopLeft="618.333299549091,236.599998354713" />
-        <NodeLayout
-          Size="140.8,41.6"
-          Id="Package\DFT_Load_Staging\Staging_Staff"
-          TopLeft="620.833299412497,342.33333095279" />
-        <EdgeLayout
-          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output7]"
-          TopLeft="689.383299480794,278.199998354713">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,64.1333325980769"
-              Start="0,0"
-              End="0,56.6333325980769">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,56.6333325980769" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="198.4,41.6"
-          Id="Package\DFT_Load_Staging\Source_Cleaning_Service"
-          TopLeft="791.666623411909,236.599998354713" />
-        <NodeLayout
-          Size="200.8,41.6"
-          Id="Package\DFT_Load_Staging\Staging_Cleaning_Service"
-          TopLeft="788.333290260701,343.19999761343" />
-        <EdgeLayout
-          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output8]"
-          TopLeft="889.799956836305,278.199998354713">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,64.9999992587168"
-              Start="0,0"
-              End="0,57.4999992587168">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,57.4999992587168" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\DFT_Load_Staging\Staging_Billing">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Staging\Staging_Room">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -8274,10 +8424,70 @@ FROM     Staff</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Staging\Source_Doctors">
+    design-time-name="Package\DFT_Load_Staging\Staging_Cleaning_Service">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Staging\Source_Staff">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Staging\Source_Patients">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Staging\Source_Cleaning_Service">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Staging\Staging_Medicine">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Staging\Staging_Staff">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -8308,28 +8518,7 @@ FROM     Staff</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Staging\Source_Pharmacy">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Staging\Staging_Medicine">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Staging\Source_Medicine">
+    design-time-name="Package\DFT_Load_Staging\Source_Doctors">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -8350,7 +8539,7 @@ FROM     Staff</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Staging\Source_Appointments">
+    design-time-name="Package\DFT_Load_Staging\Source_Pharmacy">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -8371,15 +8560,18 @@ FROM     Staff</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Staging\Source_Patients">
+    design-time-name="Package\DFT_Load_Staging\Source_Medicine">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Staging\Source_Appointments">
+    <Properties>
       <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -8388,211 +8580,6 @@ FROM     Staff</property>
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Staging\Staging_Room">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Staging\Source_Staff">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Staging\Staging_Staff">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Staging\Source_Cleaning_Service">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Staging\Staging_Cleaning_Service">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Dimensions\Staging_Rooms">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Dimensions\Lookup 6">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Dimensions\Dim_Room">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Dimensions\Staging_Staff">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Dimensions\Lookup 7">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Dimensions\Dim_Staff">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Facts\Staging_Pharmacy">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Facts\Fact_Pharmacy">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Facts\Staging_Appointments">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Facts\Fact_Appointments">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

@@ -32,6 +32,7 @@ CREATE TABLE Staging.Pharmacy (
     medicine_id INT,
     patient_id INT,
     quantity INT
+    -- Add prescription_date if needed: , prescription_date DATE
 );
 GO
 
@@ -145,7 +146,7 @@ CREATE TABLE Fact_Appointments (
     Appointment_Date_Key INT,
     FOREIGN KEY (Doctor_Id) REFERENCES Dim_Doctor(Doctor_Id),
     FOREIGN KEY (Patient_Id) REFERENCES Dim_Patient(Patient_Id),
-    FOREIGN KEY (Appointment_Date_Key) REFERENCES Dim_Date(Appointment_Date_Key)
+    FOREIGN KEY (Appointment_Date_Key) REFERENCES Dim_Date(Date_Key) -- Fixed reference
 );
 GO
 
@@ -156,7 +157,7 @@ CREATE TABLE Fact_Billing (
     Total_Amount DECIMAL(10, 2),
     Payment_Status NVARCHAR(20),
     FOREIGN KEY (Patient_Id) REFERENCES Dim_Patient(Patient_Id),
-    FOREIGN KEY (Created_At_Key) REFERENCES Dim_Date(Date_Id)
+    FOREIGN KEY (Created_At_Key) REFERENCES Dim_Date(Date_Key) -- Fixed reference
 );
 GO
 
@@ -167,6 +168,6 @@ CREATE TABLE Fact_Cleaning_Service (
     Service_Date_Key INT,
     FOREIGN KEY (Room_Id) REFERENCES Dim_Room(Room_Id),
     FOREIGN KEY (Staff_Id) REFERENCES Dim_Staff(Staff_Id),
-    FOREIGN KEY (Service_Date_Key) REFERENCES Dim_Date(Date_Id)
+    FOREIGN KEY (Service_Date_Key) REFERENCES Dim_Date(Date_Key) -- Fixed reference
 );
 GO
