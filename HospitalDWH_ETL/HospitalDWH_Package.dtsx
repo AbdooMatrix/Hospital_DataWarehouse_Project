@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="HospitalDWH_Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="125"
-  DTS:VersionGUID="{45017065-D38E-4980-94F2-2FA44173C465}">
+  DTS:VersionBuild="143"
+  DTS:VersionGUID="{C595C5C8-1D1D-4436-B1AD-8B584AC8F2A0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -106,12 +106,12 @@
                   synchronousInputId="Package\DFT_Load_Dimensions\Derived Column.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load_Dimensions\Derived Column.Outputs[Derived Column Output].Columns[Date_Id]"
+                      refId="Package\DFT_Load_Dimensions\Derived Column.Outputs[Derived Column Output].Columns[Date_Key]"
                       dataType="i4"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT_Load_Dimensions\Derived Column.Outputs[Derived Column Output].Columns[Date_Id]"
-                      name="Date_Id"
+                      lineageId="Package\DFT_Load_Dimensions\Derived Column.Outputs[Derived Column Output].Columns[Date_Key]"
+                      name="Date_Key"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -318,6 +318,12 @@
                       cachedName="Full_Date"
                       externalMetadataColumnId="Package\DFT_Load_Dimensions\Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Full_Date]"
                       lineageId="Package\DFT_Load_Dimensions\Union_Staging_Dates.Outputs[OLE DB Source Output].Columns[Full_Date]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Dimensions\Dim_Date.Inputs[OLE DB Destination Input].Columns[Date_Key]"
+                      cachedDataType="i4"
+                      cachedName="Date_Key"
+                      externalMetadataColumnId="Package\DFT_Load_Dimensions\Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Date_Key]"
+                      lineageId="Package\DFT_Load_Dimensions\Derived Column.Outputs[Derived Column Output].Columns[Date_Key]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1032,7 +1038,8 @@
                       name="First_Name" />
                     <externalMetadataColumn
                       refId="Package\DFT_Load_Dimensions\Dim_Staff.Inputs[OLE DB Destination Input].ExternalColumns[Last_Name]"
-                      dataType="wstr"
+                      codePage="1252"
+                      dataType="str"
                       length="50"
                       name="Last_Name" />
                   </externalMetadataColumns>
@@ -1509,16 +1516,16 @@ where [refTable].[Medicine_Id] = ?</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Date_Id 
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Date_Key 
 FROM Dim_Date</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT Date_Id 
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT Date_Key 
 FROM Dim_Date) [refTable]
-where [refTable].[Date_Id] = ?</property>
+where [refTable].[Date_Key] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -1549,12 +1556,12 @@ where [refTable].[Date_Id] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Date_Id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Date_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\DFT_Load_Dimensions\Derived Column.Outputs[Derived Column Output].Columns[Date_Id]};</property>
+                  name="ParameterMap">#{Package\DFT_Load_Dimensions\Derived Column.Outputs[Derived Column Output].Columns[Date_Key]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1578,15 +1585,15 @@ where [refTable].[Date_Id] = ?</property>
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT_Load_Dimensions\Lookup 5.Inputs[Lookup Input].Columns[Date_Id]"
+                      refId="Package\DFT_Load_Dimensions\Lookup 5.Inputs[Lookup Input].Columns[Date_Key]"
                       cachedDataType="i4"
-                      cachedName="Date_Id"
-                      lineageId="Package\DFT_Load_Dimensions\Derived Column.Outputs[Derived Column Output].Columns[Date_Id]">
+                      cachedName="Date_Key"
+                      lineageId="Package\DFT_Load_Dimensions\Derived Column.Outputs[Derived Column Output].Columns[Date_Key]">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">Date_Id</property>
+                          name="JoinToReferenceColumn">Date_Key</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -3359,15 +3366,21 @@ FROM Staging.Patients;</property>
 FROM Staging.Appointments
     
 WHERE appointment_date IS NOT NULL
-      
+    
 
 UNION
-    
 
 SELECT DISTINCT CAST(created_at AS DATE) AS Full_Date  
     FROM Staging.Billing
-   
-WHERE created_at IS NOT NULL</property>
+    
+WHERE created_at IS NOT NULL
+
+UNION
+    
+SELECT DISTINCT CAST(service_date AS DATE) AS Full_Date
+    FROM Staging.Cleaning_Service
+    
+WHERE service_date IS NOT NULL</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -3490,54 +3503,54 @@ WHERE created_at IS NOT NULL</property>
               startId="Package\DFT_Load_Dimensions\Lookup 5.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output5]"
-              endId="Package\DFT_Load_Dimensions\Sort.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Dimensions\Staging_Patients.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output4]"
-              endId="Package\DFT_Load_Dimensions\Sort 6.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Dimensions\Staging_Staff.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output3]"
-              endId="Package\DFT_Load_Dimensions\Sort 5.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Dimensions\Staging_Rooms.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output1]"
-              endId="Package\DFT_Load_Dimensions\Sort 1.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Dimensions\Staging_Doctors.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output]"
-              endId="Package\DFT_Load_Dimensions\Sort 2.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Dimensions\Staging_Medicine.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output2]"
               endId="Package\DFT_Load_Dimensions\Derived Column.Inputs[Derived Column Input]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Dimensions\Union_Staging_Dates.Outputs[OLE DB Source Output]" />
             <path
+              refId="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output4]"
+              endId="Package\DFT_Load_Dimensions\Sort 2.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Dimensions\Staging_Medicine.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output3]"
+              endId="Package\DFT_Load_Dimensions\Sort 1.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Dimensions\Staging_Doctors.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output1]"
+              endId="Package\DFT_Load_Dimensions\Sort 6.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Dimensions\Staging_Staff.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_Dimensions\Sort.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Dimensions\Staging_Patients.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output2]"
+              endId="Package\DFT_Load_Dimensions\Sort 5.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Dimensions\Staging_Rooms.Outputs[OLE DB Source Output]" />
+            <path
               refId="Package\DFT_Load_Dimensions.Paths[Sort Output3]"
+              endId="Package\DFT_Load_Dimensions\Lookup.Inputs[Lookup Input]"
+              name="Sort Output"
+              startId="Package\DFT_Load_Dimensions\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\DFT_Load_Dimensions.Paths[Sort Output]"
               endId="Package\DFT_Load_Dimensions\Lookup 1.Inputs[Lookup Input]"
               name="Sort Output"
               startId="Package\DFT_Load_Dimensions\Sort 1.Outputs[Sort Output]" />
             <path
-              refId="Package\DFT_Load_Dimensions.Paths[Sort Output]"
+              refId="Package\DFT_Load_Dimensions.Paths[Sort Output1]"
               endId="Package\DFT_Load_Dimensions\Lookup 7.Inputs[Lookup Input]"
               name="Sort Output"
               startId="Package\DFT_Load_Dimensions\Sort 6.Outputs[Sort Output]" />
             <path
-              refId="Package\DFT_Load_Dimensions.Paths[Sort Output1]"
+              refId="Package\DFT_Load_Dimensions.Paths[Sort Output2]"
               endId="Package\DFT_Load_Dimensions\Lookup 2.Inputs[Lookup Input]"
               name="Sort Output"
               startId="Package\DFT_Load_Dimensions\Sort 2.Outputs[Sort Output]" />
-            <path
-              refId="Package\DFT_Load_Dimensions.Paths[Sort Output2]"
-              endId="Package\DFT_Load_Dimensions\Lookup.Inputs[Lookup Input]"
-              name="Sort Output"
-              startId="Package\DFT_Load_Dimensions\Sort.Outputs[Sort Output]" />
             <path
               refId="Package\DFT_Load_Dimensions.Paths[Sort Output4]"
               endId="Package\DFT_Load_Dimensions\Lookup 6.Inputs[Lookup Input]"
@@ -3579,7 +3592,7 @@ WHERE created_at IS NOT NULL</property>
                       cachedDataType="wstr"
                       cachedLength="10"
                       cachedName="appointment_date"
-                      lineageId="Package\DFT_Load_Facts\Staging_Appointments.Outputs[OLE DB Source Output].Columns[appointment_date]" />
+                      lineageId="Package\DFT_Load_Facts\Sort 1.Outputs[Sort Output].Columns[appointment_date]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -3605,7 +3618,7 @@ WHERE created_at IS NOT NULL</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">(DT_I4)([YEAR]((DT_DATE)#{Package\DFT_Load_Facts\Staging_Appointments.Outputs[OLE DB Source Output].Columns[appointment_date]}) * 10000 + [MONTH]((DT_DATE)#{Package\DFT_Load_Facts\Staging_Appointments.Outputs[OLE DB Source Output].Columns[appointment_date]}) * 100 + [DAY]((DT_DATE)#{Package\DFT_Load_Facts\Staging_Appointments.Outputs[OLE DB Source Output].Columns[appointment_date]}))</property>
+                          name="Expression">(DT_I4)([YEAR]((DT_DATE)#{Package\DFT_Load_Facts\Sort 1.Outputs[Sort Output].Columns[appointment_date]}) * 10000 + [MONTH]((DT_DATE)#{Package\DFT_Load_Facts\Sort 1.Outputs[Sort Output].Columns[appointment_date]}) * 100 + [DAY]((DT_DATE)#{Package\DFT_Load_Facts\Sort 1.Outputs[Sort Output].Columns[appointment_date]}))</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -3635,6 +3648,167 @@ WHERE created_at IS NOT NULL</property>
                       refId="Package\DFT_Load_Facts\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\DFT_Load_Facts\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Facts\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Facts\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Derived Column 1.Inputs[Derived Column Input].Columns[created_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="created_at"
+                      lineageId="Package\DFT_Load_Facts\Sort 2.Outputs[Sort Output].Columns[created_at]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Facts\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT_Load_Facts\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Derived Column 1.Outputs[Derived Column Output].Columns[Created_At_Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load_Facts\Derived Column 1.Outputs[Derived Column Output].Columns[Created_At_Key]"
+                      name="Created_At_Key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)([YEAR]((DT_DATE)#{Package\DFT_Load_Facts\Sort 2.Outputs[Sort Output].Columns[created_at]}) * 10000 + [MONTH]((DT_DATE)#{Package\DFT_Load_Facts\Sort 2.Outputs[Sort Output].Columns[created_at]}) * 100 + [DAY]((DT_DATE)#{Package\DFT_Load_Facts\Sort 2.Outputs[Sort Output].Columns[created_at]}))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)(YEAR((DT_DATE)created_at) * 10000 + MONTH((DT_DATE)created_at) * 100 + DAY((DT_DATE)created_at))</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Facts\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT_Load_Facts\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Facts\Derived Column 2"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 2"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Facts\Derived Column 2.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Derived Column 2.Inputs[Derived Column Input].Columns[service_date]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="service_date"
+                      lineageId="Package\DFT_Load_Facts\Sort 3.Outputs[Sort Output].Columns[service_date]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Facts\Derived Column 2.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT_Load_Facts\Derived Column 2.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Derived Column 2.Outputs[Derived Column Output].Columns[Service_Date_Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load_Facts\Derived Column 2.Outputs[Derived Column Output].Columns[Service_Date_Key]"
+                      name="Service_Date_Key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)([YEAR]((DT_DATE)#{Package\DFT_Load_Facts\Sort 3.Outputs[Sort Output].Columns[service_date]}) * 10000) + [MONTH]((DT_DATE)#{Package\DFT_Load_Facts\Sort 3.Outputs[Sort Output].Columns[service_date]}) * 100 + [DAY]((DT_DATE)#{Package\DFT_Load_Facts\Sort 3.Outputs[Sort Output].Columns[service_date]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)(YEAR((DT_DATE)service_date) * 10000) + MONTH((DT_DATE)service_date) * 100 + DAY((DT_DATE)service_date)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Facts\Derived Column 2.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT_Load_Facts\Derived Column 2.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -3718,20 +3892,27 @@ WHERE created_at IS NOT NULL</property>
                       refId="Package\DFT_Load_Facts\Fact_Appointments.Inputs[OLE DB Destination Input].Columns[appointment_id]"
                       cachedDataType="i4"
                       cachedName="appointment_id"
+                      cachedSortKeyPosition="1"
                       externalMetadataColumnId="Package\DFT_Load_Facts\Fact_Appointments.Inputs[OLE DB Destination Input].ExternalColumns[Appointment_Id]"
-                      lineageId="Package\DFT_Load_Facts\Staging_Appointments.Outputs[OLE DB Source Output].Columns[appointment_id]" />
+                      lineageId="Package\DFT_Load_Facts\Sort 1.Outputs[Sort Output].Columns[appointment_id]" />
                     <inputColumn
                       refId="Package\DFT_Load_Facts\Fact_Appointments.Inputs[OLE DB Destination Input].Columns[patient_id]"
                       cachedDataType="i4"
                       cachedName="patient_id"
                       externalMetadataColumnId="Package\DFT_Load_Facts\Fact_Appointments.Inputs[OLE DB Destination Input].ExternalColumns[Patient_Id]"
-                      lineageId="Package\DFT_Load_Facts\Staging_Appointments.Outputs[OLE DB Source Output].Columns[patient_id]" />
+                      lineageId="Package\DFT_Load_Facts\Sort 1.Outputs[Sort Output].Columns[patient_id]" />
                     <inputColumn
                       refId="Package\DFT_Load_Facts\Fact_Appointments.Inputs[OLE DB Destination Input].Columns[doctor_id]"
                       cachedDataType="i4"
                       cachedName="doctor_id"
                       externalMetadataColumnId="Package\DFT_Load_Facts\Fact_Appointments.Inputs[OLE DB Destination Input].ExternalColumns[Doctor_Id]"
-                      lineageId="Package\DFT_Load_Facts\Staging_Appointments.Outputs[OLE DB Source Output].Columns[doctor_id]" />
+                      lineageId="Package\DFT_Load_Facts\Sort 1.Outputs[Sort Output].Columns[doctor_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Fact_Appointments.Inputs[OLE DB Destination Input].Columns[Appointment_Date_Key]"
+                      cachedDataType="i4"
+                      cachedName="Appointment_Date_Key"
+                      externalMetadataColumnId="Package\DFT_Load_Facts\Fact_Appointments.Inputs[OLE DB Destination Input].ExternalColumns[Appointment_Date_Key]"
+                      lineageId="Package\DFT_Load_Facts\Derived Column.Outputs[Derived Column Output].Columns[Appointment_Date_Key]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3772,6 +3953,310 @@ WHERE created_at IS NOT NULL</property>
                       refId="Package\DFT_Load_Facts\Fact_Appointments.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\DFT_Load_Facts\Fact_Appointments.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Facts\Fact_Billing"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Fact_Billing"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Fact_Billing]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Facts\Fact_Billing.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Matrix.Hospital_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[Matrix.Hospital_DWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Facts\Fact_Billing.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Fact_Billing.Inputs[OLE DB Destination Input].Columns[bill_id]"
+                      cachedDataType="i4"
+                      cachedName="bill_id"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\DFT_Load_Facts\Fact_Billing.Inputs[OLE DB Destination Input].ExternalColumns[Bill_Id]"
+                      lineageId="Package\DFT_Load_Facts\Sort 2.Outputs[Sort Output].Columns[bill_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Fact_Billing.Inputs[OLE DB Destination Input].Columns[patient_id]"
+                      cachedDataType="i4"
+                      cachedName="patient_id"
+                      externalMetadataColumnId="Package\DFT_Load_Facts\Fact_Billing.Inputs[OLE DB Destination Input].ExternalColumns[Patient_Id]"
+                      lineageId="Package\DFT_Load_Facts\Sort 2.Outputs[Sort Output].Columns[patient_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Fact_Billing.Inputs[OLE DB Destination Input].Columns[total_amount]"
+                      cachedDataType="numeric"
+                      cachedName="total_amount"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT_Load_Facts\Fact_Billing.Inputs[OLE DB Destination Input].ExternalColumns[Total_Amount]"
+                      lineageId="Package\DFT_Load_Facts\Sort 2.Outputs[Sort Output].Columns[total_amount]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Fact_Billing.Inputs[OLE DB Destination Input].Columns[payment_status]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="payment_status"
+                      externalMetadataColumnId="Package\DFT_Load_Facts\Fact_Billing.Inputs[OLE DB Destination Input].ExternalColumns[Payment_Status]"
+                      lineageId="Package\DFT_Load_Facts\Sort 2.Outputs[Sort Output].Columns[payment_status]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Fact_Billing.Inputs[OLE DB Destination Input].Columns[Created_At_Key]"
+                      cachedDataType="i4"
+                      cachedName="Created_At_Key"
+                      externalMetadataColumnId="Package\DFT_Load_Facts\Fact_Billing.Inputs[OLE DB Destination Input].ExternalColumns[Created_At_Key]"
+                      lineageId="Package\DFT_Load_Facts\Derived Column 1.Outputs[Derived Column Output].Columns[Created_At_Key]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Facts\Fact_Billing.Inputs[OLE DB Destination Input].ExternalColumns[Bill_Id]"
+                      dataType="i4"
+                      name="Bill_Id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Facts\Fact_Billing.Inputs[OLE DB Destination Input].ExternalColumns[Patient_Id]"
+                      dataType="i4"
+                      name="Patient_Id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Facts\Fact_Billing.Inputs[OLE DB Destination Input].ExternalColumns[Created_At_Key]"
+                      dataType="i4"
+                      name="Created_At_Key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Facts\Fact_Billing.Inputs[OLE DB Destination Input].ExternalColumns[Total_Amount]"
+                      dataType="numeric"
+                      name="Total_Amount"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Facts\Fact_Billing.Inputs[OLE DB Destination Input].ExternalColumns[Payment_Status]"
+                      dataType="wstr"
+                      length="20"
+                      name="Payment_Status" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Facts\Fact_Billing.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Load_Facts\Fact_Billing.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Fact_Billing.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Fact_Billing.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Fact_Billing.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Fact_Billing.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Facts\Fact_Cleaning_Service"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Fact_Cleaning_Service"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Fact_Cleaning_Service]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Facts\Fact_Cleaning_Service.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Matrix.Hospital_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[Matrix.Hospital_DWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Facts\Fact_Cleaning_Service.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Fact_Cleaning_Service.Inputs[OLE DB Destination Input].Columns[service_id]"
+                      cachedDataType="i4"
+                      cachedName="service_id"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\DFT_Load_Facts\Fact_Cleaning_Service.Inputs[OLE DB Destination Input].ExternalColumns[Service_Id]"
+                      lineageId="Package\DFT_Load_Facts\Sort 3.Outputs[Sort Output].Columns[service_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Fact_Cleaning_Service.Inputs[OLE DB Destination Input].Columns[room_id]"
+                      cachedDataType="i4"
+                      cachedName="room_id"
+                      externalMetadataColumnId="Package\DFT_Load_Facts\Fact_Cleaning_Service.Inputs[OLE DB Destination Input].ExternalColumns[Room_Id]"
+                      lineageId="Package\DFT_Load_Facts\Sort 3.Outputs[Sort Output].Columns[room_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Fact_Cleaning_Service.Inputs[OLE DB Destination Input].Columns[staff_id]"
+                      cachedDataType="i4"
+                      cachedName="staff_id"
+                      externalMetadataColumnId="Package\DFT_Load_Facts\Fact_Cleaning_Service.Inputs[OLE DB Destination Input].ExternalColumns[Staff_Id]"
+                      lineageId="Package\DFT_Load_Facts\Sort 3.Outputs[Sort Output].Columns[staff_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Fact_Cleaning_Service.Inputs[OLE DB Destination Input].Columns[Service_Date_Key]"
+                      cachedDataType="i4"
+                      cachedName="Service_Date_Key"
+                      externalMetadataColumnId="Package\DFT_Load_Facts\Fact_Cleaning_Service.Inputs[OLE DB Destination Input].ExternalColumns[Service_Date_Key]"
+                      lineageId="Package\DFT_Load_Facts\Derived Column 2.Outputs[Derived Column Output].Columns[Service_Date_Key]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Facts\Fact_Cleaning_Service.Inputs[OLE DB Destination Input].ExternalColumns[Service_Id]"
+                      dataType="i4"
+                      name="Service_Id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Facts\Fact_Cleaning_Service.Inputs[OLE DB Destination Input].ExternalColumns[Room_Id]"
+                      dataType="i4"
+                      name="Room_Id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Facts\Fact_Cleaning_Service.Inputs[OLE DB Destination Input].ExternalColumns[Staff_Id]"
+                      dataType="i4"
+                      name="Staff_Id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Facts\Fact_Cleaning_Service.Inputs[OLE DB Destination Input].ExternalColumns[Service_Date_Key]"
+                      dataType="i4"
+                      name="Service_Date_Key" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Facts\Fact_Cleaning_Service.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Load_Facts\Fact_Cleaning_Service.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Fact_Cleaning_Service.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Fact_Cleaning_Service.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Fact_Cleaning_Service.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Fact_Cleaning_Service.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -3855,26 +4340,27 @@ WHERE created_at IS NOT NULL</property>
                       refId="Package\DFT_Load_Facts\Fact_Pharmacy.Inputs[OLE DB Destination Input].Columns[pharmacy_id]"
                       cachedDataType="i4"
                       cachedName="pharmacy_id"
+                      cachedSortKeyPosition="1"
                       externalMetadataColumnId="Package\DFT_Load_Facts\Fact_Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Pharmacy_Id]"
-                      lineageId="Package\DFT_Load_Facts\Staging_Pharmacy.Outputs[OLE DB Source Output].Columns[pharmacy_id]" />
+                      lineageId="Package\DFT_Load_Facts\Sort.Outputs[Sort Output].Columns[pharmacy_id]" />
                     <inputColumn
                       refId="Package\DFT_Load_Facts\Fact_Pharmacy.Inputs[OLE DB Destination Input].Columns[medicine_id]"
                       cachedDataType="i4"
                       cachedName="medicine_id"
                       externalMetadataColumnId="Package\DFT_Load_Facts\Fact_Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Medicine_Id]"
-                      lineageId="Package\DFT_Load_Facts\Staging_Pharmacy.Outputs[OLE DB Source Output].Columns[medicine_id]" />
+                      lineageId="Package\DFT_Load_Facts\Sort.Outputs[Sort Output].Columns[medicine_id]" />
                     <inputColumn
                       refId="Package\DFT_Load_Facts\Fact_Pharmacy.Inputs[OLE DB Destination Input].Columns[patient_id]"
                       cachedDataType="i4"
                       cachedName="patient_id"
                       externalMetadataColumnId="Package\DFT_Load_Facts\Fact_Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Patient_Id]"
-                      lineageId="Package\DFT_Load_Facts\Staging_Pharmacy.Outputs[OLE DB Source Output].Columns[patient_id]" />
+                      lineageId="Package\DFT_Load_Facts\Sort.Outputs[Sort Output].Columns[patient_id]" />
                     <inputColumn
                       refId="Package\DFT_Load_Facts\Fact_Pharmacy.Inputs[OLE DB Destination Input].Columns[quantity]"
                       cachedDataType="i4"
                       cachedName="quantity"
                       externalMetadataColumnId="Package\DFT_Load_Facts\Fact_Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
-                      lineageId="Package\DFT_Load_Facts\Staging_Pharmacy.Outputs[OLE DB Source Output].Columns[quantity]" />
+                      lineageId="Package\DFT_Load_Facts\Sort.Outputs[Sort Output].Columns[quantity]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3917,6 +4403,1404 @@ WHERE created_at IS NOT NULL</property>
                       lineageId="Package\DFT_Load_Facts\Fact_Pharmacy.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Facts\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Pharmacy_Id 
+FROM Fact_Pharmacy</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT Pharmacy_Id 
+FROM Fact_Pharmacy) [refTable]
+where [refTable].[Pharmacy_Id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Pharmacy_Id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_Load_Facts\Sort.Outputs[Sort Output].Columns[pharmacy_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Facts\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Matrix.Hospital_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[Matrix.Hospital_DWH]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Facts\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Lookup.Inputs[Lookup Input].Columns[pharmacy_id]"
+                      cachedDataType="i4"
+                      cachedName="pharmacy_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\DFT_Load_Facts\Sort.Outputs[Sort Output].Columns[pharmacy_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Pharmacy_Id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Facts\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_Load_Facts\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Facts\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_Load_Facts\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Facts\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_Load_Facts\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Facts\Lookup 1"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup 1"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Appointment_Id
+FROM Fact_Appointments</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT Appointment_Id
+FROM Fact_Appointments) [refTable]
+where [refTable].[Appointment_Id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Appointment_Id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_Load_Facts\Sort 1.Outputs[Sort Output].Columns[appointment_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Facts\Lookup 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Matrix.Hospital_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[Matrix.Hospital_DWH]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Facts\Lookup 1.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Lookup 1.Inputs[Lookup Input].Columns[appointment_id]"
+                      cachedDataType="i4"
+                      cachedName="appointment_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\DFT_Load_Facts\Sort 1.Outputs[Sort Output].Columns[appointment_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Appointment_Id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Facts\Lookup 1.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_Load_Facts\Lookup 1.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Facts\Lookup 1.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_Load_Facts\Lookup 1.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Facts\Lookup 1.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_Load_Facts\Lookup 1.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Facts\Lookup 2"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup 2"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT bill_id 
+FROM Fact_Billing</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT bill_id 
+FROM Fact_Billing) [refTable]
+where [refTable].[bill_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="bill_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_Load_Facts\Sort 2.Outputs[Sort Output].Columns[bill_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Facts\Lookup 2.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Matrix.Hospital_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[Matrix.Hospital_DWH]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Facts\Lookup 2.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Lookup 2.Inputs[Lookup Input].Columns[bill_id]"
+                      cachedDataType="i4"
+                      cachedName="bill_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\DFT_Load_Facts\Sort 2.Outputs[Sort Output].Columns[bill_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">bill_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Facts\Lookup 2.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_Load_Facts\Lookup 2.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Facts\Lookup 2.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_Load_Facts\Lookup 2.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Facts\Lookup 2.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_Load_Facts\Lookup 2.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Lookup 2.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Lookup 2.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Lookup 2.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Lookup 2.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Facts\Lookup 3"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup 3"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Service_Id
+FROM Fact_Cleaning_Service</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT Service_Id
+FROM Fact_Cleaning_Service) [refTable]
+where [refTable].[Service_Id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Service_Id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_Load_Facts\Sort 3.Outputs[Sort Output].Columns[service_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Facts\Lookup 3.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Matrix.Hospital_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[Matrix.Hospital_DWH]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Facts\Lookup 3.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Lookup 3.Inputs[Lookup Input].Columns[service_id]"
+                      cachedDataType="i4"
+                      cachedName="service_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\DFT_Load_Facts\Sort 3.Outputs[Sort Output].Columns[service_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Service_Id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Facts\Lookup 3.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_Load_Facts\Lookup 3.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Facts\Lookup 3.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_Load_Facts\Lookup 3.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Facts\Lookup 3.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_Load_Facts\Lookup 3.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Lookup 3.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Lookup 3.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Lookup 3.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Lookup 3.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Facts\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Staging].[Cleaning_Service]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Facts\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Matrix.Hospital_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[Matrix.Hospital_DWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].Columns[service_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[service_id]"
+                      lineageId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].Columns[service_id]"
+                      name="service_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].Columns[room_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[room_id]"
+                      lineageId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].Columns[room_id]"
+                      name="room_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].Columns[staff_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[staff_id]"
+                      lineageId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].Columns[staff_id]"
+                      name="staff_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].Columns[service_date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[service_date]"
+                      length="10"
+                      lineageId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].Columns[service_date]"
+                      name="service_date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[service_id]"
+                      dataType="i4"
+                      name="service_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[room_id]"
+                      dataType="i4"
+                      name="room_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[staff_id]"
+                      dataType="i4"
+                      name="staff_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[service_date]"
+                      dataType="wstr"
+                      length="10"
+                      name="service_date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[service_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[service_id]"
+                      name="service_id" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[room_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[room_id]"
+                      name="room_id" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[staff_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[staff_id]"
+                      name="staff_id" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[service_date]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[service_date]"
+                      name="service_date" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Facts\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Facts\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Sort.Inputs[Sort Input].Columns[pharmacy_id]"
+                      cachedDataType="i4"
+                      cachedName="pharmacy_id"
+                      lineageId="Package\DFT_Load_Facts\Staging_Pharmacy.Outputs[OLE DB Source Output].Columns[pharmacy_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Sort.Inputs[Sort Input].Columns[medicine_id]"
+                      cachedDataType="i4"
+                      cachedName="medicine_id"
+                      lineageId="Package\DFT_Load_Facts\Staging_Pharmacy.Outputs[OLE DB Source Output].Columns[medicine_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Sort.Inputs[Sort Input].Columns[patient_id]"
+                      cachedDataType="i4"
+                      cachedName="patient_id"
+                      lineageId="Package\DFT_Load_Facts\Staging_Pharmacy.Outputs[OLE DB Source Output].Columns[patient_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Sort.Inputs[Sort Input].Columns[quantity]"
+                      cachedDataType="i4"
+                      cachedName="quantity"
+                      lineageId="Package\DFT_Load_Facts\Staging_Pharmacy.Outputs[OLE DB Source Output].Columns[quantity]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Facts\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Sort.Outputs[Sort Output].Columns[pharmacy_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Sort.Outputs[Sort Output].Columns[pharmacy_id]"
+                      name="pharmacy_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_Load_Facts\Staging_Pharmacy.Outputs[OLE DB Source Output].Columns[pharmacy_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Sort.Outputs[Sort Output].Columns[medicine_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Sort.Outputs[Sort Output].Columns[medicine_id]"
+                      name="medicine_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_Load_Facts\Staging_Pharmacy.Outputs[OLE DB Source Output].Columns[medicine_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Sort.Outputs[Sort Output].Columns[patient_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Sort.Outputs[Sort Output].Columns[patient_id]"
+                      name="patient_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_Load_Facts\Staging_Pharmacy.Outputs[OLE DB Source Output].Columns[patient_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Sort.Outputs[Sort Output].Columns[quantity]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Sort.Outputs[Sort Output].Columns[quantity]"
+                      name="quantity">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_Load_Facts\Staging_Pharmacy.Outputs[OLE DB Source Output].Columns[quantity]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Facts\Sort 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Facts\Sort 1.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Sort 1.Inputs[Sort Input].Columns[appointment_id]"
+                      cachedDataType="i4"
+                      cachedName="appointment_id"
+                      lineageId="Package\DFT_Load_Facts\Staging_Appointments.Outputs[OLE DB Source Output].Columns[appointment_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Sort 1.Inputs[Sort Input].Columns[patient_id]"
+                      cachedDataType="i4"
+                      cachedName="patient_id"
+                      lineageId="Package\DFT_Load_Facts\Staging_Appointments.Outputs[OLE DB Source Output].Columns[patient_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Sort 1.Inputs[Sort Input].Columns[doctor_id]"
+                      cachedDataType="i4"
+                      cachedName="doctor_id"
+                      lineageId="Package\DFT_Load_Facts\Staging_Appointments.Outputs[OLE DB Source Output].Columns[doctor_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Sort 1.Inputs[Sort Input].Columns[appointment_date]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="appointment_date"
+                      lineageId="Package\DFT_Load_Facts\Staging_Appointments.Outputs[OLE DB Source Output].Columns[appointment_date]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Facts\Sort 1.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Sort 1.Outputs[Sort Output].Columns[appointment_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Sort 1.Outputs[Sort Output].Columns[appointment_id]"
+                      name="appointment_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_Load_Facts\Staging_Appointments.Outputs[OLE DB Source Output].Columns[appointment_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Sort 1.Outputs[Sort Output].Columns[patient_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Sort 1.Outputs[Sort Output].Columns[patient_id]"
+                      name="patient_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_Load_Facts\Staging_Appointments.Outputs[OLE DB Source Output].Columns[patient_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Sort 1.Outputs[Sort Output].Columns[doctor_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Sort 1.Outputs[Sort Output].Columns[doctor_id]"
+                      name="doctor_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_Load_Facts\Staging_Appointments.Outputs[OLE DB Source Output].Columns[doctor_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Sort 1.Outputs[Sort Output].Columns[appointment_date]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DFT_Load_Facts\Sort 1.Outputs[Sort Output].Columns[appointment_date]"
+                      name="appointment_date">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_Load_Facts\Staging_Appointments.Outputs[OLE DB Source Output].Columns[appointment_date]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Facts\Sort 2"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 2"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Facts\Sort 2.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Sort 2.Inputs[Sort Input].Columns[bill_id]"
+                      cachedDataType="i4"
+                      cachedName="bill_id"
+                      lineageId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].Columns[bill_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Sort 2.Inputs[Sort Input].Columns[patient_id]"
+                      cachedDataType="i4"
+                      cachedName="patient_id"
+                      lineageId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].Columns[patient_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Sort 2.Inputs[Sort Input].Columns[total_amount]"
+                      cachedDataType="numeric"
+                      cachedName="total_amount"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].Columns[total_amount]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Sort 2.Inputs[Sort Input].Columns[payment_status]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="payment_status"
+                      lineageId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].Columns[payment_status]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Sort 2.Inputs[Sort Input].Columns[created_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="created_at"
+                      lineageId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].Columns[created_at]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Facts\Sort 2.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Sort 2.Outputs[Sort Output].Columns[bill_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Sort 2.Outputs[Sort Output].Columns[bill_id]"
+                      name="bill_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].Columns[bill_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Sort 2.Outputs[Sort Output].Columns[patient_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Sort 2.Outputs[Sort Output].Columns[patient_id]"
+                      name="patient_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].Columns[patient_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Sort 2.Outputs[Sort Output].Columns[total_amount]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Load_Facts\Sort 2.Outputs[Sort Output].Columns[total_amount]"
+                      name="total_amount"
+                      precision="10"
+                      scale="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].Columns[total_amount]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Sort 2.Outputs[Sort Output].Columns[payment_status]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DFT_Load_Facts\Sort 2.Outputs[Sort Output].Columns[payment_status]"
+                      name="payment_status">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].Columns[payment_status]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Sort 2.Outputs[Sort Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT_Load_Facts\Sort 2.Outputs[Sort Output].Columns[created_at]"
+                      name="created_at">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].Columns[created_at]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Facts\Sort 3"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 3"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Facts\Sort 3.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Sort 3.Inputs[Sort Input].Columns[service_id]"
+                      cachedDataType="i4"
+                      cachedName="service_id"
+                      lineageId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].Columns[service_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Sort 3.Inputs[Sort Input].Columns[room_id]"
+                      cachedDataType="i4"
+                      cachedName="room_id"
+                      lineageId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].Columns[room_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Sort 3.Inputs[Sort Input].Columns[staff_id]"
+                      cachedDataType="i4"
+                      cachedName="staff_id"
+                      lineageId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].Columns[staff_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_Facts\Sort 3.Inputs[Sort Input].Columns[service_date]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="service_date"
+                      lineageId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].Columns[service_date]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Facts\Sort 3.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Sort 3.Outputs[Sort Output].Columns[service_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Sort 3.Outputs[Sort Output].Columns[service_id]"
+                      name="service_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].Columns[service_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Sort 3.Outputs[Sort Output].Columns[room_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Sort 3.Outputs[Sort Output].Columns[room_id]"
+                      name="room_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].Columns[room_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Sort 3.Outputs[Sort Output].Columns[staff_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Sort 3.Outputs[Sort Output].Columns[staff_id]"
+                      name="staff_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].Columns[staff_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Sort 3.Outputs[Sort Output].Columns[service_date]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DFT_Load_Facts\Sort 3.Outputs[Sort Output].Columns[service_date]"
+                      name="service_date">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output].Columns[service_date]}</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -4078,6 +5962,193 @@ WHERE created_at IS NOT NULL</property>
                       refId="Package\DFT_Load_Facts\Staging_Appointments.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\DFT_Load_Facts\Staging_Appointments.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Facts\Staging_Billing"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Staging_Billing"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Staging].[Billing]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Facts\Staging_Billing.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Matrix.Hospital_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[Matrix.Hospital_DWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].Columns[bill_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].ExternalColumns[bill_id]"
+                      lineageId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].Columns[bill_id]"
+                      name="bill_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].Columns[patient_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].ExternalColumns[patient_id]"
+                      lineageId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].Columns[patient_id]"
+                      name="patient_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].Columns[total_amount]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].ExternalColumns[total_amount]"
+                      lineageId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].Columns[total_amount]"
+                      name="total_amount"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].Columns[payment_status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].ExternalColumns[payment_status]"
+                      length="20"
+                      lineageId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].Columns[payment_status]"
+                      name="payment_status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].Columns[created_at]"
+                      name="created_at"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].ExternalColumns[bill_id]"
+                      dataType="i4"
+                      name="bill_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].ExternalColumns[patient_id]"
+                      dataType="i4"
+                      name="patient_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].ExternalColumns[total_amount]"
+                      dataType="numeric"
+                      name="total_amount"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].ExternalColumns[payment_status]"
+                      dataType="wstr"
+                      length="20"
+                      name="payment_status" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Error Output].Columns[bill_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Error Output].Columns[bill_id]"
+                      name="bill_id" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Error Output].Columns[patient_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Error Output].Columns[patient_id]"
+                      name="patient_id" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Error Output].Columns[total_amount]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Error Output].Columns[total_amount]"
+                      name="total_amount"
+                      precision="10"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Error Output].Columns[payment_status]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Error Output].Columns[payment_status]"
+                      name="payment_status" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Error Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Error Output].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -4253,15 +6324,75 @@ WHERE created_at IS NOT NULL</property>
               name="Derived Column Output"
               startId="Package\DFT_Load_Facts\Derived Column.Outputs[Derived Column Output]" />
             <path
-              refId="Package\DFT_Load_Facts.Paths[OLE DB Source Output]"
+              refId="Package\DFT_Load_Facts.Paths[Derived Column Output1]"
+              endId="Package\DFT_Load_Facts\Fact_Billing.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\DFT_Load_Facts\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT_Load_Facts.Paths[Derived Column Output2]"
+              endId="Package\DFT_Load_Facts\Fact_Cleaning_Service.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\DFT_Load_Facts\Derived Column 2.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT_Load_Facts.Paths[Lookup No Match Output]"
+              endId="Package\DFT_Load_Facts\Fact_Pharmacy.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\DFT_Load_Facts\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DFT_Load_Facts.Paths[Lookup No Match Output1]"
               endId="Package\DFT_Load_Facts\Derived Column.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\DFT_Load_Facts\Lookup 1.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DFT_Load_Facts.Paths[Lookup No Match Output2]"
+              endId="Package\DFT_Load_Facts\Derived Column 1.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\DFT_Load_Facts\Lookup 2.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DFT_Load_Facts.Paths[Lookup No Match Output3]"
+              endId="Package\DFT_Load_Facts\Derived Column 2.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\DFT_Load_Facts\Lookup 3.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DFT_Load_Facts.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_Facts\Sort.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Facts\Staging_Pharmacy.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Facts.Paths[OLE DB Source Output1]"
+              endId="Package\DFT_Load_Facts\Sort 1.Inputs[Sort Input]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Facts\Staging_Appointments.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\DFT_Load_Facts.Paths[OLE DB Source Output1]"
-              endId="Package\DFT_Load_Facts\Fact_Pharmacy.Inputs[OLE DB Destination Input]"
+              refId="Package\DFT_Load_Facts.Paths[OLE DB Source Output2]"
+              endId="Package\DFT_Load_Facts\Sort 2.Inputs[Sort Input]"
               name="OLE DB Source Output"
-              startId="Package\DFT_Load_Facts\Staging_Pharmacy.Outputs[OLE DB Source Output]" />
+              startId="Package\DFT_Load_Facts\Staging_Billing.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Facts.Paths[OLE DB Source Output3]"
+              endId="Package\DFT_Load_Facts\Sort 3.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Facts\OLE DB Source.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Facts.Paths[Sort Output]"
+              endId="Package\DFT_Load_Facts\Lookup.Inputs[Lookup Input]"
+              name="Sort Output"
+              startId="Package\DFT_Load_Facts\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\DFT_Load_Facts.Paths[Sort Output1]"
+              endId="Package\DFT_Load_Facts\Lookup 1.Inputs[Lookup Input]"
+              name="Sort Output"
+              startId="Package\DFT_Load_Facts\Sort 1.Outputs[Sort Output]" />
+            <path
+              refId="Package\DFT_Load_Facts.Paths[Sort Output2]"
+              endId="Package\DFT_Load_Facts\Lookup 2.Inputs[Lookup Input]"
+              name="Sort Output"
+              startId="Package\DFT_Load_Facts\Sort 2.Outputs[Sort Output]" />
+            <path
+              refId="Package\DFT_Load_Facts.Paths[Sort Output3]"
+              endId="Package\DFT_Load_Facts\Lookup 3.Inputs[Lookup Input]"
+              name="Sort Output"
+              startId="Package\DFT_Load_Facts\Sort 3.Outputs[Sort Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -7090,7 +9221,7 @@ FROM     Staff</property>
         <NodeLayout
           Size="158.4,41.6"
           Id="Package\DFT_Load_Facts"
-          TopLeft="205.454545454545,308.181818181818" />
+          TopLeft="194.621212713119,308.181818181818" />
         <NodeLayout
           Size="174.4,41.6"
           Id="Package\DFT_Load_Staging"
@@ -7141,7 +9272,7 @@ FROM     Staff</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="280.672727272727,244.327272727273">
+          TopLeft="275.256060902014,244.327272727273">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -7170,13 +9301,13 @@ FROM     Staff</property>
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="106.4,41.6"
-          Id="Package\DFT_Load_Dimensions\Sort 6"
-          TopLeft="798.999988093972,118.99999858439" />
-        <NodeLayout
           Size="152.8,41.6"
           Id="Package\DFT_Load_Dimensions\Staging_Rooms"
           TopLeft="586.999991253018,27.9999995827675" />
+        <NodeLayout
+          Size="185.6,41.6"
+          Id="Package\DFT_Load_Dimensions\Union_Staging_Dates"
+          TopLeft="981.931809613651,34.2954600439834" />
         <NodeLayout
           Size="155.2,41.6"
           Id="Package\DFT_Load_Dimensions\Dim_Medincine"
@@ -7189,6 +9320,10 @@ FROM     Staff</property>
           Size="160,41.6"
           Id="Package\DFT_Load_Dimensions\Staging_Doctors"
           TopLeft="209,24" />
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\DFT_Load_Dimensions\Staging_Patients"
+          TopLeft="31,21" />
         <NodeLayout
           Size="124,41.6"
           Id="Package\DFT_Load_Dimensions\Dim_Staff"
@@ -7210,6 +9345,10 @@ FROM     Staff</property>
           Id="Package\DFT_Load_Dimensions\Dim_Date"
           TopLeft="999.545445977287,333.727278225801" />
         <NodeLayout
+          Size="140.8,41.6"
+          Id="Package\DFT_Load_Dimensions\Staging_Staff"
+          TopLeft="787.999988257885,31.9999998807907" />
+        <NodeLayout
           Size="139.2,41.6"
           Id="Package\DFT_Load_Dimensions\Dim_Patient"
           TopLeft="43,341" />
@@ -7222,9 +9361,9 @@ FROM     Staff</property>
           Id="Package\DFT_Load_Dimensions\Staging_Medicine"
           TopLeft="391,27" />
         <NodeLayout
-          Size="140.8,41.6"
-          Id="Package\DFT_Load_Dimensions\Staging_Staff"
-          TopLeft="787.999988257885,31.9999998807907" />
+          Size="106.4,41.6"
+          Id="Package\DFT_Load_Dimensions\Sort 6"
+          TopLeft="798.999988093972,118.99999858439" />
         <NodeLayout
           Size="115.2,41.6"
           Id="Package\DFT_Load_Dimensions\Lookup"
@@ -7238,10 +9377,6 @@ FROM     Staff</property>
           Id="Package\DFT_Load_Dimensions\Lookup 5"
           TopLeft="1007.72726415911,230.090914589437" />
         <NodeLayout
-          Size="161.6,41.6"
-          Id="Package\DFT_Load_Dimensions\Staging_Patients"
-          TopLeft="31,21" />
-        <NodeLayout
           Size="108,41.6"
           Id="Package\DFT_Load_Dimensions\Sort 2"
           TopLeft="422,115" />
@@ -7254,10 +9389,6 @@ FROM     Staff</property>
           Id="Package\DFT_Load_Dimensions\Sort"
           TopLeft="63,116" />
         <NodeLayout
-          Size="185.6,41.6"
-          Id="Package\DFT_Load_Dimensions\Union_Staging_Dates"
-          TopLeft="981.931809613651,34.2954600439834" />
-        <NodeLayout
           Size="158.4,41.6"
           Id="Package\DFT_Load_Dimensions\Derived Column"
           TopLeft="993.18180961365,134.295460043983" />
@@ -7266,7 +9397,7 @@ FROM     Staff</property>
           Id="Package\DFT_Load_Dimensions\Lookup 1"
           TopLeft="225,228" />
         <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[Sort Output2]"
+          Id="Package\DFT_Load_Dimensions.Paths[Sort Output3]"
           TopLeft="114.5,158">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7288,7 +9419,7 @@ FROM     Staff</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[Sort Output1]"
+          Id="Package\DFT_Load_Dimensions.Paths[Sort Output2]"
           TopLeft="475,157">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7310,7 +9441,7 @@ FROM     Staff</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[Sort Output]"
+          Id="Package\DFT_Load_Dimensions.Paths[Sort Output1]"
           TopLeft="852.299988146126,160.59999858439">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7332,73 +9463,29 @@ FROM     Staff</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\DFT_Load_Dimensions.Paths[Sort Output]"
+          TopLeft="284.5,159">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69"
+              Start="0,0"
+              End="0,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output5]"
-          TopLeft="112.25,63">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,53"
-              Start="0,0"
-              End="0,45.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,45.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output4]"
-          TopLeft="855.299988175929,73.5999998807907">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,45.399998703599"
-              Start="0,0"
-              End="0,37.899998703599">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.899998703599" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output3]"
-          TopLeft="663.799991074205,69.5999995827675">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,47.3999986737967"
-              Start="0,0"
-              End="0,39.8999986737967">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,39.8999986737967" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output2]"
           TopLeft="1073.55680961365,76.2954600439835">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7420,7 +9507,29 @@ FROM     Staff</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output1]"
+          Id="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output4]"
+          TopLeft="475.25,69">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output3]"
           TopLeft="285.5,66">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7442,19 +9551,63 @@ FROM     Staff</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output]"
-          TopLeft="475.25,69">
+          Id="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output2]"
+          TopLeft="663.799991074205,69.5999995827675">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,46"
+              EndConnector="0,47.3999986737967"
               Start="0,0"
-              End="0,38.5">
+              End="0,39.8999986737967">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.5" />
+                    End="0,39.8999986737967" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output1]"
+          TopLeft="855.299988175929,73.5999998807907">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.399998703599"
+              Start="0,0"
+              End="0,37.899998703599">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.899998703599" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Dimensions.Paths[OLE DB Source Output]"
+          TopLeft="112.25,63">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53"
+              Start="0,0"
+              End="0,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7483,7 +9636,7 @@ FROM     Staff</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-55.80638671875,21.2634943181818,111.6127734375,11.609375"
+              BoundingBox="-55.80638671875,21.2634943181817,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7651,28 +9804,6 @@ FROM     Staff</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Dimensions.Paths[Sort Output3]"
-          TopLeft="284.5,159">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,69"
-              Start="0,0"
-              End="0,61.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,61.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -7686,6 +9817,14 @@ FROM     Staff</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Dimensions\Union_Staging_Dates">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -7727,6 +9866,19 @@ FROM     Staff</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DFT_Load_Dimensions\Staging_Doctors">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Dimensions\Staging_Patients">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7788,6 +9940,19 @@ FROM     Staff</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Dimensions\Staging_Staff">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\DFT_Load_Dimensions\Dim_Patient">
     <Properties>
       <Property>
@@ -7825,19 +9990,6 @@ FROM     Staff</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DFT_Load_Dimensions\Staging_Medicine">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Dimensions\Staging_Staff">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7891,7 +10043,7 @@ FROM     Staff</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -7901,23 +10053,10 @@ FROM     Staff</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Dimensions\Staging_Patients">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -7931,14 +10070,6 @@ FROM     Staff</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Dimensions\Union_Staging_Dates">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -7969,7 +10100,19 @@ FROM     Staff</property>
     design-time-name="Package\DFT_Load_Facts">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\DFT_Load_Facts\Derived Column"
+          TopLeft="319.999995231628,313.999995321035" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\DFT_Load_Facts\Fact_Appointments"
+          TopLeft="309.999995380639,405.999993950128" />
+        <NodeLayout
+          Size="183.2,41.6"
+          Id="Package\DFT_Load_Facts\Staging_Appointments"
+          TopLeft="305.999995440245,29.9999995529652" />
         <NodeLayout
           Size="166.4,41.6"
           Id="Package\DFT_Load_Facts\Staging_Pharmacy"
@@ -7977,66 +10120,36 @@ FROM     Staff</property>
         <NodeLayout
           Size="151.2,41.6"
           Id="Package\DFT_Load_Facts\Fact_Pharmacy"
-          TopLeft="81.9999987781048,147.999997794628" />
-        <EdgeLayout
-          Id="Package\DFT_Load_Facts.Paths[OLE DB Source Output1]"
-          TopLeft="156.89999884516,68.5999995976687">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,79.3999981969595"
-              Start="0,0"
-              End="0,71.8999981969595">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,71.8999981969595" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="183.2,41.6"
-          Id="Package\DFT_Load_Facts\Staging_Appointments"
-          TopLeft="305.999995440245,29.9999995529652" />
-        <NodeLayout
-          Size="168,41.6"
-          Id="Package\DFT_Load_Facts\Fact_Appointments"
-          TopLeft="311.999995350837,191.999997138977" />
-        <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\DFT_Load_Facts\Derived Column"
-          TopLeft="320.999995216727,109.999998360872" />
-        <EdgeLayout
-          Id="Package\DFT_Load_Facts.Paths[OLE DB Source Output]"
-          TopLeft="397.499995328486,71.5999995529652">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,38.3999988079072"
-              Start="0,0"
-              End="0,30.8999988079072">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.8999988079072" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="84.9999987334014,294.999995604157" />
         <EdgeLayout
           Id="Package\DFT_Load_Facts.Paths[Derived Column Output]"
-          TopLeft="396.699995283782,151.599998360872">
+          TopLeft="395.199995306134,355.599995321035">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.3999986290933"
+              Start="0,0"
+              End="0,42.8999986290933">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.8999986290933" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\DFT_Load_Facts\Sort"
+          TopLeft="107.999998390675,108.999998375773" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Facts.Paths[OLE DB Source Output]"
+          TopLeft="156.499998651445,68.5999995976687">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -8056,11 +10169,357 @@ FROM     Staff</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="112.8,41.6"
+          Id="Package\DFT_Load_Facts\Lookup"
+          TopLeft="100.999998494983,197.99999704957" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Facts.Paths[Sort Output]"
+          TopLeft="157.099998442829,150.599998375773">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.3999986737966"
+              Start="0,0"
+              End="0,39.8999986737966">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.8999986737966" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Facts.Paths[Lookup No Match Output]"
+          TopLeft="158.999998614192,239.59999704957">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.3999985545873"
+              Start="0,0"
+              End="0,47.8999985545873">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.8999985545873" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,18.1453117772936,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="106.4,41.6"
+          Id="Package\DFT_Load_Facts\Sort 1"
+          TopLeft="336.999994978309,127.999998092651" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Facts.Paths[OLE DB Source Output1]"
+          TopLeft="393.899995209277,71.5999995529652">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56.3999985396862"
+              Start="0,0"
+              End="0,48.8999985396862">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.8999985396862" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120.8,41.6"
+          Id="Package\DFT_Load_Facts\Lookup 1"
+          TopLeft="331.999995052814,215.999996781349" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Facts.Paths[Sort Output1]"
+          TopLeft="391.299995015562,169.599998092651">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.3999986886977"
+              Start="0,0"
+              End="0,38.8999986886977">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.8999986886977" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Facts.Paths[Lookup No Match Output1]"
+          TopLeft="394.399995142221,257.599996781349">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56.3999985396861"
+              Start="0,0"
+              End="0,48.8999985396861">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.8999985396861" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,18.645311769843,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="147.2,41.6"
+          Id="Package\DFT_Load_Facts\Staging_Billing"
+          TopLeft="570.999991491437,28.9999995678663" />
+        <NodeLayout
+          Size="106.4,41.6"
+          Id="Package\DFT_Load_Facts\Sort 2"
+          TopLeft="591.999991178513,127.999998092651" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Facts.Paths[OLE DB Source Output2]"
+          TopLeft="644.899991334975,70.5999995678663">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.3999985247851"
+              Start="0,0"
+              End="0,49.8999985247851">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.8999985247851" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120.8,41.6"
+          Id="Package\DFT_Load_Facts\Lookup 2"
+          TopLeft="583.999991297722,217.999996751547" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Facts.Paths[Sort Output2]"
+          TopLeft="644.799991238117,169.599998092651">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.3999986588954"
+              Start="0,0"
+              End="0,40.8999986588954">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.8999986588954" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="132,41.6"
+          Id="Package\DFT_Load_Facts\Fact_Billing"
+          TopLeft="580.999991342425,403.999993979931" />
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\DFT_Load_Facts\Derived Column 1"
+          TopLeft="564.999991580844,306.999995425344" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Facts.Paths[Lookup No Match Output2]"
+          TopLeft="645.099991439283,259.599996751547">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.3999986737967"
+              Start="0,0"
+              End="0,39.8999986737967">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.8999986737967" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,14.1453118368983,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Facts.Paths[Derived Column Output1]"
+          TopLeft="646.399991461634,348.599995425344">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.3999985545876"
+              Start="0,0"
+              End="0,47.8999985545876">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.8999985545876" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="106.4,41.6"
+          Id="Package\DFT_Load_Facts\Sort 3"
+          TopLeft="837.999987512827,129.999998062849" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\DFT_Load_Facts\OLE DB Source"
+          TopLeft="817.99998781085,30.999999538064" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Facts.Paths[OLE DB Source Output3]"
+          TopLeft="892.599987661839,72.599999538064">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.399998524785"
+              Start="0,0"
+              End="0,49.899998524785">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.899998524785" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120.8,41.6"
+          Id="Package\DFT_Load_Facts\Lookup 3"
+          TopLeft="827.999987661839,220.999996706843" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Facts.Paths[Sort Output3]"
+          TopLeft="889.799987587333,171.599998062849">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.3999986439944"
+              Start="0,0"
+              End="0,41.8999986439944">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.8999986439944" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\DFT_Load_Facts\Derived Column 2"
+          TopLeft="813.999987870455,317.999995261431" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Facts.Paths[Lookup No Match Output3]"
+          TopLeft="891.599987766147,262.599996706843">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.3999985545873"
+              Start="0,0"
+              End="0,47.8999985545873">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.8999985545873" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,18.1453117772936,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="186.4,41.6"
+          Id="Package\DFT_Load_Facts\Fact_Cleaning_Service"
+          TopLeft="803.999988019467,412.99999384582" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Facts.Paths[Derived Column Output2]"
+          TopLeft="895.999987944961,359.599995261431">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53.3999985843897"
+              Start="0,0"
+              End="0,45.8999985843897">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.8999985843897" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Facts\Staging_Appointments">
+    design-time-name="Package\DFT_Load_Facts\Fact_Appointments">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -8073,7 +10532,7 @@ FROM     Staff</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Facts\Fact_Appointments">
+    design-time-name="Package\DFT_Load_Facts\Staging_Appointments">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -8580,6 +11039,150 @@ FROM     Staff</property>
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Facts\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Facts\Lookup 1">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Facts\Staging_Billing">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Facts\Lookup 2">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Facts\Fact_Billing">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Facts\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Facts\Lookup 3">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Facts\Fact_Cleaning_Service">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
