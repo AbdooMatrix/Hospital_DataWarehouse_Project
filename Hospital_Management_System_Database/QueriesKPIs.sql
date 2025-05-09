@@ -1,3 +1,4 @@
+-- Fact_Pharmacy
 -- Quantity Dispensed by Medicine Type with Percentage
 SELECT 
     dm.Medicine_Type,
@@ -16,5 +17,19 @@ GROUP BY
 ORDER BY 
     Total_Quantity_Dispensed DESC;
 
-
+-- Fact_Appointments
+-- 1. Number of Appointments per each Patient in last year
+SELECT 
+    Patient_Surrogate_Id,
+    COUNT(*) AS Appointment_Count_2024
+FROM 
+    Fact_Appointments
+WHERE 
+    Appointment_Date_Key IN (
+        SELECT Date_Key 
+        FROM Dim_Date 
+        WHERE Year = 2024
+    )
+GROUP BY 
+    Patient_Surrogate_Id;
 
