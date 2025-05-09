@@ -1,20 +1,15 @@
-WITH AppointmentCounts AS (
-    SELECT 
-        p.Patient_Id,
-        p.First_Name + ' ' + p.Last_Name AS Patient_Name,
-        COUNT(a.Appointment_Id) AS Appointment_Count
-    FROM Fact_Appointments a
-    JOIN Dim_Patient p ON a.Patient_Id = p.Patient_Id
-    JOIN Dim_Date d ON a.Appointment_Date_Key = d.Date_Key
-    WHERE d.Full_Date >= '2024-11-01' AND d.Full_Date <= '2024-11-30'
-    GROUP BY p.Patient_Id, p.First_Name, p.Last_Name
-)
+-- Quantity Dispensed by Medicine Type in Descending Order
 SELECT 
-    Patient_Name,
-    Appointment_Count,
-    AVG(CAST(Appointment_Count AS FLOAT)) OVER () AS Avg_Appointments_Per_Patient
-FROM AppointmentCounts
-ORDER BY Appointment_Count DESC;
+    dm.Medicine_Type,
+    SUM(fp.Quantity) AS Total_Quantity_Dispensed
+FROM 
+    Fact_Pharmacy fp
+    INNER JOIN Dim_Medicine dm ON fp.Medicine_Id = dm.Medicine_Id
+    INNER JOIN Dim_Patient dp ON fp.Patient_Id = dp.Patient_Id
+GROUP BY 
+    dm.Medicine_Type
+ORDER BY 
+    Total_Quantity_Dispensed DESC;
 
 DELETE FROM Dim_Date;
 DELETE FROM Dim_Doctor;

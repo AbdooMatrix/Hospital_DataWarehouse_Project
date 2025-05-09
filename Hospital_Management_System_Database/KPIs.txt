@@ -1,0 +1,52 @@
+KPIs:
+-----
+Fact_Appointments_Frequency
+1. Average Number of Appointments per Patient in last year
+2. Average Number of Appointments per Doctor
+
+Fact_Billing                                  
+1. Average Bill Amount per Patient: Assesses the average cost of services per patient.
+2. Payment Collection Rate: Percentage of bills paid versus total billed, reflecting financial efficiency last year.
+3. Pending Payment Ratio: Proportion of unpaid bills to total bills, highlighting collection challenges last month.
+
+Fact_Pharmacy 
+1. Quantity Dispensed by Medicine Type
+
+Fact Cleaning Service
+1. Measures the average number of cleaning services performed by each staff member per room over a period, indicating staff cleaning workload distribution.
+(a simpler kpi: average count of unique rooms serviced by a specific staff_Id over a month)
+
+Optional:
+How many new doctors joined this year
+=======================================================
+
+First Fact Table Structure
+--------------------------
+The fact table should capture appointment-related data at a granular level to support the calculation of the average number of appointments per patient. Based on the existing DWH design, the Fact_PatientCare table is suitable, with adjustments to ensure it supports this KPI effectively.
+
+Fact_PatientCare Structure
+Grain: One record per appointment event.
+Type: Transaction fact table.
+Measures:
+number_of_appointments (Additive, Integer): Counts each appointment instance (set to 1 for each record to enable aggregation).
+Foreign Keys to Dimensions:
+patient_key (INT): Links to Dim_Patient to identify the patient.
+doctor_key (INT): Links to Dim_Doctor to identify the attending doctor (optional for this KPI).
+date_key (INT): Links to Dim_Date to track the appointment date.
+
+appointment_id (degenerate dimension)
+
+
+Second Fact Table Structure
+---------------------------
+The fact table should capture billing transaction data at a granular level to support the calculation of the average bill amount per patient. The existing Fact_Billing table can be used, with a focus on the relevant measures.
+
+Fact_Billing Structure
+Grain: One record per billing transaction.
+Type: Transaction fact table.
+Measures:
+total_amount (Additive, Decimal): The total cost of the billing transaction.
+Foreign Keys to Dimensions:
+patient_key (INT): Links to Dim_Patient to identify the patient associated with the bill.
+date_key (INT): Links to Dim_Date to track the billing date.
+Billing Dimension (take care of payment status and created at also)

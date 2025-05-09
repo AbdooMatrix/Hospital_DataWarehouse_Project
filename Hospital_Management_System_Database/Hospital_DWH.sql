@@ -48,15 +48,15 @@ CREATE TABLE Staging.Billing (
     bill_id INT,
     patient_id INT,
     total_amount DECIMAL(10, 2),
-    payment_status NVARCHAR(20),
-    created_at DATETIME
+    payment_date DATE
 );
 GO
 
 CREATE TABLE Staging.Doctors (
     doctor_id INT,
     first_name NVARCHAR(50),
-    last_name NVARCHAR(50)
+    last_name NVARCHAR(50),
+	specialty NVARCHAR(100)
 );
 GO
 
@@ -64,20 +64,21 @@ CREATE TABLE Staging.Rooms (
     room_id INT,
     room_number VARCHAR(10),
     capacity INT,
-    room_type NVARCHAR(50)
+    room_type_id INT
 );
 GO
 
 CREATE TABLE Staging.Rooms_Types (
     room_type_id INT,
-    room_type_name VARCHAR(50)
+    room_type_name NVARCHAR(50)
 );
 GO
 
 CREATE TABLE Staging.Staff (
     staff_id INT,
     first_name VARCHAR(50),
-    last_name VARCHAR(50)
+    last_name VARCHAR(50),
+    hire_date DATE
 );
 GO
 
@@ -135,24 +136,19 @@ CREATE TABLE Dim_Room (
 );
 GO
 
-CREATE TABLE Dim_Room_Types (
-    Room_Type_Surrogate_Id INT IDENTITY(1,1) PRIMARY KEY,
-    Room_Type_Id INT,
-    Room_Type_Name VARCHAR(50)
-);
-GO
-
 CREATE TABLE Dim_Staff (
     Staff_Surrogate_Id INT IDENTITY(1,1) PRIMARY KEY,
     Staff_Id INT,
     First_Name VARCHAR(50),
-    Last_Name VARCHAR(50)
+    Last_Name VARCHAR(50),
+    hire_date DATE
 );
 GO
 
 -- Create Main Schema Fact Tables
 CREATE TABLE Fact_Pharmacy (
-    Pharmacy_Surrogate_Id INT IDENTITY(1,1) PRIMARY KEY,
+	Fact_Pharmacy_Id INT IDENTITY(1,1) PRIMARY KEY,
+    Pharmacy_Id INT,
     Medicine_Surrogate_Id INT,
     Patient_Surrogate_Id INT,
     Prescription_Date_Key INT,
@@ -164,7 +160,8 @@ CREATE TABLE Fact_Pharmacy (
 GO
 
 CREATE TABLE Fact_Appointments (
-    Appointment_Surrogate_Id INT IDENTITY(1,1) PRIMARY KEY,
+	Fact_Appointments_Id INT IDENTITY(1,1) PRIMARY KEY,
+    Appointment_Id INT,
     Doctor_Surrogate_Id INT,
     Patient_Surrogate_Id INT,
     Appointment_Date_Key INT,
@@ -175,18 +172,19 @@ CREATE TABLE Fact_Appointments (
 GO
 
 CREATE TABLE Fact_Billing (
-    Bill_Surrogate_Id INT IDENTITY(1,1) PRIMARY KEY,
+    Fact_Billing_Id INT IDENTITY(1,1) PRIMARY KEY,
+	Bill_Id INT,
     Patient_Surrogate_Id INT,
-    Created_At_Key INT,
+    Payment_Date_Key INT,
     Total_Amount DECIMAL(10, 2),
-    Payment_Status NVARCHAR(20),
     FOREIGN KEY (Patient_Surrogate_Id) REFERENCES Dim_Patient(Patient_Surrogate_Id),
-    FOREIGN KEY (Created_At_Key) REFERENCES Dim_Date(Date_Key)
+    FOREIGN KEY (Payment_Date_Key) REFERENCES Dim_Date(Date_Key)
 );
 GO
 
 CREATE TABLE Fact_Cleaning_Service (
-    Service_Surrogate_Id INT IDENTITY(1,1) PRIMARY KEY,
+	Fact_CleaningService_Id INT IDENTITY(1,1) PRIMARY KEY,
+    Service_Id INT,
     Room_Surrogate_Id INT,
     Staff_Surrogate_Id INT,
     Service_Date_Key INT,
