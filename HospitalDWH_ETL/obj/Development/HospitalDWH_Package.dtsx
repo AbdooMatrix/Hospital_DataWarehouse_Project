@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="HospitalDWH_Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="221"
-  DTS:VersionGUID="{542827F2-8FF4-4C4F-8436-ED44A5123A0B}">
+  DTS:VersionBuild="225"
+  DTS:VersionGUID="{E57D89A9-3F15-4130-A8E7-10FC103CF537}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -92,7 +92,8 @@
                       cachedDataType="wstr"
                       cachedLength="10"
                       cachedName="Date_Only"
-                      lineageId="Package\DFT_Load_Dim_Date\Union_All_Dates.Outputs[Union All Output 1].Columns[Date_Only]" />
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\DFT_Load_Dim_Date\Sort (To remove Duplicate Dates).Outputs[Sort Output].Columns[Date_Only]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -118,7 +119,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">([YEAR]((DT_DATE)#{Package\DFT_Load_Dim_Date\Union_All_Dates.Outputs[Union All Output 1].Columns[Date_Only]}) * 10000) + ([MONTH]((DT_DATE)#{Package\DFT_Load_Dim_Date\Union_All_Dates.Outputs[Union All Output 1].Columns[Date_Only]}) * 100) + [DAY]((DT_DATE)#{Package\DFT_Load_Dim_Date\Union_All_Dates.Outputs[Union All Output 1].Columns[Date_Only]})</property>
+                          name="Expression">([YEAR]((DT_DATE)#{Package\DFT_Load_Dim_Date\Sort (To remove Duplicate Dates).Outputs[Sort Output].Columns[Date_Only]}) * 10000) + ([MONTH]((DT_DATE)#{Package\DFT_Load_Dim_Date\Sort (To remove Duplicate Dates).Outputs[Sort Output].Columns[Date_Only]}) * 100) + [DAY]((DT_DATE)#{Package\DFT_Load_Dim_Date\Sort (To remove Duplicate Dates).Outputs[Sort Output].Columns[Date_Only]})</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -140,7 +141,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[YEAR]((DT_DATE)#{Package\DFT_Load_Dim_Date\Union_All_Dates.Outputs[Union All Output 1].Columns[Date_Only]})</property>
+                          name="Expression">[YEAR]((DT_DATE)#{Package\DFT_Load_Dim_Date\Sort (To remove Duplicate Dates).Outputs[Sort Output].Columns[Date_Only]})</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -162,7 +163,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[MONTH]((DT_DATE)#{Package\DFT_Load_Dim_Date\Union_All_Dates.Outputs[Union All Output 1].Columns[Date_Only]})</property>
+                          name="Expression">[MONTH]((DT_DATE)#{Package\DFT_Load_Dim_Date\Sort (To remove Duplicate Dates).Outputs[Sort Output].Columns[Date_Only]})</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -184,7 +185,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[DAY]((DT_DATE)#{Package\DFT_Load_Dim_Date\Union_All_Dates.Outputs[Union All Output 1].Columns[Date_Only]})</property>
+                          name="Expression">[DAY]((DT_DATE)#{Package\DFT_Load_Dim_Date\Sort (To remove Duplicate Dates).Outputs[Sort Output].Columns[Date_Only]})</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -322,8 +323,9 @@
                       cachedDataType="wstr"
                       cachedLength="10"
                       cachedName="Date_Only"
+                      cachedSortKeyPosition="1"
                       externalMetadataColumnId="Package\DFT_Load_Dim_Date\Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Full_Date]"
-                      lineageId="Package\DFT_Load_Dim_Date\Union_All_Dates.Outputs[Union All Output 1].Columns[Date_Only]" />
+                      lineageId="Package\DFT_Load_Dim_Date\Sort (To remove Duplicate Dates).Outputs[Sort Output].Columns[Date_Only]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -782,6 +784,76 @@ where [refTable].[Date_Key] = ?</property>
                       lineageId="Package\DFT_Load_Dim_Date\Prescritption_Date_Not_NULL.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Dim_Date\Sort (To remove Duplicate Dates)"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort (To remove Duplicate Dates)"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Dim_Date\Sort (To remove Duplicate Dates).Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Dim_Date\Sort (To remove Duplicate Dates).Inputs[Sort Input].Columns[Date_Only]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Date_Only"
+                      lineageId="Package\DFT_Load_Dim_Date\Union_All_Dates.Outputs[Union All Output 1].Columns[Date_Only]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Dim_Date\Sort (To remove Duplicate Dates).Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Dim_Date\Sort (To remove Duplicate Dates).Outputs[Sort Output].Columns[Date_Only]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DFT_Load_Dim_Date\Sort (To remove Duplicate Dates).Outputs[Sort Output].Columns[Date_Only]"
+                      name="Date_Only"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DFT_Load_Dim_Date\Union_All_Dates.Outputs[Union All Output 1].Columns[Date_Only]}</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1752,8 +1824,13 @@ where [refTable].[Date_Key] = ?</property>
               name="Prescription_Date_Not_NULL"
               startId="Package\DFT_Load_Dim_Date\Prescritption_Date_Not_NULL.Outputs[Prescription_Date_Not_NULL]" />
             <path
-              refId="Package\DFT_Load_Dim_Date.Paths[Union All Output 1]"
+              refId="Package\DFT_Load_Dim_Date.Paths[Sort Output]"
               endId="Package\DFT_Load_Dim_Date\Calculating_Dim_Date_Columns.Inputs[Derived Column Input]"
+              name="Sort Output"
+              startId="Package\DFT_Load_Dim_Date\Sort (To remove Duplicate Dates).Outputs[Sort Output]" />
+            <path
+              refId="Package\DFT_Load_Dim_Date.Paths[Union All Output 1]"
+              endId="Package\DFT_Load_Dim_Date\Sort (To remove Duplicate Dates).Inputs[Sort Input]"
               name="Union All Output 1"
               startId="Package\DFT_Load_Dim_Date\Union_All_Dates.Outputs[Union All Output 1]" />
           </paths>
@@ -3129,6 +3206,21 @@ FROM            Staging.Medicine</property>
                       cachedName="last_name"
                       externalMetadataColumnId="Package\DFT_Load_Dim_Patients\Dim_Patient.Inputs[OLE DB Destination Input].ExternalColumns[Last_Name]"
                       lineageId="Package\DFT_Load_Dim_Patients\Sort (By Patient_Id).Outputs[Sort Output].Columns[last_name]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Dim_Patients\Dim_Patient.Inputs[OLE DB Destination Input].Columns[date_of_birth]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="date_of_birth"
+                      externalMetadataColumnId="Package\DFT_Load_Dim_Patients\Dim_Patient.Inputs[OLE DB Destination Input].ExternalColumns[Date_Of_Birth]"
+                      lineageId="Package\DFT_Load_Dim_Patients\Sort (By Patient_Id).Outputs[Sort Output].Columns[date_of_birth]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Dim_Patients\Dim_Patient.Inputs[OLE DB Destination Input].Columns[gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="gender"
+                      externalMetadataColumnId="Package\DFT_Load_Dim_Patients\Dim_Patient.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      lineageId="Package\DFT_Load_Dim_Patients\Sort (By Patient_Id).Outputs[Sort Output].Columns[gender]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -8916,6 +9008,16 @@ FROM Appointments</property>
                       lineageId="Package\DFT_Load_Staging\Source_Appointments.Outputs[OLE DB Source Output].Columns[appointment_date]"
                       name="appointment_date"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Staging\Source_Appointments.Outputs[OLE DB Source Output].Columns[status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Staging\Source_Appointments.Outputs[OLE DB Source Output].ExternalColumns[status]"
+                      length="20"
+                      lineageId="Package\DFT_Load_Staging\Source_Appointments.Outputs[OLE DB Source Output].Columns[status]"
+                      name="status"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -8995,6 +9097,12 @@ FROM Appointments</property>
                       lineageId="Package\DFT_Load_Staging\Source_Appointments.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Staging\Source_Appointments.Outputs[OLE DB Source Error Output].Columns[status]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DFT_Load_Staging\Source_Appointments.Outputs[OLE DB Source Error Output].Columns[status]"
+                      name="status" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -12100,6 +12208,96 @@ FROM     Staff</property>
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\DFT_Load_Staging\Take only the Scheduled Appointments"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Take only the Scheduled Appointments"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Staging\Take only the Scheduled Appointments.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Staging\Take only the Scheduled Appointments.Inputs[Conditional Split Input].Columns[status]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="status"
+                      lineageId="Package\DFT_Load_Staging\Source_Appointments.Outputs[OLE DB Source Output].Columns[status]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Staging\Take only the Scheduled Appointments.Outputs[Scheduled_Appointments_Only]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Scheduled_Appointments_Only"
+                  synchronousInputId="Package\DFT_Load_Staging\Take only the Scheduled Appointments.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\DFT_Load_Staging\Source_Appointments.Outputs[OLE DB Source Output].Columns[status]} == "Scheduled"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">status == "Scheduled"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Staging\Take only the Scheduled Appointments.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\DFT_Load_Staging\Take only the Scheduled Appointments.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Staging\Take only the Scheduled Appointments.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\DFT_Load_Staging\Take only the Scheduled Appointments.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Staging\Take only the Scheduled Appointments.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Staging\Take only the Scheduled Appointments.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Staging\Take only the Scheduled Appointments.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Staging\Take only the Scheduled Appointments.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
           </components>
           <paths>
             <path
@@ -12109,49 +12307,54 @@ FROM     Staff</property>
               startId="Package\DFT_Load_Staging\Source_Doctors.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\DFT_Load_Staging.Paths[OLE DB Source Output1]"
-              endId="Package\DFT_Load_Staging\Staging_Appointments.Inputs[OLE DB Destination Input]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Staging\Source_Appointments.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Staging.Paths[OLE DB Source Output2]"
               endId="Package\DFT_Load_Staging\Staging_Medicine.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Staging\Source_Medicine.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\DFT_Load_Staging.Paths[OLE DB Source Output3]"
+              refId="Package\DFT_Load_Staging.Paths[OLE DB Source Output2]"
               endId="Package\DFT_Load_Staging\Staging_Pharmacy.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Staging\Source_Pharmacy.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\DFT_Load_Staging.Paths[OLE DB Source Output4]"
+              refId="Package\DFT_Load_Staging.Paths[OLE DB Source Output3]"
               endId="Package\DFT_Load_Staging\Staging_Billing.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Staging\Source_Billing.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\DFT_Load_Staging.Paths[OLE DB Source Output5]"
+              refId="Package\DFT_Load_Staging.Paths[OLE DB Source Output4]"
               endId="Package\DFT_Load_Staging\Staging_Patients.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Staging\Source_Patients.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\DFT_Load_Staging.Paths[OLE DB Source Output6]"
+              refId="Package\DFT_Load_Staging.Paths[OLE DB Source Output5]"
               endId="Package\DFT_Load_Staging\Staging_Staff.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Staging\Source_Staff.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\DFT_Load_Staging.Paths[OLE DB Source Output7]"
+              refId="Package\DFT_Load_Staging.Paths[OLE DB Source Output6]"
               endId="Package\DFT_Load_Staging\Staging_Cleaning_Service.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Staging\Source_Cleaning_Service.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\DFT_Load_Staging.Paths[OLE DB Source Output8]"
+              refId="Package\DFT_Load_Staging.Paths[OLE DB Source Output7]"
               endId="Package\DFT_Load_Staging\Staging_Room.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Staging\Source_Room.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\DFT_Load_Staging.Paths[OLE DB Source Output9]"
+              refId="Package\DFT_Load_Staging.Paths[OLE DB Source Output8]"
               endId="Package\DFT_Load_Staging\Staging_Room_Types.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Staging\Source_Room_Types.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Staging.Paths[OLE DB Source Output9]"
+              endId="Package\DFT_Load_Staging\Take only the Scheduled Appointments.Inputs[Conditional Split Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Staging\Source_Appointments.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Staging.Paths[Scheduled_Appointments_Only]"
+              endId="Package\DFT_Load_Staging\Staging_Appointments.Inputs[OLE DB Destination Input]"
+              name="Scheduled_Appointments_Only"
+              startId="Package\DFT_Load_Staging\Take only the Scheduled Appointments.Outputs[Scheduled_Appointments_Only]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -12260,51 +12463,51 @@ FROM     Staff</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="188,42"
+          Size="188,41.6"
           Id="Package\Clear_Staging_Tables"
           TopLeft="47.111111111111,18.0505050505051" />
         <NodeLayout
-          Size="186,42"
+          Size="185.6,41.6"
           Id="Package\DFT_Load_Dim_Date"
           TopLeft="350.408369408369,357.02886002886" />
         <NodeLayout
-          Size="201,42"
+          Size="200.8,41.6"
           Id="Package\DFT_Load_Dim_Doctors"
           TopLeft="46,267" />
         <NodeLayout
-          Size="207,42"
+          Size="207.2,41.6"
           Id="Package\DFT_Load_Dim_Medicine"
           TopLeft="47,359" />
         <NodeLayout
-          Size="202,42"
+          Size="201.6,41.6"
           Id="Package\DFT_Load_Dim_Patients"
           TopLeft="45,181" />
         <NodeLayout
-          Size="192,42"
+          Size="192,41.6"
           Id="Package\DFT_Load_Dim_Room"
           TopLeft="60,451" />
         <NodeLayout
-          Size="185,42"
+          Size="184.8,41.6"
           Id="Package\DFT_Load_Dim_Staff"
           TopLeft="351.15873015873,457.174603174603" />
         <NodeLayout
-          Size="232,42"
+          Size="232,41.6"
           Id="Package\DFT_Load_Fact_Appointments"
           TopLeft="323.333333333333,181.111111111111" />
         <NodeLayout
-          Size="194,42"
+          Size="193.6,41.6"
           Id="Package\DFT_Load_Fact_Billing"
           TopLeft="341.111111111111,100" />
         <NodeLayout
-          Size="251,42"
+          Size="251.2,41.6"
           Id="Package\DFT_Load_Fact_Cleaning_Service"
           TopLeft="312.222222222222,22.2222222222222" />
         <NodeLayout
-          Size="214,42"
+          Size="214.4,41.6"
           Id="Package\DFT_Load_Fact_Pharmacy"
           TopLeft="338.015873015873,266.126984126984" />
         <NodeLayout
-          Size="174,42"
+          Size="174.4,41.6"
           Id="Package\DFT_Load_Staging"
           TopLeft="55.156541752621,94.359594802471" />
         <EdgeLayout
@@ -12576,7 +12779,7 @@ FROM     Staff</property>
         <NodeLayout
           Size="128,43"
           Id="Package\DFT_Load_Dim_Date\Dim_Date"
-          TopLeft="650,569" />
+          TopLeft="656.25,641.5" />
         <NodeLayout
           Size="152,42"
           Id="Package\DFT_Load_Dim_Date\Staging_Billing"
@@ -12588,7 +12791,7 @@ FROM     Staff</property>
         <NodeLayout
           Size="168,42"
           Id="Package\DFT_Load_Dim_Date\Filter_NoMatching"
-          TopLeft="629,482" />
+          TopLeft="635.25,554.5" />
         <NodeLayout
           Size="209,42"
           Id="Package\DFT_Load_Dim_Date\Payment_Date_Not_NULL"
@@ -12604,7 +12807,7 @@ FROM     Staff</property>
         <NodeLayout
           Size="238,42"
           Id="Package\DFT_Load_Dim_Date\Calculating_Dim_Date_Columns"
-          TopLeft="588,397" />
+          TopLeft="594.25,469.5" />
         <NodeLayout
           Size="203,42"
           Id="Package\DFT_Load_Dim_Date\Staging_CleaningService"
@@ -12647,7 +12850,7 @@ FROM     Staff</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_Load_Dim_Date.Paths[Derived Column Output]"
-          TopLeft="710,439">
+          TopLeft="716.25,511.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -12659,28 +12862,6 @@ FROM     Staff</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,35.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Dim_Date.Paths[Union All Output 1]"
-          TopLeft="707.25,352">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,45"
-              Start="0,0"
-              End="0,37.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12931,7 +13112,7 @@ FROM     Staff</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_Load_Dim_Date.Paths[Lookup No Match Output]"
-          TopLeft="713.5,524">
+          TopLeft="719.75,596.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -12953,50 +13134,82 @@ FROM     Staff</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="242,42"
+          Id="Package\DFT_Load_Dim_Date\Sort (To remove Duplicate Dates)"
+          TopLeft="594.444444444444,392.361111111111" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Dim_Date.Paths[Union All Output 1]"
+          TopLeft="711.472222222222,352">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.361111111111"
+              Start="0,0"
+              End="0,32.861111111111">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.861111111111" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Dim_Date.Paths[Sort Output]"
+          TopLeft="714.347222222222,434.361111111111">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.138888888889"
+              Start="0,0"
+              End="0,27.638888888889">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.638888888889" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Dim_Date\Staging_Appointments">
+    design-time-name="Package\DFT_Load_Dim_Date\Filter_NoMatching">
     <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Date]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q4:string">0</Value>
       </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Dim_Date\Staging_Staff">
-    <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DFT_Load_Dim_Date\Staging_Patients">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Dim_Date\Dim_Date">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -13022,25 +13235,28 @@ FROM     Staff</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Dim_Date\Filter_NoMatching">
+    design-time-name="Package\DFT_Load_Dim_Date\Dim_Date">
     <Properties>
       <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Dim_Date]</Value>
+        <Name>DataSourceViewID</Name>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q2:string">Table</Value>
       </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Dim_Date\Staging_Staff">
+    <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -13059,6 +13275,19 @@ FROM     Staff</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DFT_Load_Dim_Date\Staging_CleaningService">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Dim_Date\Staging_Appointments">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -13110,7 +13339,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13156,7 +13387,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -13202,7 +13435,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13224,7 +13459,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13346,6 +13583,19 @@ FROM     Staff</property>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Dim_Patients\Dim_Patient">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\DFT_Load_Dim_Room">
     <LayoutInfo>
@@ -13410,7 +13660,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13444,7 +13696,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13466,7 +13720,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13488,7 +13744,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13510,7 +13768,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13546,7 +13806,7 @@ FROM     Staff</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -13556,7 +13816,7 @@ FROM     Staff</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -13603,7 +13863,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13649,7 +13911,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -13661,23 +13925,23 @@ FROM     Staff</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="185,42"
+          Size="184.8,41.6"
           Id="Package\DFT_Load_Fact_Appointments\Lookup_Dim_Doctors"
           TopLeft="54,193" />
         <NodeLayout
-          Size="170,42"
+          Size="169.6,41.6"
           Id="Package\DFT_Load_Fact_Appointments\Lookup_Dim_Date"
           TopLeft="63.8333333333333,286.833333333333" />
         <NodeLayout
-          Size="187,42"
+          Size="187.2,41.6"
           Id="Package\DFT_Load_Fact_Appointments\Lookup_Dim_Patients"
           TopLeft="49,104" />
         <NodeLayout
-          Size="174,42"
+          Size="174.4,41.6"
           Id="Package\DFT_Load_Fact_Appointments\Fact_Appointments"
           TopLeft="62,375" />
         <NodeLayout
-          Size="190,42"
+          Size="190.4,41.6"
           Id="Package\DFT_Load_Fact_Appointments\Staging_Appointments"
           TopLeft="43,18" />
         <EdgeLayout
@@ -13988,7 +14252,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -14114,7 +14380,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -14208,7 +14476,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -14353,7 +14623,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -14530,90 +14802,90 @@ FROM     Staff</property>
     design-time-name="Package\DFT_Load_Staging">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="153,42"
+          Size="152.8,41.6"
           Id="Package\DFT_Load_Staging\Staging_Room"
-          TopLeft="264.878763382936,342.33333095279" />
+          TopLeft="260.878763442541,407.333329984215" />
         <NodeLayout
-          Size="154,42"
+          Size="153.6,41.6"
           Id="Package\DFT_Load_Staging\Source_Room"
-          TopLeft="258.212097080519,234.866665033433" />
+          TopLeft="254.212097140124,299.866664064858" />
         <NodeLayout
-          Size="167,42"
+          Size="167.2,41.6"
           Id="Package\DFT_Load_Staging\Staging_Medicine"
-          TopLeft="678.030303005467,132.499999962747" />
+          TopLeft="730.030302230607,130.499999992549" />
         <NodeLayout
-          Size="152,42"
+          Size="152,41.6"
           Id="Package\DFT_Load_Staging\Staging_Billing"
-          TopLeft="72.000012020269,340.169696993804" />
+          TopLeft="68.0000120798736,405.169696025229" />
         <NodeLayout
-          Size="213,42"
+          Size="212.8,41.6"
           Id="Package\DFT_Load_Staging\Source_Cleaning_Service"
-          TopLeft="851.666623411909,236.599998354713" />
+          TopLeft="847.666623471514,301.599997386138" />
         <NodeLayout
-          Size="185,42"
+          Size="184.8,41.6"
           Id="Package\DFT_Load_Staging\Source_Room_Types"
-          TopLeft="451,236" />
+          TopLeft="447.000000059605,300.999999031425" />
         <NodeLayout
-          Size="190,42"
+          Size="190.4,41.6"
           Id="Package\DFT_Load_Staging\Staging_Appointments"
-          TopLeft="458.181818181818,131.818181818182" />
+          TopLeft="486.181817764586,211.818180626089" />
         <NodeLayout
-          Size="188,42"
+          Size="188,41.6"
           Id="Package\DFT_Load_Staging\Staging_Room_Types"
-          TopLeft="450,343" />
+          TopLeft="446.000000059605,407.999999031425" />
         <NodeLayout
-          Size="158,42"
+          Size="158.4,41.6"
           Id="Package\DFT_Load_Staging\Source_Doctors"
           TopLeft="262.727272727273,12.7272727272727" />
         <NodeLayout
-          Size="150,42"
+          Size="150.4,41.6"
           Id="Package\DFT_Load_Staging\Source_Billing"
-          TopLeft="75.636375656634,235.624242448349" />
+          TopLeft="71.6363757162386,300.624241479774" />
         <NodeLayout
-          Size="162,42"
+          Size="161.6,41.6"
           Id="Package\DFT_Load_Staging\Staging_Patients"
           TopLeft="64.2727272727273,135.636363636364" />
         <NodeLayout
-          Size="164,42"
+          Size="164,41.6"
           Id="Package\DFT_Load_Staging\Source_Medicine"
-          TopLeft="677.272727272727,15.4545454545455" />
+          TopLeft="729.272726497867,13.4545454843478" />
         <NodeLayout
-          Size="146,44"
+          Size="145.6,44"
           Id="Package\DFT_Load_Staging\Staging_Staff"
-          TopLeft="674.469663048861,342.33333095279" />
+          TopLeft="670.469663108466,407.333329984215" />
         <NodeLayout
-          Size="144,42"
+          Size="144,41.6"
           Id="Package\DFT_Load_Staging\Source_Staff"
-          TopLeft="671.969663185455,236.599998354713" />
+          TopLeft="667.96966324506,301.599997386138" />
         <NodeLayout
-          Size="210,42"
+          Size="209.6,41.6"
           Id="Package\DFT_Load_Staging\Staging_Cleaning_Service"
-          TopLeft="848.333290260701,343.19999761343" />
+          TopLeft="844.333290320306,408.199996644855" />
         <NodeLayout
-          Size="172,42"
+          Size="172,41.6"
           Id="Package\DFT_Load_Staging\Staging_Pharmacy"
-          TopLeft="865.575768685401,127.763636381716" />
+          TopLeft="917.575767910541,125.763636411518" />
         <NodeLayout
-          Size="160,42"
+          Size="160,41.6"
           Id="Package\DFT_Load_Staging\Staging_Doctors"
           TopLeft="264.545454545455,132.727272727273" />
         <NodeLayout
-          Size="160,42"
+          Size="160,41.6"
           Id="Package\DFT_Load_Staging\Source_Patients"
           TopLeft="64.7272727272727,13.6363636363636" />
         <NodeLayout
-          Size="169,42"
+          Size="168.8,41.6"
           Id="Package\DFT_Load_Staging\Source_Pharmacy"
-          TopLeft="865.575768685401,17.763636381716" />
+          TopLeft="917.575767910541,15.7636364115183" />
         <NodeLayout
-          Size="187,42"
+          Size="187.2,41.6"
           Id="Package\DFT_Load_Staging\Source_Appointments"
-          TopLeft="460,15.4545454545455" />
+          TopLeft="479.999999701977,13.4545454843478" />
         <EdgeLayout
-          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output9]"
-          TopLeft="543.75,278">
+          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output8]"
+          TopLeft="539.750000059605,342.999999031425">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -14634,8 +14906,8 @@ FROM     Staff</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output8]"
-          TopLeft="338.295430231727,276.866665033433">
+          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output7]"
+          TopLeft="334.295430291332,341.866664064858">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -14656,8 +14928,8 @@ FROM     Staff</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output7]"
-          TopLeft="955.749956836305,278.599998354713">
+          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output6]"
+          TopLeft="951.74995689591,343.599997386138">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -14678,8 +14950,8 @@ FROM     Staff</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output6]"
-          TopLeft="745.719663117158,278.599998354713">
+          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output5]"
+          TopLeft="741.719663176763,343.599997386138">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -14700,7 +14972,7 @@ FROM     Staff</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output5]"
+          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output4]"
           TopLeft="145,55.6363636363636">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14722,8 +14994,8 @@ FROM     Staff</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output4]"
-          TopLeft="149.318193838452,277.624242448349">
+          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output3]"
+          TopLeft="145.318193898057,342.624241479774">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -14744,8 +15016,8 @@ FROM     Staff</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output3]"
-          TopLeft="950.825768685401,59.763636381716">
+          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output2]"
+          TopLeft="1002.82576791054,57.7636364115183">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -14766,8 +15038,8 @@ FROM     Staff</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output2]"
-          TopLeft="760.451515139097,57.0545454545455">
+          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output1]"
+          TopLeft="812.451514364237,55.0545454843478">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -14779,28 +15051,6 @@ FROM     Staff</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,67.9454545082016" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output1]"
-          TopLeft="553.340909090909,57.4545454545455">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,74.3636363636364"
-              Start="0,0"
-              End="0,66.8636363636364">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,66.8636363636364" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -14829,6 +15079,56 @@ FROM     Staff</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="259.2,41.6"
+          Id="Package\DFT_Load_Staging\Take only the Scheduled Appointments"
+          TopLeft="448.999993309379,113.999998301268" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Staging.Paths[OLE DB Source Output9]"
+          TopLeft="576.099996505678,55.0545454843478">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58.9454528169198"
+              Start="0,0"
+              End="0,51.4454528169198">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.4454528169198" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Staging.Paths[Scheduled_Appointments_Only]"
+          TopLeft="579.990905536982,155.599998301268">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56.2181823248215"
+              Start="0,0"
+              End="0,48.7181823248215">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.7181823248215" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-69.19759765625,18.5544036624107,138.3951953125,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

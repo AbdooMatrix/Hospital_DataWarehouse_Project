@@ -194,3 +194,38 @@ CREATE TABLE Fact_Cleaning_Service (
     FOREIGN KEY (Service_Date_Key) REFERENCES Dim_Date(Date_Key)
 );
 GO
+
+select * from Dim_Patient;
+select * from Fact_Pharmacy;
+
+-- Delete from Fact Tables first
+DELETE FROM Fact_Cleaning_Service;
+DBCC CHECKIDENT ('Fact_Cleaning_Service', RESEED, 0);
+
+DELETE FROM Fact_Billing;
+DBCC CHECKIDENT ('Fact_Billing', RESEED, 0);
+
+DELETE FROM Fact_Appointments;
+DBCC CHECKIDENT ('Fact_Appointments', RESEED, 0);
+
+DELETE FROM Fact_Pharmacy;
+DBCC CHECKIDENT ('Fact_Pharmacy', RESEED, 0);
+
+-- Then delete from Dimension Tables and reset identity
+DELETE FROM Dim_Staff;
+DBCC CHECKIDENT ('Dim_Staff', RESEED, 0);
+
+DELETE FROM Dim_Room;
+DBCC CHECKIDENT ('Dim_Room', RESEED, 0);
+
+DELETE FROM Dim_Doctor;
+DBCC CHECKIDENT ('Dim_Doctor', RESEED, 0);
+
+DELETE FROM Dim_Medicine;
+DBCC CHECKIDENT ('Dim_Medicine', RESEED, 0);
+
+DELETE FROM Dim_Patient;
+DBCC CHECKIDENT ('Dim_Patient', RESEED, 0);
+
+DELETE FROM Dim_Date;
+DBCC CHECKIDENT ('Dim_Date', RESEED, 0);
