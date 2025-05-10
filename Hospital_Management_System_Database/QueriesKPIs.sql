@@ -1,5 +1,5 @@
 -- Fact_Pharmacy
--- 1. Quantity Dispensed by Medicine Type with Percentage
+-- 1. Quantity Dispensed by Medicine Type in each year
 SELECT 
     dd.Year,
     dm.Medicine_Type,
@@ -25,9 +25,11 @@ FROM
     INNER JOIN Dim_Medicine dm ON fp.Medicine_Surrogate_Id = dm.Medicine_Surrogate_Id
     INNER JOIN Dim_Date dd ON fp.Prescription_Date_Key = dd.Date_Key
 GROUP BY 
-    dd.Year, dm.Medicine_Name
+    dd.Year, 
+	dm.Medicine_Name
 ORDER BY 
-    dd.Year ASC, Total_Quantity DESC;
+    dd.Year ASC, 
+	Total_Quantity DESC;
 
 -- 3. Number of Patients per Medicine
 SELECT 
@@ -98,7 +100,7 @@ ORDER BY
 SELECT 
     dd.Year,
 	dp.Patient_Surrogate_Id,
-	CONCAT(dp.First_Name, dp.Last_Name) AS Patient_Full_Name,
+	CONCAT(dp.First_Name, ' ', dp.Last_Name) AS Patient_Full_Name,
     AVG(fb.Total_Amount) AS Avg_Revenue_Per_Patient
 FROM 
     Fact_Billing fb
@@ -107,7 +109,10 @@ FROM
 GROUP BY 
     dd.Year,
 	dp.Patient_Surrogate_Id,
-    CONCAT(dp.First_Name, dp.Last_Name);
+    CONCAT(dp.First_Name, ' ', dp.Last_Name)
+ORDER BY
+	dd.Year ASC, 
+	Avg_Revenue_Per_Patient DESC
 
 
 -- 2. Total Revenue per Year
@@ -137,20 +142,16 @@ ORDER BY
 
 -- 4. Top 5 Patients by Total Billing in each year
 SELECT TOP 5
-    dd.Year,
 	dp.Patient_Surrogate_Id,
-    CONCAT(dp.First_Name, dp.Last_Name) AS Patient_Full_Name,
+    CONCAT(dp.First_Name, ' ', dp.Last_Name) AS Patient_Full_Name,
     SUM(fb.Total_Amount) AS Total_Spent
 FROM 
     Fact_Billing fb
     INNER JOIN Dim_Patient dp ON fb.Patient_Surrogate_Id = dp.Patient_Surrogate_Id
-    INNER JOIN Dim_Date dd ON fb.Payment_Date_Key = dd.Date_Key
 GROUP BY 
-	dd.Year,
     dp.Patient_Surrogate_Id,
-    CONCAT(dp.First_Name, dp.Last_Name)
+    CONCAT(dp.First_Name, ' ', dp.Last_Name)
 ORDER BY 
-	dd.Year,
     Total_Spent DESC;
 
 --===========================================================================================--

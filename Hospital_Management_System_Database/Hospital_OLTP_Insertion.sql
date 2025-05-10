@@ -42,6 +42,7 @@ DBCC CHECKIDENT ('Staff', RESEED, 0);
 DBCC CHECKIDENT ('Ambulance', RESEED, 0);
 DBCC CHECKIDENT ('Rooms', RESEED, 0);
 DBCC CHECKIDENT ('Room_Types', RESEED, 0);
+DBCC CHECKIDENT ('Pharmacy', RESEED, 0);
 GO
 
 INSERT INTO Patients (first_name, last_name, date_of_birth, gender, contact_number, address, email, medical_history)
