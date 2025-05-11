@@ -197,6 +197,9 @@ GO
 
 select * from Dim_Patient;
 select * from Fact_Pharmacy;
+select * from Fact_Appointments;
+select * from Fact_Billing;
+select * from Fact_Cleaning_Service;
 
 -- Delete from Fact Tables first
 DELETE FROM Fact_Cleaning_Service;
