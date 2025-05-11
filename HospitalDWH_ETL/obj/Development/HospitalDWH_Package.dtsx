@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="HospitalDWH_Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="226"
-  DTS:VersionGUID="{437F54CD-0815-4A2D-97C6-D1AC64F6605A}">
+  DTS:VersionBuild="229"
+  DTS:VersionGUID="{CC45F28F-4ABA-4E2A-9A30-6A4C6F038A37}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -3923,7 +3923,7 @@ FROM Staging.Patients;</property>
                       cachedDataType="i4"
                       cachedName="room_id"
                       externalMetadataColumnId="Package\DFT_Load_Dim_Room\Dim_Room.Inputs[OLE DB Destination Input].ExternalColumns[Room_Id]"
-                      lineageId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Outputs[Merge Join Output].Columns[room_id]" />
+                      lineageId="Package\DFT_Load_Dim_Room\Staging_Rooms.Outputs[OLE DB Source Output].Columns[room_id]" />
                     <inputColumn
                       refId="Package\DFT_Load_Dim_Room\Dim_Room.Inputs[OLE DB Destination Input].Columns[room_number]"
                       cachedCodepage="1252"
@@ -3931,20 +3931,20 @@ FROM Staging.Patients;</property>
                       cachedLength="10"
                       cachedName="room_number"
                       externalMetadataColumnId="Package\DFT_Load_Dim_Room\Dim_Room.Inputs[OLE DB Destination Input].ExternalColumns[Room_Number]"
-                      lineageId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Outputs[Merge Join Output].Columns[room_number]" />
+                      lineageId="Package\DFT_Load_Dim_Room\Staging_Rooms.Outputs[OLE DB Source Output].Columns[room_number]" />
                     <inputColumn
                       refId="Package\DFT_Load_Dim_Room\Dim_Room.Inputs[OLE DB Destination Input].Columns[capacity]"
                       cachedDataType="i4"
                       cachedName="capacity"
                       externalMetadataColumnId="Package\DFT_Load_Dim_Room\Dim_Room.Inputs[OLE DB Destination Input].ExternalColumns[Capacity]"
-                      lineageId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Outputs[Merge Join Output].Columns[capacity]" />
+                      lineageId="Package\DFT_Load_Dim_Room\Staging_Rooms.Outputs[OLE DB Source Output].Columns[capacity]" />
                     <inputColumn
                       refId="Package\DFT_Load_Dim_Room\Dim_Room.Inputs[OLE DB Destination Input].Columns[room_type_name]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="room_type_name"
                       externalMetadataColumnId="Package\DFT_Load_Dim_Room\Dim_Room.Inputs[OLE DB Destination Input].ExternalColumns[Room_Type]"
-                      lineageId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Outputs[Merge Join Output].Columns[room_type_name]" />
+                      lineageId="Package\DFT_Load_Dim_Room\Lookup_Room_Types.Outputs[Lookup Match Output].Columns[room_type_name]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4056,7 +4056,7 @@ where [refTable].[Room_Id] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Outputs[Merge Join Output].Columns[room_id]};</property>
+                  name="ParameterMap">#{Package\DFT_Load_Dim_Room\575:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -4083,7 +4083,7 @@ where [refTable].[Room_Id] = ?</property>
                       refId="Package\DFT_Load_Dim_Room\Lookup (To take only new Rooms).Inputs[Lookup Input].Columns[room_id]"
                       cachedDataType="i4"
                       cachedName="room_id"
-                      lineageId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Outputs[Merge Join Output].Columns[room_id]">
+                      lineageId="Package\DFT_Load_Dim_Room\Staging_Rooms.Outputs[OLE DB Source Output].Columns[room_id]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -4141,236 +4141,99 @@ where [refTable].[Room_Id] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types)"
-              componentClassID="Microsoft.MergeJoin"
-              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
-              name="Merge Join (Between Rooms &amp; Room_Types)"
-              version="1">
+              refId="Package\DFT_Load_Dim_Room\Lookup_Room_Types"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_Room_Types"
+              usesDispositions="true"
+              version="6">
               <properties>
                 <property
-                  dataType="System.Int32"
-                  description="Specifies the type of join to perform."
-                  name="JoinType"
-                  typeConverter="JoinType">1</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the number of columns in the ordering key."
-                  name="NumKeyColumns">1</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the null values are treated as equal values."
-                  name="TreatNullsAsEqual">true</property>
-                <property
-                  dataType="System.Int32"
-                  description="Indicates the requested maximum buffers per input before blocking."
-                  name="MaxBuffersPerInput">5</property>
-              </properties>
-              <inputs>
-                <input
-                  refId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Inputs[Merge Join Left Input]"
-                  hasSideEffects="true"
-                  name="Merge Join Left Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Inputs[Merge Join Left Input].Columns[room_type_id]"
-                      cachedDataType="i4"
-                      cachedName="room_type_id"
-                      cachedSortKeyPosition="1"
-                      lineageId="Package\DFT_Load_Dim_Room\Sort (By Room_Type_Id).Outputs[Sort Output].Columns[room_type_id]" />
-                    <inputColumn
-                      refId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Inputs[Merge Join Left Input].Columns[room_id]"
-                      cachedDataType="i4"
-                      cachedName="room_id"
-                      lineageId="Package\DFT_Load_Dim_Room\Sort (By Room_Type_Id).Outputs[Sort Output].Columns[room_id]" />
-                    <inputColumn
-                      refId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Inputs[Merge Join Left Input].Columns[room_number]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="room_number"
-                      lineageId="Package\DFT_Load_Dim_Room\Sort (By Room_Type_Id).Outputs[Sort Output].Columns[room_number]" />
-                    <inputColumn
-                      refId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Inputs[Merge Join Left Input].Columns[capacity]"
-                      cachedDataType="i4"
-                      cachedName="capacity"
-                      lineageId="Package\DFT_Load_Dim_Room\Sort (By Room_Type_Id).Outputs[Sort Output].Columns[capacity]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-                <input
-                  refId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Inputs[Merge Join Right Input]"
-                  hasSideEffects="true"
-                  name="Merge Join Right Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Inputs[Merge Join Right Input].Columns[room_type_id]"
-                      cachedDataType="i4"
-                      cachedName="room_type_id"
-                      cachedSortKeyPosition="1"
-                      lineageId="Package\DFT_Load_Dim_Room\Sort1  (By Room_Type_Id).Outputs[Sort Output].Columns[room_type_id]" />
-                    <inputColumn
-                      refId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Inputs[Merge Join Right Input].Columns[room_type_name]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="room_type_name"
-                      lineageId="Package\DFT_Load_Dim_Room\Sort1  (By Room_Type_Id).Outputs[Sort Output].Columns[room_type_name]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Outputs[Merge Join Output]"
-                  name="Merge Join Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Outputs[Merge Join Output].Columns[room_id]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Outputs[Merge Join Output].Columns[room_id]"
-                      name="room_id">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Inputs[Merge Join Left Input].Columns[room_id]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Outputs[Merge Join Output].Columns[room_number]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      lineageId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Outputs[Merge Join Output].Columns[room_number]"
-                      name="room_number">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Inputs[Merge Join Left Input].Columns[room_number]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Outputs[Merge Join Output].Columns[capacity]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Outputs[Merge Join Output].Columns[capacity]"
-                      name="capacity">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Inputs[Merge Join Left Input].Columns[capacity]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Outputs[Merge Join Output].Columns[room_type_name]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Outputs[Merge Join Output].Columns[room_type_name]"
-                      name="room_type_name">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Inputs[Merge Join Right Input].Columns[room_type_name]}</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT_Load_Dim_Room\Sort (By Room_Type_Id)"
-              componentClassID="Microsoft.Sort"
-              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
-              name="Sort (By Room_Type_Id)"
-              version="1">
-              <properties>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
-                  name="EliminateDuplicates">true</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the maximum number of threads to use for sorting."
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
-                  name="MaximumThreads">-1</property>
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [Staging].[Rooms_Types]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [Staging].[Rooms_Types]) [refTable]
+where [refTable].[room_type_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="room_type_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="room_type_name" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_Load_Dim_Room\Staging_Rooms.Outputs[OLE DB Source Output].Columns[room_type_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
               </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Dim_Room\Lookup_Room_Types.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Matrix.Hospital_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[Matrix.Hospital_DWH]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
               <inputs>
                 <input
-                  refId="Package\DFT_Load_Dim_Room\Sort (By Room_Type_Id).Inputs[Sort Input]"
-                  name="Sort Input">
+                  refId="Package\DFT_Load_Dim_Room\Lookup_Room_Types.Inputs[Lookup Input]"
+                  name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT_Load_Dim_Room\Sort (By Room_Type_Id).Inputs[Sort Input].Columns[room_id]"
-                      cachedDataType="i4"
-                      cachedName="room_id"
-                      lineageId="Package\DFT_Load_Dim_Room\Staging_Rooms.Outputs[OLE DB Source Output].Columns[room_id]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load_Dim_Room\Sort (By Room_Type_Id).Inputs[Sort Input].Columns[room_number]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="room_number"
-                      lineageId="Package\DFT_Load_Dim_Room\Staging_Rooms.Outputs[OLE DB Source Output].Columns[room_number]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load_Dim_Room\Sort (By Room_Type_Id).Inputs[Sort Input].Columns[capacity]"
-                      cachedDataType="i4"
-                      cachedName="capacity"
-                      lineageId="Package\DFT_Load_Dim_Room\Staging_Rooms.Outputs[OLE DB Source Output].Columns[capacity]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load_Dim_Room\Sort (By Room_Type_Id).Inputs[Sort Input].Columns[room_type_id]"
+                      refId="Package\DFT_Load_Dim_Room\Lookup_Room_Types.Inputs[Lookup Input].Columns[room_type_id]"
                       cachedDataType="i4"
                       cachedName="room_type_id"
                       lineageId="Package\DFT_Load_Dim_Room\Staging_Rooms.Outputs[OLE DB Source Output].Columns[room_type_id]">
                       <properties>
                         <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">room_type_id</property>
                         <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">1</property>
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -4379,164 +4242,57 @@ where [refTable].[Room_Id] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT_Load_Dim_Room\Sort (By Room_Type_Id).Outputs[Sort Output]"
-                  isSorted="true"
-                  name="Sort Output">
+                  refId="Package\DFT_Load_Dim_Room\Lookup_Room_Types.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_Load_Dim_Room\Lookup_Room_Types.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load_Dim_Room\Sort (By Room_Type_Id).Outputs[Sort Output].Columns[room_id]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load_Dim_Room\Sort (By Room_Type_Id).Outputs[Sort Output].Columns[room_id]"
-                      name="room_id">
+                      refId="Package\DFT_Load_Dim_Room\Lookup_Room_Types.Outputs[Lookup Match Output].Columns[room_type_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\DFT_Load_Dim_Room\Lookup_Room_Types.Outputs[Lookup Match Output].Columns[room_type_name]"
+                      name="room_type_name"
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT_Load_Dim_Room\Staging_Rooms.Outputs[OLE DB Source Output].Columns[room_id]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DFT_Load_Dim_Room\Sort (By Room_Type_Id).Outputs[Sort Output].Columns[room_number]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      lineageId="Package\DFT_Load_Dim_Room\Sort (By Room_Type_Id).Outputs[Sort Output].Columns[room_number]"
-                      name="room_number">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT_Load_Dim_Room\Staging_Rooms.Outputs[OLE DB Source Output].Columns[room_number]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DFT_Load_Dim_Room\Sort (By Room_Type_Id).Outputs[Sort Output].Columns[capacity]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load_Dim_Room\Sort (By Room_Type_Id).Outputs[Sort Output].Columns[capacity]"
-                      name="capacity">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT_Load_Dim_Room\Staging_Rooms.Outputs[OLE DB Source Output].Columns[capacity]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DFT_Load_Dim_Room\Sort (By Room_Type_Id).Outputs[Sort Output].Columns[room_type_id]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load_Dim_Room\Sort (By Room_Type_Id).Outputs[Sort Output].Columns[room_type_id]"
-                      name="room_type_id"
-                      sortKeyPosition="1">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT_Load_Dim_Room\Staging_Rooms.Outputs[OLE DB Source Output].Columns[room_type_id]}</property>
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">room_type_name</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT_Load_Dim_Room\Sort1  (By Room_Type_Id)"
-              componentClassID="Microsoft.Sort"
-              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
-              name="Sort1  (By Room_Type_Id)"
-              version="1">
-              <properties>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
-                  name="EliminateDuplicates">true</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the maximum number of threads to use for sorting."
-                  expressionType="Notify"
-                  name="MaximumThreads">-1</property>
-              </properties>
-              <inputs>
-                <input
-                  refId="Package\DFT_Load_Dim_Room\Sort1  (By Room_Type_Id).Inputs[Sort Input]"
-                  name="Sort Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT_Load_Dim_Room\Sort1  (By Room_Type_Id).Inputs[Sort Input].Columns[room_type_id]"
-                      cachedDataType="i4"
-                      cachedName="room_type_id"
-                      lineageId="Package\DFT_Load_Dim_Room\Staging_Room_Types.Outputs[OLE DB Source Output].Columns[room_type_id]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">1</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load_Dim_Room\Sort1  (By Room_Type_Id).Inputs[Sort Input].Columns[room_type_name]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="room_type_name"
-                      lineageId="Package\DFT_Load_Dim_Room\Staging_Room_Types.Outputs[OLE DB Source Output].Columns[room_type_name]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
                 <output
-                  refId="Package\DFT_Load_Dim_Room\Sort1  (By Room_Type_Id).Outputs[Sort Output]"
-                  isSorted="true"
-                  name="Sort Output">
+                  refId="Package\DFT_Load_Dim_Room\Lookup_Room_Types.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_Load_Dim_Room\Lookup_Room_Types.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Dim_Room\Lookup_Room_Types.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_Load_Dim_Room\Lookup_Room_Types.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load_Dim_Room\Sort1  (By Room_Type_Id).Outputs[Sort Output].Columns[room_type_id]"
+                      refId="Package\DFT_Load_Dim_Room\Lookup_Room_Types.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load_Dim_Room\Sort1  (By Room_Type_Id).Outputs[Sort Output].Columns[room_type_id]"
-                      name="room_type_id"
-                      sortKeyPosition="1">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT_Load_Dim_Room\Staging_Room_Types.Outputs[OLE DB Source Output].Columns[room_type_id]}</property>
-                      </properties>
-                    </outputColumn>
+                      lineageId="Package\DFT_Load_Dim_Room\Lookup_Room_Types.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT_Load_Dim_Room\Sort1  (By Room_Type_Id).Outputs[Sort Output].Columns[room_type_name]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT_Load_Dim_Room\Sort1  (By Room_Type_Id).Outputs[Sort Output].Columns[room_type_name]"
-                      name="room_type_name">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT_Load_Dim_Room\Staging_Room_Types.Outputs[OLE DB Source Output].Columns[room_type_name]}</property>
-                      </properties>
-                    </outputColumn>
+                      refId="Package\DFT_Load_Dim_Room\Lookup_Room_Types.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Dim_Room\Lookup_Room_Types.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -4708,165 +4464,23 @@ where [refTable].[Room_Id] = ?</property>
                 </output>
               </outputs>
             </component>
-            <component
-              refId="Package\DFT_Load_Dim_Room\Staging_Room_Types"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
-              name="Staging_Room_Types"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[Staging].[Rooms_Types]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT_Load_Dim_Room\Staging_Room_Types.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Matrix.Hospital_DWH]"
-                  connectionManagerRefId="Package.ConnectionManagers[Matrix.Hospital_DWH]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\DFT_Load_Dim_Room\Staging_Room_Types.Outputs[OLE DB Source Output]"
-                  name="OLE DB Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load_Dim_Room\Staging_Room_Types.Outputs[OLE DB Source Output].Columns[room_type_id]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load_Dim_Room\Staging_Room_Types.Outputs[OLE DB Source Output].ExternalColumns[room_type_id]"
-                      lineageId="Package\DFT_Load_Dim_Room\Staging_Room_Types.Outputs[OLE DB Source Output].Columns[room_type_id]"
-                      name="room_type_id"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Load_Dim_Room\Staging_Room_Types.Outputs[OLE DB Source Output].Columns[room_type_name]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load_Dim_Room\Staging_Room_Types.Outputs[OLE DB Source Output].ExternalColumns[room_type_name]"
-                      length="50"
-                      lineageId="Package\DFT_Load_Dim_Room\Staging_Room_Types.Outputs[OLE DB Source Output].Columns[room_type_name]"
-                      name="room_type_name"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load_Dim_Room\Staging_Room_Types.Outputs[OLE DB Source Output].ExternalColumns[room_type_id]"
-                      dataType="i4"
-                      name="room_type_id" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load_Dim_Room\Staging_Room_Types.Outputs[OLE DB Source Output].ExternalColumns[room_type_name]"
-                      dataType="wstr"
-                      length="50"
-                      name="room_type_name" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\DFT_Load_Dim_Room\Staging_Room_Types.Outputs[OLE DB Source Error Output]"
-                  isErrorOut="true"
-                  name="OLE DB Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load_Dim_Room\Staging_Room_Types.Outputs[OLE DB Source Error Output].Columns[room_type_id]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load_Dim_Room\Staging_Room_Types.Outputs[OLE DB Source Error Output].Columns[room_type_id]"
-                      name="room_type_id" />
-                    <outputColumn
-                      refId="Package\DFT_Load_Dim_Room\Staging_Room_Types.Outputs[OLE DB Source Error Output].Columns[room_type_name]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT_Load_Dim_Room\Staging_Room_Types.Outputs[OLE DB Source Error Output].Columns[room_type_name]"
-                      name="room_type_name" />
-                    <outputColumn
-                      refId="Package\DFT_Load_Dim_Room\Staging_Room_Types.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load_Dim_Room\Staging_Room_Types.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_Load_Dim_Room\Staging_Room_Types.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load_Dim_Room\Staging_Room_Types.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
           </components>
           <paths>
+            <path
+              refId="Package\DFT_Load_Dim_Room.Paths[Lookup Match Output]"
+              endId="Package\DFT_Load_Dim_Room\Lookup (To take only new Rooms).Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT_Load_Dim_Room\Lookup_Room_Types.Outputs[Lookup Match Output]" />
             <path
               refId="Package\DFT_Load_Dim_Room.Paths[Lookup No Match Output]"
               endId="Package\DFT_Load_Dim_Room\Dim_Room.Inputs[OLE DB Destination Input]"
               name="Lookup No Match Output"
               startId="Package\DFT_Load_Dim_Room\Lookup (To take only new Rooms).Outputs[Lookup No Match Output]" />
             <path
-              refId="Package\DFT_Load_Dim_Room.Paths[Merge Join Output]"
-              endId="Package\DFT_Load_Dim_Room\Lookup (To take only new Rooms).Inputs[Lookup Input]"
-              name="Merge Join Output"
-              startId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Outputs[Merge Join Output]" />
-            <path
               refId="Package\DFT_Load_Dim_Room.Paths[OLE DB Source Output]"
-              endId="Package\DFT_Load_Dim_Room\Sort1  (By Room_Type_Id).Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Dim_Room\Staging_Room_Types.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Dim_Room.Paths[OLE DB Source Output1]"
-              endId="Package\DFT_Load_Dim_Room\Sort (By Room_Type_Id).Inputs[Sort Input]"
+              endId="Package\DFT_Load_Dim_Room\Lookup_Room_Types.Inputs[Lookup Input]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Dim_Room\Staging_Rooms.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Dim_Room.Paths[Sort Output]"
-              endId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Inputs[Merge Join Left Input]"
-              name="Sort Output"
-              startId="Package\DFT_Load_Dim_Room\Sort (By Room_Type_Id).Outputs[Sort Output]" />
-            <path
-              refId="Package\DFT_Load_Dim_Room.Paths[Sort Output1]"
-              endId="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types).Inputs[Merge Join Right Input]"
-              name="Sort Output"
-              startId="Package\DFT_Load_Dim_Room\Sort1  (By Room_Type_Id).Outputs[Sort Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -12835,7 +12449,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -12857,7 +12473,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -12951,7 +12569,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -12973,7 +12593,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -12995,7 +12617,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13029,7 +12653,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13063,7 +12689,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13097,7 +12725,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13179,7 +12809,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -13497,21 +13129,69 @@ FROM     Staff</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="175,42"
-          Id="Package\DFT_Load_Dim_Patients\Sort (By Patient_Id)"
-          TopLeft="59.5,153.333333333333" />
-        <NodeLayout
           Size="162,42"
           Id="Package\DFT_Load_Dim_Patients\Staging_Patients"
           TopLeft="66.6666666666667,56.6666666666667" />
         <NodeLayout
-          Size="139,42"
-          Id="Package\DFT_Load_Dim_Patients\Dim_Patient"
-          TopLeft="81.1666666666667,379.166666666667" />
+          Size="175,42"
+          Id="Package\DFT_Load_Dim_Patients\Sort (By Patient_Id)"
+          TopLeft="59.5,153.333333333333" />
         <NodeLayout
           Size="251,42"
           Id="Package\DFT_Load_Dim_Patients\Lookup (To take only new Patients)"
           TopLeft="23.8333333333333,269.833333333333" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\DFT_Load_Dim_Patients\Dim_Patient"
+          TopLeft="81.1666666666667,379.166666666667" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Dim_Patients.Paths[Sort Output]"
+          TopLeft="148.166666666667,195.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74.5000000000001"
+              Start="0,0"
+              End="0,67.0000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.0000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Dim_Patients.Paths[OLE DB Source Output]"
+          TopLeft="147.333333333333,98.6666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54.6666666666666"
+              Start="0,0"
+              End="0,47.1666666666666">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.1666666666666" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_Load_Dim_Patients.Paths[Lookup No Match Output]"
           TopLeft="150,311.833333333333">
@@ -13536,50 +13216,6 @@ FROM     Staff</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Dim_Patients.Paths[Sort Output]"
-          TopLeft="148.166666666667,195.333333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,74.5000000000001"
-              Start="0,0"
-              End="0,67.0000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,67.0000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Dim_Patients.Paths[OLE DB Source Output]"
-          TopLeft="147.333333333333,98.6666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,54.6666666666666"
-              Start="0,0"
-              End="0,47.1666666666666">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,47.1666666666666" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -13600,182 +13236,26 @@ FROM     Staff</property>
     design-time-name="Package\DFT_Load_Dim_Room">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="209,42"
-          Id="Package\DFT_Load_Dim_Room\Sort1  (By Room_Type_Id)"
-          TopLeft="271.000008746982,129.500000417233" />
-        <NodeLayout
-          Size="246,42"
-          Id="Package\DFT_Load_Dim_Room\Lookup (To take only new Rooms)"
-          TopLeft="125.499999687076,327.499997138978" />
+          Size="187,42"
+          Id="Package\DFT_Load_Dim_Room\Lookup_Room_Types"
+          TopLeft="163,128" />
         <NodeLayout
           Size="160,42"
           Id="Package\DFT_Load_Dim_Room\Staging_Rooms"
-          TopLeft="67.2727272727273,59.0909090909091" />
-        <NodeLayout
-          Size="200,42"
-          Id="Package\DFT_Load_Dim_Room\Sort (By Room_Type_Id)"
-          TopLeft="52.4090996560729,128.681818599051" />
-        <NodeLayout
-          Size="188,42"
-          Id="Package\DFT_Load_Dim_Room\Staging_Room_Types"
-          TopLeft="281.666675413649,59.1666670838991" />
+          TopLeft="170.272727272727,19.0909090909091" />
         <NodeLayout
           Size="134,42"
           Id="Package\DFT_Load_Dim_Room\Dim_Room"
-          TopLeft="181.999999746681,445.999995335936" />
+          TopLeft="188.999999746681,367.999995335936" />
         <NodeLayout
-          Size="303,42"
-          Id="Package\DFT_Load_Dim_Room\Merge Join (Between Rooms &amp; Room_Types)"
-          TopLeft="103.500008746982,231.833333750566" />
-        <EdgeLayout
-          Id="Package\DFT_Load_Dim_Room.Paths[Sort Output1]"
-          TopLeft="375.500008746982,171.500000417233">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-71.3333333333333,60.3333333333333"
-              Start="0,0"
-              End="-71.3333333333333,52.8333333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.0098489822718" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,32.0098489822718"
-                    Point2="0,36.0098489822718"
-                    Point3="-4,36.0098489822718" />
-                  <mssgle:LineSegment
-                    End="-67.3333333333333,36.0098489822718" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-67.3333333333333,36.0098489822718"
-                    Point2="-71.3333333333333,36.0098489822718"
-                    Point3="-71.3333333333333,40.0098489822718" />
-                  <mssgle:LineSegment
-                    End="-71.3333333333333,52.8333333333333" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Dim_Room.Paths[Sort Output]"
-          TopLeft="152.409099656073,170.681818599051">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="53.4242424242425,61.1515151515152"
-              Start="0,0"
-              End="53.4242424242425,53.6515151515152">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.4981794305498" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,32.4981794305498"
-                    Point2="0,36.4981794305498"
-                    Point3="4,36.4981794305498" />
-                  <mssgle:LineSegment
-                    End="49.4242424242425,36.4981794305498" />
-                  <mssgle:CubicBezierSegment
-                    Point1="49.4242424242425,36.4981794305498"
-                    Point2="53.4242424242425,36.4981794305498"
-                    Point3="53.4242424242425,40.4981794305498" />
-                  <mssgle:LineSegment
-                    End="53.4242424242425,53.6515151515152" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Dim_Room.Paths[OLE DB Source Output1]"
-          TopLeft="149.8409134644,101.090909090909">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,27.5909095081421"
-              Start="0,0"
-              End="0,20.0909095081421">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.0909095081421" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Dim_Room.Paths[OLE DB Source Output]"
-          TopLeft="375.583342080315,101.166667083899">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,28.3333333333339"
-              Start="0,0"
-              End="0,20.8333333333339">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.8333333333339" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Dim_Room.Paths[Merge Join Output]"
-          TopLeft="251.750004217029,273.833333750566">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,53.6666633884117"
-              Start="0,0"
-              End="0,46.1666633884117">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,46.1666633884117" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="246,42"
+          Id="Package\DFT_Load_Dim_Room\Lookup (To take only new Rooms)"
+          TopLeft="132.499999687076,249.499997138978" />
         <EdgeLayout
           Id="Package\DFT_Load_Dim_Room.Paths[Lookup No Match Output]"
-          TopLeft="248.749999716879,369.499997138978">
+          TopLeft="255.749999716879,291.499997138978">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -13797,9 +13277,78 @@ FROM     Staff</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Dim_Room.Paths[Lookup Match Output]"
+          TopLeft="255.999999843538,170">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,79.499997138978"
+              Start="0,0"
+              End="0,71.999997138978">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,71.999997138978" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,30.195311069489,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Dim_Room.Paths[OLE DB Source Output]"
+          TopLeft="253.386363636364,61.0909090909091">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66.9090909090909"
+              Start="0,0"
+              End="0,59.4090909090909">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.4090909090909" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Dim_Room\Lookup_Room_Types">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[Staging].[Rooms_Types]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DFT_Load_Dim_Room\Lookup (To take only new Rooms)">
     <Properties>
@@ -14035,7 +13584,9 @@ FROM     Staff</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

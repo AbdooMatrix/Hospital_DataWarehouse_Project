@@ -42,7 +42,7 @@ ORDER BY
 --===========================================================================================--
 
 -- Fact_Appointments
--- 1. Number of Appointments per each Patient in each year
+-- 1. Top Number of Appointments per each Patient in each year
 SELECT 
     dd.Year,
 	dp.Patient_Surrogate_Id,
@@ -55,9 +55,11 @@ FROM
 GROUP BY
 	dd.Year,
     dp.Patient_Surrogate_Id,
-    CONCAT(dp.first_name, ' ', dp.last_name);
+    CONCAT(dp.first_name, ' ', dp.last_name)
+ORDER BY 
+	Appointments_Count DESC;
 
--- 2. Average Number of Appointments per Doctor in each year
+-- 2. Top Number of Appointments per Doctor in each year
 SELECT 
 	ddate.Year,
     fa.Doctor_Surrogate_Id,
@@ -70,7 +72,9 @@ FROM
 GROUP BY 
 	ddate.Year,
     fa.Doctor_Surrogate_Id,
-    CONCAT(dd.first_name, ' ', dd.last_name);
+    CONCAT(dd.first_name, ' ', dd.last_name)
+ORDER BY 
+	Appointments_Count DESC;
 
 -- 3. Top Doctors by Appointment Volume
 SELECT
