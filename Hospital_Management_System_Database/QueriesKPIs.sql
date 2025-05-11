@@ -1,18 +1,14 @@
 -- Fact_Pharmacy
--- 1. Quantity Dispensed by Medicine Type in each year
+-- 1. Quantity Dispensed by Medicine Type
 SELECT 
-    dd.Year,
     dm.Medicine_Type,
     SUM(fp.Quantity) AS Total_Quantity_Dispensed
 FROM 
     Fact_Pharmacy fp
     INNER JOIN Dim_Medicine dm ON fp.Medicine_Surrogate_Id = dm.Medicine_Surrogate_Id
-    INNER JOIN Dim_Date dd ON fp.Prescription_Date_Key = dd.Date_Key
 GROUP BY 
-    dd.Year,
     dm.Medicine_Type
 ORDER BY 
-    dd.Year ASC,
     Total_Quantity_Dispensed DESC;
 
 -- 2. Top Prescribed Medicines per Year
@@ -157,13 +153,13 @@ ORDER BY
 --===========================================================================================--
 
 -- Fact Cleaning Service
--- 1. Measures the average number of cleaning services performed by each staff member per room over each year.
+-- 1. Measures the Total number of cleaning services performed by each staff member per room over each year.
 SELECT 
     dd.Year,
     fcs.Staff_Surrogate_Id,
     CONCAT(ds.First_Name, ' ', ds.Last_Name) AS Staff_Name,
 	dr.Room_Surrogate_Id,
-    AVG(fcs.Service_Count * 1.0) AS Avg_Cleaning_Services_Per_Room
+    SUM(fcs.Service_Count) AS Total_Cleaning_Services_Per_Room
 FROM 
     Fact_Cleaning_Service fcs
     INNER JOIN Dim_Date dd ON fcs.Service_Date_Key = dd.Date_Key

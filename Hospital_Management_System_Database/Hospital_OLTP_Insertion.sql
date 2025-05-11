@@ -194,7 +194,6 @@ VALUES
     ('Pediatric Surgery', 'Building A, 10th Floor'),
     ('Geriatrics', 'Building C, 5th Floor');
 
--- Insert sample data for Doctor_Department (Many-to-Many relationship)
 INSERT INTO Doctor_Department (doctor_id, department_id)
 VALUES
 	(1, 1), (2, 2), (3, 3), (4, 4), (5, 5),
@@ -242,17 +241,17 @@ VALUES
 
 INSERT INTO Appointments (patient_id, doctor_id, appointment_date, appointment_time, purpose, status)
 VALUES
-	(1, 1, '2024-11-20', '09:00', 'Heart checkup', 'Scheduled'),
-	(2, 2, '2024-11-21', '10:00', 'Neurology consultation', 'Scheduled'),
-	(3, 3, '2024-11-22', '11:00', 'Knee pain', 'Scheduled'),
-	(4, 4, '2024-11-23', '14:00', 'Skin rash', 'Scheduled'),
-	(5, 5, '2024-11-24', '15:00', 'Child vaccination', 'Scheduled'),
-	(6, 6, '2024-11-25', '16:00', 'Gallbladder surgery', 'Scheduled'),
-	(7, 7, '2024-11-26', '09:30', 'Gynecological checkup', 'Scheduled'),
-	(8, 8, '2024-11-27', '10:30', 'Mental health evaluation', 'Scheduled'),
-	(9, 9, '2024-11-28', '13:00', 'Eye checkup', 'Scheduled'),
-	(10, 10, '2024-11-29', '14:30', 'Ear examination', 'Scheduled'),
-	(1, 31, '2022-01-20', '09:00', 'Endocrinology consultation', 'Completed'),
+	(1, 1, '2024-11-20', '09:00', 'Heart checkup', 'Completed'),
+    (2, 2, '2024-11-21', '10:00', 'Neurology consultation', 'Completed'),
+    (3, 3, '2024-11-22', '11:00', 'Knee pain', 'Completed'),
+    (4, 4, '2024-11-23', '14:00', 'Skin rash', 'Completed'),
+    (5, 5, '2024-11-24', '15:00', 'Child vaccination', 'Completed'),
+    (6, 6, '2024-11-25', '16:00', 'Gallbladder surgery', 'Completed'),
+    (7, 7, '2024-11-26', '09:30', 'Gynecological checkup', 'Completed'),
+    (8, 8, '2024-11-27', '10:30', 'Mental health evaluation', 'Completed'),
+    (9, 9, '2024-11-28', '13:00', 'Eye checkup', 'Completed'),
+    (10, 10, '2024-11-29', '14:30', 'Ear examination', 'Completed'),
+    (1, 31, '2022-01-20', '09:00', 'Endocrinology consultation', 'Completed'),
     (2, 32, '2022-02-25', '10:30', 'Gastroenterology follow-up', 'Completed'),
     (3, 33, '2022-03-30', '11:00', 'Oncology checkup', 'Completed'),
     (4, 34, '2022-04-15', '14:00', 'Hematology evaluation', 'Completed'),
@@ -272,17 +271,17 @@ VALUES
     (18, 48, '2023-06-25', '13:00', 'General surgery consultation', 'Completed'),
     (19, 49, '2023-07-30', '14:30', 'Gynecology exam', 'Completed'),
     (20, 50, '2023-08-05', '16:00', 'Psychiatric assessment', 'Completed'),
-    (21, 51, '2024-01-15', '09:00', 'Endocrinology follow-up', 'Scheduled'),
-    (22, 52, '2024-02-20', '10:30', 'Gastroenterology check', 'Scheduled'),
-    (23, 53, '2024-03-25', '11:00', 'Oncology follow-up', 'Scheduled'),
-    (24, 54, '2024-04-30', '14:00', 'Rheumatology evaluation', 'Scheduled'),
-    (25, 55, '2024-05-05', '15:30', 'Urology follow-up', 'Scheduled'),
-    (26, 56, '2024-06-10', '09:00', 'Nephrology consultation', 'Scheduled'),
-    (27, 57, '2024-07-15', '10:30', 'Pulmonology checkup', 'Scheduled'),
-    (28, 58, '2024-08-20', '13:00', 'Hematology follow-up', 'Scheduled'),
-    (29, 59, '2025-01-25', '14:30', 'Allergy management', 'Scheduled'),
-    (30, 60, '2025-02-28', '16:00', 'Cardiothoracic follow-up', 'Scheduled'),
-	(31, 1, '2022-02-15', '09:00', 'Cardiology consultation', 'Completed'),
+    (21, 51, '2024-01-15', '09:00', 'Endocrinology follow-up', 'Completed'),
+    (22, 52, '2024-02-20', '10:30', 'Gastroenterology check', 'Completed'),
+    (23, 53, '2024-03-25', '11:00', 'Oncology follow-up', 'Completed'),
+    (24, 54, '2024-04-30', '14:00', 'Rheumatology evaluation', 'Completed'),
+    (25, 55, '2024-05-05', '15:30', 'Urology follow-up', 'Completed'),
+    (26, 56, '2024-06-10', '09:00', 'Nephrology consultation', 'Completed'),
+    (27, 57, '2024-07-15', '10:30', 'Pulmonology checkup', 'Completed'),
+    (28, 58, '2024-08-20', '13:00', 'Hematology follow-up', 'Completed'),
+    (29, 59, '2025-01-25', '14:30', 'Allergy management', 'Completed'),
+    (30, 60, '2025-02-28', '16:00', 'Cardiothoracic follow-up', 'Completed'),
+    (31, 1, '2022-02-15', '09:00', 'Cardiology consultation', 'Completed'),
     (32, 2, '2022-03-20', '10:30', 'Neurology evaluation', 'Completed'),
     (33, 3, '2022-04-25', '11:00', 'Orthopedic checkup', 'Completed'),
     (34, 4, '2022-05-30', '14:00', 'Dermatology consultation', 'Completed'),
@@ -302,89 +301,512 @@ VALUES
     (48, 18, '2023-10-10', '13:00', 'Hematology checkup', 'Completed'),
     (49, 19, '2023-11-15', '14:30', 'Allergy consultation', 'Completed'),
     (50, 20, '2023-12-20', '16:00', 'Cardiothoracic evaluation', 'Completed'),
-    (51, 21, '2024-02-10', '09:00', 'Infectious disease follow-up', 'Scheduled'),
-    (52, 22, '2024-03-15', '10:30', 'Neurosurgery checkup', 'Scheduled'),
-    (53, 23, '2024-04-20', '11:00', 'Pediatric surgery consultation', 'Scheduled'),
-    (54, 24, '2024-05-25', '14:00', 'Plastic surgery follow-up', 'Scheduled'),
-    (55, 25, '2024-06-30', '15:30', 'Geriatric assessment', 'Scheduled'),
-    (56, 26, '2024-08-05', '09:00', 'Radiology consultation', 'Scheduled'),
-    (57, 27, '2024-09-10', '10:30', 'Cardiology follow-up', 'Scheduled'),
-    (58, 28, '2024-10-15', '13:00', 'Neurology consultation', 'Scheduled'),
-    (59, 29, '2025-01-20', '14:30', 'Orthopedic follow-up', 'Scheduled'),
-    (60, 30, '2025-02-25', '16:00', 'Dermatology evaluation', 'Scheduled');
+    (51, 21, '2024-02-10', '09:00', 'Infectious disease follow-up', 'Completed'),
+    (52, 22, '2024-03-15', '10:30', 'Neurosurgery checkup', 'Completed'),
+    (53, 23, '2024-04-20', '11:00', 'Pediatric surgery consultation', 'Completed'),
+    (54, 24, '2024-05-25', '14:00', 'Plastic surgery follow-up', 'Completed'),
+    (55, 25, '2024-06-30', '15:30', 'Geriatric assessment', 'Completed'),
+    (56, 26, '2024-08-05', '09:00', 'Radiology consultation', 'Completed'),
+    (57, 27, '2024-09-10', '10:30', 'Cardiology follow-up', 'Completed'),
+    (58, 28, '2024-10-15', '13:00', 'Neurology consultation', 'Completed'),
+    (59, 29, '2025-01-20', '14:30', 'Orthopedic follow-up', 'Completed'),
+    (60, 30, '2025-02-25', '16:00', 'Dermatology evaluation', 'Completed'),
+    (1, 27, '2025-03-03', '09:00', 'Hypertension follow-up', 'Completed'),
+    (2, 43, '2025-03-04', '10:30', 'Asthma checkup', 'Completed'),
+    (3, 11, '2025-03-05', '11:00', 'Diabetes management', 'Completed'),
+    (4, 56, '2025-03-06', '14:00', 'Pediatric checkup', 'Completed'),
+    (5, 2, '2025-03-07', '15:30', 'Migraine evaluation', 'Completed'),
+    (6, 14, '2025-03-10', '09:00', 'Arthritis consultation', 'Completed'),
+    (7, 1, '2025-03-11', '10:00', 'Heart disease follow-up', 'Completed'),
+    (8, 31, '2025-03-12', '13:00', 'General checkup', 'Completed'),
+    (9, 27, '2025-03-13', '14:30', 'Cholesterol checkup', 'Completed'),
+    (10, 5, '2025-03-14', '16:00', 'Pediatric exam', 'Completed'),
+    (11, 37, '2025-03-17', '09:00', 'Thyroid follow-up', 'Completed'),
+    (12, 40, '2025-03-18', '10:30', 'Back pain consultation', 'Completed'),
+    (13, 31, '2025-03-19', '11:00', 'General checkup', 'Completed'),
+    (14, 12, '2025-03-20', '14:00', 'Gastritis treatment', 'Completed'),
+    (15, 45, '2025-03-21', '15:30', 'Allergy testing', 'Completed'),
+    (16, 43, '2025-03-24', '09:00', 'Asthma management', 'Completed'),
+    (17, 56, '2025-03-25', '10:30', 'General checkup', 'Completed'),
+    (18, 1, '2025-03-26', '13:00', 'Hypertension checkup', 'Completed'),
+    (19, 2, '2025-03-27', '14:30', 'Migraine follow-up', 'Completed'),
+    (20, 11, '2025-03-28', '16:00', 'Diabetes follow-up', 'Completed'),
+    (21, 31, '2025-04-01', '09:00', 'General checkup', 'Completed'),
+    (22, 14, '2025-04-02', '10:00', 'Arthritis evaluation', 'Completed'),
+    (23, 56, '2025-04-03', '11:00', 'General checkup', 'Completed'),
+    (24, 27, '2025-04-04', '14:00', 'Cholesterol follow-up', 'Completed'),
+    (25, 5, '2025-04-07', '15:30', 'Pediatric checkup', 'Completed'),
+    (26, 1, '2025-04-08', '09:00', 'Heart disease consultation', 'Completed'),
+    (27, 43, '2025-04-09', '10:30', 'Asthma follow-up', 'Completed'),
+    (28, 56, '2025-04-10', '13:00', 'General checkup', 'Completed'),
+    (29, 45, '2025-04-11', '14:30', 'Allergy management', 'Cancelled'),
+    (30, 27, '2025-04-14', '16:00', 'Hypertension follow-up', 'Completed'),
+    (31, 56, '2025-04-15', '09:00', 'General checkup', 'Completed'),
+    (32, 11, '2025-04-16', '10:00', 'Diabetes consultation', 'Completed'),
+    (33, 2, '2025-04-17', '11:00', 'Migraine treatment', 'Completed'),
+    (34, 56, '2025-04-18', '14:00', 'General checkup', 'Completed'),
+    (35, 14, '2025-04-21', '15:30', 'Arthritis follow-up', 'Completed'),
+    (36, 27, '2025-04-22', '09:00', 'Cholesterol management', 'Completed'),
+    (37, 56, '2025-04-23', '10:30', 'General checkup', 'Completed'),
+    (38, 43, '2025-04-24', '13:00', 'Asthma consultation', 'Completed'),
+    (39, 56, '2025-04-25', '14:30', 'General checkup', 'Completed'),
+    (40, 1, '2025-05-01', '16:00', 'Hypertension management', 'Completed'),
+    (41, 56, '2025-05-02', '09:00', 'General checkup', 'Scheduled'),
+    (42, 11, '2025-05-05', '10:00', 'Diabetes follow-up', 'Completed'),
+    (43, 2, '2025-05-06', '11:00', 'Migraine consultation', 'Completed'),
+    (44, 56, '2025-05-07', '14:00', 'General checkup', 'Scheduled'),
+    (45, 45, '2025-05-08', '15:30', 'Allergy follow-up', 'Scheduled'),
+    (46, 1, '2025-05-09', '09:00', 'Heart disease follow-up', 'Completed'),
+    (47, 56, '2025-05-12', '10:30', 'General checkup', 'Scheduled'),
+    (48, 27, '2025-05-13', '13:00', 'Cholesterol consultation', 'Completed'),
+    (49, 43, '2025-05-14', '14:30', 'Asthma management', 'Scheduled'),
+    (50, 56, '2025-05-15', '16:00', 'General checkup', 'Scheduled'),
+    (51, 1, '2025-07-01', '09:00', 'Hypertension follow-up', 'Scheduled'),
+    (52, 11, '2025-07-02', '10:00', 'Diabetes checkup', 'Scheduled'),
+    (53, 56, '2025-07-03', '11:00', 'General checkup', 'Scheduled'),
+    (54, 2, '2025-07-04', '14:00', 'Migraine follow-up', 'Scheduled'),
+    (55, 45, '2025-07-07', '15:30', 'Allergy consultation', 'Scheduled'),
+    (56, 27, '2025-07-08', '09:00', 'Cholesterol follow-up', 'Scheduled'),
+    (57, 43, '2025-07-09', '10:30', 'Asthma follow-up', 'Scheduled'),
+    (58, 1, '2025-07-10', '13:00', 'Hypertension consultation', 'Completed'),
+    (59, 56, '2025-07-11', '14:30', 'General checkup', 'Scheduled'),
+    (60, 11, '2025-07-14', '16:00', 'Diabetes management', 'Scheduled'),
+    (1, 2, '2025-08-01', '09:00', 'Neurology consultation', 'Scheduled'),
+    (2, 5, '2025-08-04', '10:00', 'Pediatric asthma checkup', 'Scheduled'),
+    (3, 27, '2025-08-05', '11:00', 'Cardiology consultation', 'Scheduled'),
+    (4, 31, '2025-09-01', '14:00', 'General checkup', 'Scheduled'),
+    (5, 14, '2025-09-02', '15:30', 'Rheumatology consultation', 'Cancelled'),
+    (6, 1, '2025-10-01', '09:00', 'Cardiology follow-up', 'Scheduled'),
+    (7, 43, '2025-10-02', '10:30', 'Pulmonology consultation', 'Scheduled'),
+    (8, 11, '2025-11-03', '13:00', 'Endocrinology checkup', 'Scheduled'),
+    (9, 45, '2025-11-04', '14:30', 'Allergy follow-up', 'Cancelled'),
+    (10, 27, '2025-12-01', '16:00', 'Cardiology checkup', 'Scheduled'),
+	(11, 1, '2024-02-10', '09:00', 'Hypertension consultation', 'Completed'),
+    (12, 11, '2024-03-15', '10:00', 'Diabetes management', 'Completed'),
+    (13, 56, '2024-04-20', '11:00', 'General checkup', 'Completed'),
+    (14, 2, '2024-05-25', '14:00', 'Neurology consultation', 'Completed'),
+    (15, 43, '2024-06-30', '15:30', 'Asthma follow-up', 'Completed'),
+    (16, 27, '2024-07-05', '09:00', 'Hypertension checkup', 'Completed'),
+    (17, 31, '2024-08-10', '10:30', 'General checkup', 'Completed'),
+    (18, 14, '2024-09-15', '13:00', 'Arthritis evaluation', 'Completed'),
+    (19, 5, '2024-10-20', '14:30', 'Pediatric migraine checkup', 'Completed'),
+    (20, 1, '2024-11-25', '16:00', 'Heart disease consultation', 'Completed'),
+    (21, 56, '2025-01-10', '09:00', 'General checkup', 'Completed'),
+    (22, 43, '2025-02-15', '10:30', 'Asthma management', 'Completed'),
+    (23, 27, '2025-03-20', '11:00', 'Cholesterol follow-up', 'Completed'),
+    (24, 11, '2025-04-25', '14:00', 'Diabetes follow-up', 'Completed'),
+    (25, 2, '2025-05-30', '15:30', 'Migraine treatment', 'Completed'),
+    (26, 37, '2024-01-15', '09:00', 'Thyroid consultation', 'Completed'),
+    (27, 56, '2024-02-20', '10:00', 'General checkup', 'Completed'),
+    (28, 1, '2024-03-25', '11:00', 'Hypertension follow-up', 'Completed'),
+    (29, 14, '2024-04-30', '14:00', 'Arthritis consultation', 'Completed'),
+    (30, 31, '2024-06-05', '15:30', 'General checkup', 'Completed'),
+    (31, 27, '2024-07-10', '09:00', 'Cholesterol management', 'Completed'),
+    (32, 5, '2024-08-15', '10:30', 'Pediatric checkup', 'Completed'),
+    (33, 43, '2024-09-20', '13:00', 'Asthma follow-up', 'Completed'),
+    (34, 11, '2024-10-25', '14:30', 'Diabetes consultation', 'Completed'),
+    (35, 56, '2024-11-30', '16:00', 'General checkup', 'Completed'),
+    (36, 2, '2025-01-05', '09:00', 'Neurology consultation', 'Completed'),
+    (37, 1, '2025-02-10', '10:00', 'Hypertension checkup', 'Completed'),
+    (38, 27, '2025-03-15', '11:00', 'Cholesterol follow-up', 'Completed'),
+    (39, 31, '2025-04-20', '14:00', 'General checkup', 'Completed'),
+    (40, 14, '2025-05-25', '15:30', 'Arthritis evaluation', 'Completed'),
+    (41, 43, '2024-01-20', '09:00', 'Asthma management', 'Completed'),
+    (42, 56, '2024-02-25', '10:30', 'General checkup', 'Completed'),
+    (43, 5, '2024-03-30', '13:00', 'Pediatric checkup', 'Completed'),
+    (44, 27, '2024-05-05', '14:30', 'Cholesterol follow-up', 'Completed'),
+    (45, 11, '2024-06-10', '16:00', 'Diabetes follow-up', 'Completed'),
+    (46, 2, '2024-07-15', '09:00', 'Neurology consultation', 'Completed'),
+    (47, 1, '2024-08-20', '10:00', 'Hypertension checkup', 'Completed'),
+    (48, 43, '2024-09-25', '11:00', 'Asthma management', 'Completed'),
+    (49, 56, '2024-10-30', '14:00', 'General checkup', 'Completed'),
+    (50, 14, '2024-12-05', '15:30', 'Arthritis consultation', 'Completed'),
+    (51, 27, '2025-01-10', '09:00', 'Cholesterol follow-up', 'Completed'),
+    (52, 31, '2025-02-15', '10:30', 'General checkup', 'Completed'),
+    (53, 5, '2025-03-20', '13:00', 'Pediatric checkup', 'Completed'),
+    (54, 11, '2025-04-25', '14:30', 'Diabetes consultation', 'Completed'),
+    (55, 43, '2025-05-30', '16:00', 'Asthma follow-up', 'Completed'),
+    (56, 2, '2024-01-15', '09:00', 'Neurology consultation', 'Completed'),
+    (57, 1, '2024-02-20', '10:00', 'Hypertension checkup', 'Completed'),
+    (58, 56, '2024-03-25', '11:00', 'General checkup', 'Completed'),
+    (59, 27, '2024-04-30', '14:00', 'Cholesterol follow-up', 'Completed'),
+    (60, 14, '2024-06-05', '15:30', 'Arthritis consultation', 'Completed'),
+    (1, 53, '2024-07-10', '09:00', 'Cardiology follow-up', 'Completed'),
+    (2, 17, '2024-08-15', '10:30', 'Pulmonology consultation', 'Completed'),
+    (3, 37, '2024-09-20', '13:00', 'Endocrinology follow-up', 'Completed'),
+    (4, 5, '2024-10-25', '14:30', 'Pediatric checkup', 'Completed'),
+    (5, 28, '2024-11-30', '16:00', 'Neurology consultation', 'Completed'),
+    (6, 40, '2025-01-05', '09:00', 'Rheumatology consultation', 'Completed'),
+    (7, 27, '2025-02-10', '10:00', 'Cardiology follow-up', 'Completed'),
+    (8, 56, '2025-03-15', '11:00', 'General checkup', 'Completed'),
+    (9, 1, '2025-04-20', '14:00', 'Cardiology consultation', 'Completed'),
+    (10, 31, '2025-05-25', '15:30', 'General checkup', 'Completed'),
+    (11, 43, '2025-07-15', '09:00', 'Asthma follow-up', 'Scheduled'),
+    (12, 2, '2025-07-20', '10:00', 'Neurology consultation', 'Scheduled'),
+    (13, 27, '2025-07-25', '11:00', 'Cardiology consultation', 'Scheduled'),
+    (14, 56, '2025-08-01', '14:00', 'General checkup', 'Scheduled'),
+    (15, 1, '2025-08-05', '15:30', 'Hypertension follow-up', 'Scheduled'),
+    (16, 11, '2025-08-10', '09:00', 'Diabetes consultation', 'Scheduled'),
+    (17, 5, '2025-08-15', '10:30', 'Pediatric checkup', 'Scheduled'),
+    (18, 14, '2025-09-01', '13:00', 'Arthritis consultation', 'Scheduled'),
+    (19, 43, '2025-09-05', '14:30', 'Asthma follow-up', 'Scheduled'),
+    (20, 27, '2025-09-10', '16:00', 'Cholesterol follow-up', 'Scheduled'),
+    (21, 56, '2025-10-01', '09:00', 'General checkup', 'Scheduled'),
+    (22, 2, '2025-10-05', '10:00', 'Neurology consultation', 'Scheduled'),
+    (23, 31, '2025-10-10', '11:00', 'General checkup', 'Scheduled'),
+    (24, 1, '2025-11-01', '14:00', 'Hypertension follow-up', 'Scheduled'),
+    (25, 11, '2025-11-05', '15:30', 'Diabetes consultation', 'Scheduled'),
+    (26, 43, '2025-12-01', '09:00', 'Asthma follow-up', 'Scheduled'),
+    (27, 27, '2024-01-10', '10:00', 'Cardiology consultation', 'Cancelled'),
+    (28, 56, '2024-02-15', '11:00', 'General checkup', 'Cancelled'),
+    (29, 2, '2024-03-20', '14:00', 'Neurology consultation', 'Cancelled'),
+    (30, 1, '2024-04-25', '15:30', 'Hypertension follow-up', 'Cancelled'),
+	(1, 27, '2024-01-15', '09:00', 'Hypertension follow-up', 'Completed'),
+    (2, 43, '2024-02-20', '10:30', 'Asthma checkup', 'Completed'),
+    (3, 11, '2024-03-25', '11:00', 'Diabetes management', 'Completed'),
+    (4, 5, '2024-04-30', '14:00', 'Pediatric checkup', 'Completed'),
+    (5, 2, '2024-05-05', '15:30', 'Migraine evaluation', 'Completed'),
+    (6, 14, '2024-06-10', '09:00', 'Arthritis consultation', 'Completed'),
+    (7, 1, '2024-07-15', '10:00', 'Heart disease follow-up', 'Completed'),
+    (8, 56, '2024-08-20', '13:00', 'General checkup', 'Completed'),
+    (9, 27, '2024-09-25', '14:30', 'Cholesterol checkup', 'Completed'),
+    (10, 31, '2024-10-30', '16:00', 'General checkup', 'Completed'),
+    (11, 37, '2024-11-05', '09:00', 'Thyroid follow-up', 'Completed'),
+    (12, 40, '2024-12-10', '10:30', 'Back pain consultation', 'Completed'),
+    (13, 56, '2025-01-15', '11:00', 'General checkup', 'Completed'),
+    (14, 12, '2025-02-20', '14:00', 'Gastritis treatment', 'Completed'),
+    (15, 45, '2025-03-25', '15:30', 'Allergy testing', 'Completed'),
+    (16, 43, '2025-04-30', '09:00', 'Asthma management', 'Completed'),
+    (17, 5, '2025-05-05', '10:30', 'Pediatric checkup', 'Completed'),
+    (18, 1, '2025-06-10', '13:00', 'Hypertension checkup', 'Completed'),
+    (19, 2, '2024-01-20', '14:30', 'Migraine follow-up', 'Completed'),
+    (20, 11, '2024-02-25', '16:00', 'Diabetes follow-up', 'Completed'),
+    (21, 56, '2024-03-30', '09:00', 'General checkup', 'Completed'),
+    (22, 14, '2024-04-05', '10:00', 'Arthritis evaluation', 'Completed'),
+    (23, 27, '2024-05-10', '11:00', 'Cholesterol follow-up', 'Completed'),
+    (24, 31, '2024-06-15', '14:00', 'General checkup', 'Completed'),
+    (25, 5, '2024-07-20', '15:30', 'Pediatric checkup', 'Completed'),
+    (26, 1, '2024-08-25', '09:00', 'Heart disease consultation', 'Completed'),
+    (27, 43, '2024-09-30', '10:30', 'Asthma follow-up', 'Completed'),
+    (28, 56, '2024-10-05', '13:00', 'General checkup', 'Completed'),
+    (29, 45, '2024-11-10', '14:30', 'Allergy management', 'Completed'),
+    (30, 27, '2024-12-15', '16:00', 'Hypertension follow-up', 'Completed'),
+    (31, 56, '2025-01-20', '09:00', 'General checkup', 'Completed'),
+    (32, 11, '2025-02-25', '10:00', 'Diabetes consultation', 'Completed'),
+    (33, 2, '2025-03-30', '11:00', 'Migraine treatment', 'Completed'),
+    (34, 56, '2025-04-05', '14:00', 'General checkup', 'Completed'),
+    (35, 14, '2025-05-10', '15:30', 'Arthritis follow-up', 'Completed'),
+    (36, 27, '2025-06-15', '09:00', 'Cholesterol management', 'Completed'),
+    (37, 5, '2024-01-25', '10:30', 'Pediatric checkup', 'Completed'),
+    (38, 43, '2024-02-10', '13:00', 'Asthma consultation', 'Completed'),
+    (39, 56, '2024-03-15', '14:30', 'General checkup', 'Completed'),
+    (40, 1, '2024-04-20', '16:00', 'Hypertension management', 'Completed'),
+    (41, 37, '2024-05-25', '09:00', 'Thyroid consultation', 'Completed'),
+    (42, 11, '2024-06-30', '10:00', 'Diabetes follow-up', 'Completed'),
+    (43, 2, '2024-07-05', '11:00', 'Migraine consultation', 'Completed'),
+    (44, 56, '2024-08-10', '14:00', 'General checkup', 'Completed'),
+    (45, 45, '2024-09-15', '15:30', 'Allergy follow-up', 'Completed'),
+    (46, 1, '2024-10-20', '09:00', 'Heart disease follow-up', 'Completed'),
+    (47, 27, '2024-11-25', '10:30', 'Cholesterol consultation', 'Completed'),
+    (48, 43, '2024-12-30', '13:00', 'Asthma management', 'Completed'),
+    (49, 56, '2025-01-05', '14:30', 'General checkup', 'Completed'),
+    (50, 14, '2025-02-10', '16:00', 'Arthritis consultation', 'Completed'),
+    (51, 27, '2025-03-15', '09:00', 'Cholesterol follow-up', 'Completed'),
+    (52, 56, '2025-04-20', '10:30', 'General checkup', 'Completed'),
+    (53, 5, '2025-05-25', '13:00', 'Pediatric checkup', 'Completed'),
+    (54, 11, '2025-06-30', '14:30', 'Diabetes consultation', 'Completed'),
+    (55, 43, '2024-01-30', '16:00', 'Asthma follow-up', 'Completed'),
+    (56, 2, '2024-02-05', '09:00', 'Neurology consultation', 'Completed'),
+    (57, 1, '2024-03-10', '10:00', 'Hypertension checkup', 'Completed'),
+    (58, 56, '2024-04-15', '11:00', 'General checkup', 'Completed'),
+    (59, 27, '2024-05-20', '14:00', 'Cholesterol follow-up', 'Completed'),
+    (60, 14, '2024-06-25', '15:30', 'Arthritis consultation', 'Completed'),
+    (1, 53, '2024-07-30', '09:00', 'Cardiology follow-up', 'Completed'),
+    (2, 17, '2024-08-05', '10:30', 'Pulmonology consultation', 'Completed'),
+    (3, 37, '2024-09-10', '13:00', 'Endocrinology follow-up', 'Completed'),
+    (4, 31, '2024-10-15', '14:30', 'General checkup', 'Completed'),
+    (5, 28, '2024-11-20', '16:00', 'Neurology consultation', 'Completed'),
+    (6, 40, '2024-12-25', '09:00', 'Rheumatology consultation', 'Completed'),
+    (7, 27, '2025-01-30', '10:00', 'Cardiology follow-up', 'Completed'),
+    (8, 56, '2025-02-05', '11:00', 'General checkup', 'Completed'),
+    (9, 1, '2025-03-10', '14:00', 'Cardiology consultation', 'Completed'),
+    (10, 5, '2025-04-15', '15:30', 'Pediatric checkup', 'Completed'),
+    (11, 43, '2025-05-20', '09:00', 'Asthma follow-up', 'Completed'),
+    (12, 2, '2025-06-25', '10:00', 'Neurology consultation', 'Completed'),
+    (13, 27, '2025-07-01', '11:00', 'Cardiology consultation', 'Scheduled'),
+    (14, 56, '2025-07-05', '14:00', 'General checkup', 'Scheduled'),
+    (15, 1, '2025-07-10', '15:30', 'Hypertension follow-up', 'Scheduled'),
+    (16, 11, '2025-07-15', '09:00', 'Diabetes consultation', 'Scheduled'),
+    (17, 5, '2025-07-20', '10:30', 'Pediatric checkup', 'Scheduled'),
+    (18, 14, '2025-08-01', '13:00', 'Arthritis consultation', 'Scheduled'),
+    (19, 43, '2025-08-05', '14:30', 'Asthma follow-up', 'Scheduled'),
+    (20, 27, '2025-08-10', '16:00', 'Cholesterol follow-up', 'Scheduled'),
+    (21, 56, '2025-08-15', '09:00', 'General checkup', 'Scheduled'),
+    (22, 2, '2025-09-01', '10:00', 'Neurology consultation', 'Scheduled'),
+    (23, 31, '2025-09-05', '11:00', 'General checkup', 'Scheduled'),
+    (24, 1, '2025-09-10', '14:00', 'Hypertension follow-up', 'Scheduled'),
+    (25, 11, '2025-10-01', '15:30', 'Diabetes consultation', 'Scheduled'),
+    (26, 43, '2025-10-05', '09:00', 'Asthma follow-up', 'Scheduled'),
+    (27, 27, '2025-10-10', '10:30', 'Cardiology consultation', 'Scheduled'),
+    (28, 56, '2025-11-01', '13:00', 'General checkup', 'Scheduled'),
+    (29, 2, '2025-11-05', '14:30', 'Neurology consultation', 'Scheduled'),
+    (30, 1, '2025-11-10', '16:00', 'Hypertension follow-up', 'Scheduled'),
+    (31, 5, '2025-12-01', '09:00', 'Pediatric checkup', 'Scheduled'),
+    (32, 43, '2025-12-05', '10:30', 'Asthma follow-up', 'Scheduled'),
+    (33, 56, '2024-01-10', '11:00', 'General checkup', 'Cancelled'),
+    (34, 27, '2024-02-15', '14:00', 'Cardiology consultation', 'Cancelled'),
+    (35, 11, '2024-03-20', '15:30', 'Diabetes consultation', 'Cancelled'),
+    (36, 2, '2024-04-25', '09:00', 'Neurology consultation', 'Cancelled'),
+    (37, 1, '2024-05-30', '10:00', 'Hypertension follow-up', 'Cancelled');
 
 INSERT INTO Billing (patient_id, appointment_id, total_amount, payment_status, payment_date, insurance_provider)
 VALUES
-	(1, 1, 100.00, 'Pending', NULL, 'Blue Cross'),
-	(2, 2, 150.00, 'Paid', '2024-11-21', 'Aetna'),
-	(3, 3, 200.00, 'Pending', NULL, 'Cigna'),
-	(4, 4, 120.00, 'Paid', '2024-11-22', 'UnitedHealthcare'),
-	(5, 5, 80.00, 'Pending', NULL, 'Blue Cross'),
-	(6, 6, 500.00, 'Paid', '2024-11-23', 'Aetna'),
-	(7, 7, 250.00, 'Pending', NULL, 'Cigna'),
-	(8, 8, 100.00, 'Paid', '2024-11-24', 'UnitedHealthcare'),
-	(9, 9, 150.00, 'Pending', NULL, 'Blue Cross'),
-	(10, 10, 130.00, 'Paid', '2024-11-25', 'Aetna'),
-	(1, 1, 150.00, 'Paid', '2022-01-16', 'Blue Cross'),
-    (2, 2, 200.00, 'Pending', NULL, 'Aetna'),
-    (3, 3, 300.00, 'Paid', '2022-03-26', 'Cigna'),
-    (4, 4, 180.00, 'Pending', NULL, 'UnitedHealthcare'),
-    (5, 5, 250.00, 'Paid', '2022-05-21', 'Blue Cross'),
-    (6, 6, 220.00, 'Pending', NULL, 'Aetna'),
-    (7, 7, 190.00, 'Paid', '2022-07-31', 'Cigna'),
-    (8, 8, 400.00, 'Pending', NULL, 'UnitedHealthcare'),
-    (9, 9, 160.00, 'Paid', '2022-09-11', 'Blue Cross'),
-    (10, 10, 350.00, 'Pending', NULL, 'Aetna'),
-    (11, 11, 170.00, 'Paid', '2022-11-21', 'Cigna'),
-    (12, 12, 210.00, 'Pending', NULL, 'UnitedHealthcare'),
-    (13, 13, 280.00, 'Paid', '2023-01-31', 'Blue Cross'),
-    (14, 14, 230.00, 'Pending', NULL, 'Aetna'),
-    (15, 15, 260.00, 'Paid', '2023-03-11', 'Cigna'),
-    (16, 16, 190.00, 'Pending', NULL, 'UnitedHealthcare'),
-    (17, 17, 320.00, 'Paid', '2023-05-21', 'Blue Cross'),
-    (18, 18, 240.00, 'Pending', NULL, 'Aetna'),
-    (19, 19, 200.00, 'Paid', '2023-07-31', 'Cigna'),
-    (20, 20, 380.00, 'Pending', NULL, 'UnitedHealthcare'),
-    (21, 21, 150.00, 'Scheduled', NULL, 'Blue Cross'),
-    (22, 22, 220.00, 'Scheduled', NULL, 'Aetna'),
-    (23, 23, 270.00, 'Scheduled', NULL, 'Cigna'),
-    (24, 24, 190.00, 'Scheduled', NULL, 'UnitedHealthcare'),
-    (25, 25, 300.00, 'Scheduled', NULL, 'Blue Cross'),
-    (26, 26, 210.00, 'Scheduled', NULL, 'Aetna'),
-    (27, 27, 250.00, 'Scheduled', NULL, 'Cigna'),
-    (28, 28, 340.00, 'Scheduled', NULL, 'UnitedHealthcare'),
-    (29, 29, 180.00, 'Scheduled', NULL, 'Blue Cross'),
-    (30, 30, 290.00, 'Scheduled', NULL, 'Aetna'),
-	(31, 31, 200.00, 'Paid', '2022-02-16', 'Blue Cross'),
-    (32, 32, 250.00, 'Pending', NULL, 'Aetna'),
-    (33, 33, 310.00, 'Paid', '2022-04-26', 'Cigna'),
-    (34, 34, 190.00, 'Pending', NULL, 'UnitedHealthcare'),
-    (35, 35, 270.00, 'Paid', '2022-07-06', 'Blue Cross'),
-    (36, 36, 230.00, 'Pending', NULL, 'Aetna'),
-    (37, 37, 200.00, 'Paid', '2022-09-16', 'Cigna'),
-    (38, 38, 420.00, 'Pending', NULL, 'UnitedHealthcare'),
-    (39, 39, 170.00, 'Paid', '2022-11-26', 'Blue Cross'),
-    (40, 40, 360.00, 'Pending', NULL, 'Aetna'),
-    (41, 41, 180.00, 'Paid', '2023-02-06', 'Cigna'),
-    (42, 42, 220.00, 'Pending', NULL, 'UnitedHealthcare'),
-    (43, 43, 290.00, 'Paid', '2023-04-16', 'Blue Cross'),
-    (44, 44, 240.00, 'Pending', NULL, 'Aetna'),
-    (45, 45, 280.00, 'Paid', '2023-06-26', 'Cigna'),
-    (46, 46, 200.00, 'Pending', NULL, 'UnitedHealthcare'),
-    (47, 47, 330.00, 'Paid', '2023-09-06', 'Blue Cross'),
-    (48, 48, 250.00, 'Pending', NULL, 'Aetna'),
-    (49, 49, 210.00, 'Paid', '2023-11-16', 'Cigna'),
-    (50, 50, 390.00, 'Pending', NULL, 'UnitedHealthcare'),
-    (51, 51, 160.00, 'Scheduled', NULL, 'Blue Cross'),
-    (52, 52, 230.00, 'Scheduled', NULL, 'Aetna'),
-    (53, 53, 280.00, 'Scheduled', NULL, 'Cigna'),
-    (54, 54, 200.00, 'Scheduled', NULL, 'UnitedHealthcare'),
-    (55, 55, 310.00, 'Scheduled', NULL, 'Blue Cross'),
-    (56, 56, 220.00, 'Scheduled', NULL, 'Aetna'),
-    (57, 57, 260.00, 'Scheduled', NULL, 'Cigna'),
-    (58, 58, 350.00, 'Scheduled', NULL, 'UnitedHealthcare'),
-    (59, 59, 190.00, 'Scheduled', NULL, 'Blue Cross'),
-    (60, 60, 300.00, 'Scheduled', NULL, 'Aetna');
+	(1, 1, 150.00, 'Paid', '2024-11-20', 'Blue Cross'), -- Cardiology Consultation
+	(2, 2, 200.00, 'Paid', '2024-11-22', 'Aetna'), -- Neurology Consultation
+    (3, 3, 250.00, 'Paid', '2024-11-23', 'Cigna'), -- Orthopedic Consultation
+    (4, 4, 180.00, 'Paid', '2024-11-24', 'UnitedHealthcare'), -- Dermatology Consultation
+    (5, 5, 100.00, 'Paid', '2024-11-25', 'Medicare'), -- Pediatric Vaccination
+    (6, 6, 3000.00, 'Paid', '2024-11-26', 'Medicaid'), -- Surgical Procedure
+    (7, 7, 200.00, 'Paid', '2024-11-27', 'Kaiser Permanente'), -- Gynecology Consultation
+    (8, 8, 220.00, 'Paid', '2024-11-28', 'Blue Cross'), -- Psychiatric Consultation
+    (9, 9, 150.00, 'Paid', '2024-11-29', 'Aetna'), -- Ophthalmology Consultation
+    (10, 10, 180.00, 'Paid', '2024-11-30', 'Cigna'), -- ENT Consultation
+    (1, 11, 200.00, 'Paid', '2022-01-20', 'UnitedHealthcare'), -- Endocrinology Consultation
+    (2, 12, 250.00, 'Paid', '2022-02-26', 'Medicare'), -- Gastroenterology Consultation
+    (3, 13, 300.00, 'Paid', '2022-03-31', 'Medicaid'), -- Oncology Consultation
+    (4, 14, 220.00, 'Paid', '2022-04-16', 'Kaiser Permanente'), -- Hematology Consultation
+    (5, 15, 400.00, 'Paid', '2022-05-21', 'Blue Cross'), -- Allergy Testing
+    (6, 16, 300.00, 'Paid', '2022-06-26', 'Aetna'), -- Cardiothoracic Consultation
+    (7, 17, 250.00, 'Paid', '2022-07-31', 'Cigna'), -- Infectious Disease Consultation
+    (8, 18, 350.00, 'Paid', '2022-08-06', 'UnitedHealthcare'), -- Neurosurgery Consultation
+    (9, 19, 280.00, 'Paid', '2022-09-11', 'Medicare'), -- Pediatric Surgery Consultation
+    (10, 20, 300.00, 'Paid', '2022-10-16', 'Medicaid'), -- Plastic Surgery Consultation
+    (11, 21, 200.00, 'Paid', '2022-11-21', 'Kaiser Permanente'), -- Geriatric Consultation
+    (12, 22, 250.00, 'Paid', '2022-12-26', 'Blue Cross'), -- Radiology Consultation
+    (13, 23, 150.00, 'Paid', '2023-01-31', 'Aetna'), -- Cardiology Consultation
+    (14, 24, 200.00, 'Paid', '2023-02-06', 'Cigna'), -- Neurology Consultation
+    (15, 25, 250.00, 'Paid', '2023-03-11', 'UnitedHealthcare'), -- Orthopedic Consultation
+    (16, 26, 180.00, 'Paid', '2023-04-16', 'Medicare'), -- Dermatology Consultation
+    (17, 27, 100.00, 'Paid', '2023-05-21', 'Medicaid'), -- Pediatric Consultation
+    (18, 28, 2500.00, 'Paid', '2023-06-26', 'Kaiser Permanente'), -- Surgical Procedure
+    (19, 29, 200.00, 'Paid', '2023-07-31', 'Blue Cross'), -- Gynecology Consultation
+    (20, 30, 220.00, 'Paid', '2023-08-06', 'Aetna'), -- Psychiatric Consultation
+    (21, 31, 200.00, 'Paid', '2024-01-16', 'Cigna'), -- Endocrinology Consultation
+    (22, 32, 250.00, 'Paid', '2024-02-21', 'UnitedHealthcare'), -- Gastroenterology Consultation
+    (23, 33, 300.00, 'Paid', '2024-03-26', 'Medicare'), -- Oncology Consultation
+    (24, 34, 220.00, 'Paid', '2024-05-01', 'Medicaid'), -- Rheumatology Consultation
+    (25, 35, 200.00, 'Paid', '2024-05-06', 'Kaiser Permanente'), -- Urology Consultation
+    (26, 36, 250.00, 'Paid', '2024-06-11', 'Blue Cross'), -- Nephrology Consultation
+    (27, 37, 200.00, 'Paid', '2024-07-16', 'Aetna'), -- Pulmonology Consultation
+    (28, 38, 220.00, 'Paid', '2024-08-21', 'Cigna'), -- Hematology Consultation
+    (29, 39, 400.00, 'Paid', '2025-01-26', 'UnitedHealthcare'), -- Allergy Testing
+    (30, 40, 300.00, 'Paid', '2025-03-01', 'Medicare'), -- Cardiothoracic Consultation
+    (31, 41, 150.00, 'Paid', '2022-02-16', 'Medicaid'), -- Cardiology Consultation
+    (32, 42, 200.00, 'Paid', '2022-03-21', 'Kaiser Permanente'), -- Neurology Consultation
+    (33, 43, 250.00, 'Paid', '2022-04-26', 'Blue Cross'), -- Orthopedic Consultation
+    (34, 44, 180.00, 'Paid', '2022-05-31', 'Aetna'), -- Dermatology Consultation
+    (35, 45, 100.00, 'Paid', '2022-07-06', 'Cigna'), -- Pediatric Consultation
+    (36, 46, 2500.00, 'Paid', '2022-08-11', 'UnitedHealthcare'), -- Surgical Procedure
+    (37, 47, 200.00, 'Paid', '2022-09-16', 'Medicare'), -- Gynecology Consultation
+    (38, 48, 220.00, 'Paid', '2022-10-21', 'Medicaid'), -- Psychiatric Consultation
+    (39, 49, 150.00, 'Paid', '2022-11-26', 'Kaiser Permanente'), -- Ophthalmology Consultation
+    (40, 50, 180.00, 'Paid', '2022-12-31', 'Blue Cross'), -- ENT Consultation
+    (41, 51, 200.00, 'Paid', '2023-02-06', 'Aetna'), -- Endocrinology Consultation
+    (42, 52, 250.00, 'Paid', '2023-03-11', 'Cigna'), -- Gastroenterology Consultation
+    (43, 53, 300.00, 'Paid', '2023-04-16', 'UnitedHealthcare'), -- Oncology Consultation
+    (44, 54, 220.00, 'Paid', '2023-05-21', 'Medicare'), -- Rheumatology Consultation
+    (45, 55, 200.00, 'Paid', '2023-06-26', 'Medicaid'), -- Urology Consultation
+    (46, 56, 250.00, 'Paid', '2023-08-02', 'Kaiser Permanente'), -- Nephrology Consultation
+    (47, 57, 200.00, 'Paid', '2023-09-06', 'Blue Cross'), -- Pulmonology Consultation
+    (48, 58, 220.00, 'Paid', '2023-10-11', 'Aetna'), -- Hematology Consultation
+    (49, 59, 400.00, 'Paid', '2023-11-16', 'Cigna'), -- Allergy Testing
+    (50, 60, 300.00, 'Paid', '2023-12-21', 'UnitedHealthcare'), -- Cardiothoracic Consultation
+    (51, 61, 250.00, 'Paid', '2024-02-11', 'Medicare'), -- Infectious Disease Consultation
+    (52, 62, 350.00, 'Paid', '2024-03-16', 'Medicaid'), -- Neurosurgery Consultation
+    (53, 63, 280.00, 'Paid', '2024-04-21', 'Kaiser Permanente'), -- Pediatric Surgery Consultation
+    (54, 64, 300.00, 'Paid', '2024-05-26', 'Blue Cross'), -- Plastic Surgery Consultation
+    (55, 65, 200.00, 'Paid', '2024-07-01', 'Aetna'), -- Geriatric Consultation
+    (56, 66, 250.00, 'Paid', '2024-08-06', 'Cigna'), -- Radiology Consultation
+    (57, 67, 150.00, 'Paid', '2024-09-11', 'UnitedHealthcare'), -- Cardiology Consultation
+    (58, 68, 200.00, 'Paid', '2024-10-16', 'Medicare'), -- Neurology Consultation
+    (59, 69, 250.00, 'Paid', '2025-01-21', 'Medicaid'), -- Orthopedic Consultation
+    (60, 70, 180.00, 'Paid', '2025-02-26', 'Kaiser Permanente'), -- Dermatology Consultation
+    (1, 71, 150.00, 'Paid', '2025-03-04', 'Blue Cross'), -- Cardiology Consultation
+    (2, 72, 200.00, 'Paid', '2025-03-05', 'Aetna'), -- Pulmonology Consultation
+    (3, 73, 200.00, 'Paid', '2025-03-06', 'Cigna'), -- Endocrinology Consultation
+    (4, 74, 100.00, 'Paid', '2025-03-07', 'UnitedHealthcare'), -- Pediatric Consultation
+    (5, 75, 200.00, 'Paid', '2025-03-08', 'Medicare'), -- Neurology Consultation
+    (6, 76, 220.00, 'Paid', '2025-03-11', 'Medicaid'), -- Rheumatology Consultation
+    (7, 77, 150.00, 'Paid', '2025-03-12', 'Kaiser Permanente'), -- Cardiology Consultation
+    (8, 78, 120.00, 'Paid', '2025-03-13', 'Blue Cross'), -- General Consultation
+    (9, 79, 180.00, 'Paid', '2025-03-14', 'Aetna'), -- Cardiology Consultation
+    (10, 80, 100.00, 'Paid', '2025-03-15', 'Cigna'), -- Pediatric Consultation
+    (11, 81, 200.00, 'Paid', '2025-03-18', 'UnitedHealthcare'), -- Endocrinology Consultation
+    (12, 82, 220.00, 'Paid', '2025-03-19', 'Medicare'), -- Rheumatology Consultation
+    (13, 83, 120.00, 'Paid', '2025-03-20', 'Medicaid'), -- General Consultation
+    (14, 84, 250.00, 'Paid', '2025-03-21', 'Kaiser Permanente'), -- Gastroenterology Consultation
+    (15, 85, 400.00, 'Paid', '2025-03-22', 'Blue Cross'), -- Allergy Testing
+    (16, 86, 200.00, 'Paid', '2025-03-25', 'Aetna'), -- Pulmonology Consultation
+    (17, 87, 120.00, 'Paid', '2025-03-26', 'Cigna'), -- General Consultation
+    (18, 88, 150.00, 'Paid', '2025-03-27', 'UnitedHealthcare'), -- Cardiology Consultation
+    (19, 89, 200.00, 'Paid', '2025-03-28', 'Medicare'), -- Neurology Consultation
+    (20, 90, 200.00, 'Paid', '2025-03-29', 'Medicaid'), -- Endocrinology Consultation
+    (21, 91, 120.00, 'Paid', '2025-04-02', 'Kaiser Permanente'), -- General Consultation
+    (22, 92, 220.00, 'Paid', '2025-04-03', 'Blue Cross'), -- Rheumatology Consultation
+    (23, 93, 120.00, 'Paid', '2025-04-04', 'Aetna'), -- General Consultation
+    (24, 94, 180.00, 'Paid', '2025-04-05', 'Cigna'), -- Cardiology Consultation
+    (25, 95, 100.00, 'Paid', '2025-04-08', 'UnitedHealthcare'), -- Pediatric Consultation
+    (26, 96, 150.00, 'Paid', '2025-04-09', 'Medicare'), -- Cardiology Consultation
+    (27, 97, 200.00, 'Paid', '2025-04-10', 'Medicaid'), -- Pulmonology Consultation
+    (28, 98, 120.00, 'Paid', '2025-04-11', 'Kaiser Permanente'), -- General Consultation
+    (30, 100, 150.00, 'Paid', '2025-04-15', 'Blue Cross'), -- Cardiology Consultation
+    (31, 101, 120.00, 'Paid', '2025-04-16', 'Aetna'), -- General Consultation
+    (32, 102, 200.00, 'Paid', '2025-04-17', 'Cigna'), -- Endocrinology Consultation
+    (33, 103, 200.00, 'Paid', '2025-04-18', 'UnitedHealthcare'), -- Neurology Consultation
+    (34, 104, 120.00, 'Paid', '2025-04-19', 'Medicare'), -- General Consultation
+    (35, 105, 220.00, 'Paid', '2025-04-22', 'Medicaid'), -- Rheumatology Consultation
+    (36, 106, 180.00, 'Paid', '2025-04-23', 'Kaiser Permanente'), -- Cardiology Consultation
+    (37, 107, 120.00, 'Paid', '2025-04-24', 'Blue Cross'), -- General Consultation
+    (38, 108, 200.00, 'Paid', '2025-04-25', 'Aetna'), -- Pulmonology Consultation
+    (39, 109, 120.00, 'Paid', '2025-04-26', 'Cigna'), -- General Consultation
+    (40, 110, 150.00, 'Paid', '2025-05-02', 'UnitedHealthcare'), -- Cardiology Consultation
+    (42, 112, 200.00, 'Paid', '2025-05-06', 'Medicare'), -- Endocrinology Consultation
+    (43, 113, 200.00, 'Paid', '2025-05-07', 'Medicaid'), -- Neurology Consultation
+    (46, 116, 150.00, 'Paid', '2025-05-10', 'Kaiser Permanente'), -- Cardiology Consultation
+    (48, 118, 180.00, 'Paid', '2025-05-14', 'Blue Cross'), -- Cardiology Consultation
+    (58, 128, 150.00, 'Paid', '2025-07-11', 'Aetna'), -- Cardiology Consultation
+    (11, 141, 150.00, 'Paid', '2024-02-11', 'Cigna'), -- Cardiology Consultation
+    (12, 142, 200.00, 'Paid', '2024-03-16', 'UnitedHealthcare'), -- Endocrinology Consultation
+    (13, 143, 120.00, 'Paid', '2024-04-21', 'Medicare'), -- General Consultation
+    (14, 144, 200.00, 'Paid', '2024-05-26', 'Medicaid'), -- Neurology Consultation
+    (15, 145, 200.00, 'Paid', '2024-07-01', 'Kaiser Permanente'), -- Pulmonology Consultation
+    (16, 146, 150.00, 'Paid', '2024-07-06', 'Blue Cross'), -- Cardiology Consultation
+    (17, 147, 120.00, 'Paid', '2024-08-11', 'Aetna'), -- General Consultation
+    (18, 148, 220.00, 'Paid', '2024-09-16', 'Cigna'), -- Rheumatology Consultation
+    (19, 149, 100.00, 'Paid', '2024-10-21', 'UnitedHealthcare'), -- Pediatric Consultation
+    (20, 150, 150.00, 'Paid', '2024-11-26', 'Medicare'), -- Cardiology Consultation
+    (21, 151, 120.00, 'Paid', '2025-01-11', 'Medicaid'), -- General Consultation
+    (22, 152, 200.00, 'Paid', '2025-02-16', 'Kaiser Permanente'), -- Pulmonology Consultation
+    (23, 153, 180.00, 'Paid', '2025-03-21', 'Blue Cross'), -- Cardiology Consultation
+    (24, 154, 200.00, 'Paid', '2025-04-26', 'Aetna'), -- Endocrinology Consultation
+    (25, 155, 200.00, 'Paid', '2025-05-31', 'Cigna'), -- Neurology Consultation
+    (26, 156, 200.00, 'Paid', '2024-01-16', 'UnitedHealthcare'), -- Endocrinology Consultation
+    (27, 157, 120.00, 'Paid', '2024-02-21', 'Medicare'), -- General Consultation
+    (28, 158, 150.00, 'Paid', '2024-03-26', 'Medicaid'), -- Cardiology Consultation
+    (29, 159, 220.00, 'Paid', '2024-05-01', 'Kaiser Permanente'), -- Rheumatology Consultation
+    (30, 160, 120.00, 'Paid', '2024-06-06', 'Blue Cross'), -- General Consultation
+    (31, 161, 180.00, 'Paid', '2024-07-11', 'Aetna'), -- Cardiology Consultation
+    (32, 162, 100.00, 'Paid', '2024-08-16', 'Cigna'), -- Pediatric Consultation
+    (33, 163, 200.00, 'Paid', '2024-09-21', 'UnitedHealthcare'), -- Pulmonology Consultation
+    (34, 164, 200.00, 'Paid', '2024-10-26', 'Medicare'), -- Endocrinology Consultation
+    (35, 165, 120.00, 'Paid', '2024-12-01', 'Medicaid'), -- General Consultation
+    (36, 166, 200.00, 'Paid', '2025-01-06', 'Kaiser Permanente'), -- Neurology Consultation
+    (37, 167, 150.00, 'Paid', '2025-02-11', 'Blue Cross'), -- Cardiology Consultation
+    (38, 168, 180.00, 'Paid', '2025-03-16', 'Aetna'), -- Cardiology Consultation
+    (39, 169, 120.00, 'Paid', '2025-04-21', 'Cigna'), -- General Consultation
+    (40, 170, 220.00, 'Paid', '2025-05-26', 'UnitedHealthcare'), -- Rheumatology Consultation
+    (41, 171, 200.00, 'Paid', '2024-01-21', 'Medicare'), -- Pulmonology Consultation
+    (42, 172, 120.00, 'Paid', '2024-02-26', 'Medicaid'), -- General Consultation
+    (43, 173, 100.00, 'Paid', '2024-03-31', 'Kaiser Permanente'), -- Pediatric Consultation
+    (44, 174, 180.00, 'Paid', '2024-05-06', 'Blue Cross'), -- Cardiology Consultation
+    (45, 175, 200.00, 'Paid', '2024-06-11', 'Aetna'), -- Endocrinology Consultation
+    (46, 176, 200.00, 'Paid', '2024-07-16', 'Cigna'), -- Neurology Consultation
+    (47, 177, 150.00, 'Paid', '2024-08-21', 'UnitedHealthcare'), -- Cardiology Consultation
+    (48, 178, 200.00, 'Paid', '2024-09-26', 'Medicare'), -- Pulmonology Consultation
+    (49, 179, 120.00, 'Paid', '2024-10-31', 'Medicaid'), -- General Consultation
+    (50, 180, 220.00, 'Paid', '2024-12-06', 'Kaiser Permanente'), -- Rheumatology Consultation
+    (51, 181, 180.00, 'Paid', '2025-01-11', 'Blue Cross'), -- Cardiology Consultation
+    (52, 182, 120.00, 'Paid', '2025-02-16', 'Aetna'), -- General Consultation
+    (53, 183, 100.00, 'Paid', '2025-03-21', 'Cigna'), -- Pediatric Consultation
+    (54, 184, 200.00, 'Paid', '2025-04-26', 'UnitedHealthcare'), -- Endocrinology Consultation
+    (55, 185, 200.00, 'Paid', '2025-05-31', 'Medicare'), -- Pulmonology Consultation
+    (56, 186, 200.00, 'Paid', '2024-01-16', 'Medicaid'), -- Neurology Consultation
+    (57, 187, 150.00, 'Paid', '2024-02-21', 'Kaiser Permanente'), -- Cardiology Consultation
+    (58, 188, 120.00, 'Paid', '2024-03-26', 'Blue Cross'), -- General Consultation
+    (59, 189, 180.00, 'Paid', '2024-05-01', 'Aetna'), -- Cardiology Consultation
+    (60, 190, 220.00, 'Paid', '2024-06-06', 'Cigna'), -- Rheumatology Consultation
+    (1, 191, 150.00, 'Paid', '2024-07-11', 'UnitedHealthcare'), -- Cardiology Consultation
+    (2, 192, 200.00, 'Paid', '2024-08-16', 'Medicare'), -- Pulmonology Consultation
+    (3, 193, 200.00, 'Paid', '2024-09-21', 'Medicaid'), -- Endocrinology Consultation
+    (4, 194, 100.00, 'Paid', '2024-10-26', 'Kaiser Permanente'), -- Pediatric Consultation
+    (5, 195, 200.00, 'Paid', '2024-12-01', 'Blue Cross'), -- Neurology Consultation
+    (6, 196, 220.00, 'Paid', '2025-01-06', 'Aetna'), -- Rheumatology Consultation
+    (7, 197, 150.00, 'Paid', '2025-02-11', 'Cigna'), -- Cardiology Consultation
+    (8, 198, 120.00, 'Paid', '2025-03-16', 'UnitedHealthcare'), -- General Consultation
+    (9, 199, 150.00, 'Paid', '2025-04-21', 'Medicare'), -- Cardiology Consultation
+    (10, 200, 120.00, 'Paid', '2025-05-26', 'Medicaid'), -- General Consultation
+    (1, 211, 150.00, 'Paid', '2024-01-15', 'Kaiser Permanente'), -- Cardiology Consultation
+    (2, 212, 200.00, 'Paid', '2024-02-21', 'Blue Cross'), -- Pulmonology Consultation
+    (3, 213, 200.00, 'Paid', '2024-03-26', 'Aetna'), -- Endocrinology Consultation
+    (4, 214, 100.00, 'Paid', '2024-05-01', 'Cigna'), -- Pediatric Consultation
+    (5, 215, 200.00, 'Paid', '2024-05-06', 'UnitedHealthcare'), -- Neurology Consultation
+    (6, 216, 220.00, 'Paid', '2024-06-11', 'Medicare'), -- Rheumatology Consultation
+    (7, 217, 150.00, 'Paid', '2024-07-16', 'Medicaid'), -- Cardiology Consultation
+    (8, 218, 120.00, 'Paid', '2024-08-21', 'Kaiser Permanente'), -- General Consultation
+    (9, 219, 180.00, 'Paid', '2024-09-26', 'Blue Cross'), -- Cardiology Consultation
+    (10, 220, 120.00, 'Paid', '2024-10-31', 'Aetna'), -- General Consultation
+    (11, 221, 200.00, 'Paid', '2024-11-06', 'Cigna'), -- Endocrinology Consultation
+    (12, 222, 220.00, 'Paid', '2024-12-11', 'UnitedHealthcare'), -- Rheumatology Consultation
+    (13, 223, 120.00, 'Paid', '2025-01-16', 'Medicare'), -- General Consultation
+    (14, 224, 250.00, 'Paid', '2025-02-21', 'Medicaid'), -- Gastroenterology Consultation
+    (15, 225, 400.00, 'Paid', '2025-03-26', 'Kaiser Permanente'), -- Allergy Testing
+    (16, 226, 200.00, 'Paid', '2025-05-01', 'Blue Cross'), -- Pulmonology Consultation
+    (17, 227, 100.00, 'Paid', '2025-05-06', 'Aetna'), -- Pediatric Consultation
+    (18, 228, 150.00, 'Paid', '2025-06-11', 'Cigna'), -- Cardiology Consultation
+    (19, 229, 200.00, 'Paid', '2024-01-21', 'UnitedHealthcare'), -- Neurology Consultation
+    (20, 230, 200.00, 'Paid', '2024-02-26', 'Medicare'), -- Endocrinology Consultation
+    (21, 231, 120.00, 'Paid', '2024-03-31', 'Medicaid'), -- General Consultation
+    (22, 232, 220.00, 'Paid', '2024-04-06', 'Kaiser Permanente'), -- Rheumatology Consultation
+    (23, 233, 180.00, 'Paid', '2024-05-11', 'Blue Cross'), -- Cardiology Consultation
+    (24, 234, 120.00, 'Paid', '2024-06-16', 'Aetna'), -- General Consultation
+    (25, 235, 100.00, 'Paid', '2024-07-21', 'Cigna'), -- Pediatric Consultation
+    (26, 236, 150.00, 'Paid', '2024-08-26', 'UnitedHealthcare'), -- Cardiology Consultation
+    (27, 237, 200.00, 'Paid', '2024-10-01', 'Medicare'), -- Pulmonology Consultation
+    (28, 238, 120.00, 'Paid', '2024-10-06', 'Medicaid'), -- General Consultation
+    (29, 239, 400.00, 'Paid', '2024-11-11', 'Kaiser Permanente'), -- Allergy Testing
+    (30, 240, 150.00, 'Paid', '2024-12-16', 'Blue Cross'), -- Cardiology Consultation
+    (31, 241, 120.00, 'Paid', '2025-01-21', 'Aetna'), -- General Consultation
+    (32, 242, 200.00, 'Paid', '2025-02-26', 'Cigna'), -- Endocrinology Consultation
+    (33, 243, 200.00, 'Paid', '2025-03-31', 'UnitedHealthcare'), -- Neurology Consultation
+    (34, 244, 120.00, 'Paid', '2025-04-06', 'Medicare'), -- General Consultation
+    (35, 245, 220.00, 'Paid', '2025-05-11', 'Medicaid'), -- Rheumatology Consultation
+    (36, 246, 180.00, 'Paid', '2025-06-16', 'Kaiser Permanente'), -- Cardiology Consultation
+    (37, 247, 100.00, 'Paid', '2024-01-26', 'Blue Cross'), -- Pediatric Consultation
+    (38, 248, 200.00, 'Paid', '2024-02-11', 'Aetna'), -- Pulmonology Consultation
+    (39, 249, 120.00, 'Paid', '2024-03-16', 'Cigna'), -- General Consultation
+    (40, 250, 150.00, 'Paid', '2024-04-21', 'UnitedHealthcare'), -- Cardiology Consultation
+    (41, 251, 200.00, 'Paid', '2024-05-26', 'Medicare'), -- Endocrinology Consultation
+    (42, 252, 200.00, 'Paid', '2024-07-01', 'Medicaid'), -- Endocrinology Consultation
+    (43, 253, 200.00, 'Paid', '2024-07-06', 'Kaiser Permanente'), -- Neurology Consultation
+    (44, 254, 120.00, 'Paid', '2024-08-11', 'Blue Cross'), -- General Consultation
+    (45, 255, 400.00, 'Paid', '2024-09-16', 'Aetna'), -- Allergy Testing
+    (46, 256, 150.00, 'Paid', '2024-10-21', 'Cigna'), -- Cardiology Consultation
+    (47, 257, 180.00, 'Paid', '2024-11-26', 'UnitedHealthcare'), -- Cardiology Consultation
+    (48, 258, 200.00, 'Paid', '2024-12-31', 'Medicare'), -- Pulmonology Consultation
+    (49, 259, 120.00, 'Paid', '2025-01-06', 'Medicaid'), -- General Consultation
+    (50, 260, 220.00, 'Paid', '2025-02-11', 'Kaiser Permanente'), -- Rheumatology Consultation
+    (51, 261, 180.00, 'Paid', '2025-03-16', 'Blue Cross'), -- Cardiology Consultation
+    (52, 262, 120.00, 'Paid', '2025-04-21', 'Aetna'), -- General Consultation
+    (53, 263, 100.00, 'Paid', '2025-05-26', 'Cigna'), -- Pediatric Consultation
+    (54, 264, 200.00, 'Paid', '2025-06-30', 'UnitedHealthcare'), -- Endocrinology Consultation
+    (55, 265, 200.00, 'Paid', '2024-01-31', 'Medicare'), -- Pulmonology Consultation
+    (56, 266, 200.00, 'Paid', '2024-02-06', 'Medicaid'), -- Neurology Consultation
+    (57, 267, 150.00, 'Paid', '2024-03-11', 'Kaiser Permanente'), -- Cardiology Consultation
+    (58, 268, 120.00, 'Paid', '2024-04-16', 'Blue Cross'), -- General Consultation
+    (59, 269, 180.00, 'Paid', '2024-05-21', 'Aetna'), -- Cardiology Consultation
+    (60, 270, 220.00, 'Paid', '2024-06-26', 'Cigna'), -- Rheumatology Consultation
+    (1, 271, 150.00, 'Paid', '2024-07-31', 'UnitedHealthcare'), -- Cardiology Consultation
+    (2, 272, 200.00, 'Paid', '2024-08-06', 'Medicare'), -- Pulmonology Consultation
+    (3, 273, 200.00, 'Paid', '2024-09-11', 'Medicaid'), -- Endocrinology Consultation
+    (4, 274, 120.00, 'Paid', '2024-10-16', 'Kaiser Permanente'), -- General Consultation
+    (5, 275, 200.00, 'Paid', '2024-11-21', 'Blue Cross'), -- Neurology Consultation
+    (6, 276, 220.00, 'Paid', '2024-12-26', 'Aetna'), -- Rheumatology Consultation
+    (7, 277, 150.00, 'Paid', '2025-01-31', 'Cigna'), -- Cardiology Consultation
+    (8, 278, 120.00, 'Paid', '2025-02-06', 'UnitedHealthcare'), -- General Consultation
+    (9, 279, 150.00, 'Paid', '2025-03-11', 'Medicare'), -- Cardiology Consultation
+    (10, 280, 100.00, 'Paid', '2025-04-16', 'Medicaid'), -- Pediatric Consultation
+    (11, 281, 200.00, 'Paid', '2025-05-21', 'Kaiser Permanente'), -- Pulmonology Consultation
+    (12, 282, 200.00, 'Paid', '2025-06-26', 'Blue Cross'); -- Neurology Consultation
 
 INSERT INTO Staff (first_name, last_name, role, department_id, contact_number, email, address, hire_date) 
 VALUES
@@ -486,7 +908,6 @@ VALUES
     ('AMB018', 'Available', 50, '2023-09-10'),
     ('AMB019', 'On Duty', 55, '2023-10-15'),
     ('AMB020', 'Maintenance', 60, '2023-11-20');
-
 
 INSERT INTO Ambulance_Log (ambulance_id, patient_id, pickup_location, dropoff_location, pickup_time, dropoff_time, status) 
 VALUES
@@ -965,7 +1386,253 @@ VALUES
     (97, 37, 50, '2025-04-20'),  -- Furosemide for Patient 37 (Fluid Retention)
     (98, 38, 60, '2025-05-15'),  -- Sertraline for Patient 38 (Depression)
     (99, 39, 20, '2025-06-10'),  -- Levofloxacin for Patient 39 (UTI)
-    (100, 40, 15, '2025-07-05'); -- Lidocaine for Patient 40 (Contact Dermatitis)
+    (100, 40, 15, '2025-07-05'), -- Lidocaine for Patient 40 (Contact Dermatitis)
+	(11, 1, 60, '2024-11-20'), -- Lisinopril for Patient 1 (Hypertension, Cardiology)
+    (13, 2, 10, '2024-11-22'), -- Albuterol for Patient 2 (Asthma, Neurology)
+    (23, 3, 20, '2024-11-23'), -- Tramadol for Patient 3 (Acute Pain, Orthopedic)
+    (18, 4, 50, '2024-11-24'), -- Loratadine for Patient 4 (Seasonal Allergies, Dermatology)
+    (85, 5, 30, '2022-11-25'), -- Citalopram for Patient 5 (Depression, Pediatric)
+    (30, 6, 15, '2024-11-26'), -- Lidocaine for Patient 6 (Contact Dermatitis, Surgical)
+    (21, 7, 60, '2024-11-27'), -- Fluoxetine for Patient 7 (Anxiety Disorder, Gynecology)
+    (15, 8, 30, '2024-11-28'), -- Citalopram for Patient 8 (Depression, Psychiatric)
+    (19, 9, 90, '2024-11-29'), -- Gabapentin for Patient 9 (Neuropathic Pain, Ophthalmology)
+    (14, 10, 90, '2024-11-30'), -- Atorvastatin for Patient 10 (High Cholesterol, ENT)
+    (1, 1, 10, '2022-01-20'), -- Levothyroxine for Patient 1 (Hypothyroidism, Endocrinology)
+    (22, 12, 50, '2022-02-26'), -- Pantoprazole for Patient 12 (GERD, Gastroenterology)
+    (3, 13, 5, '2022-03-31'), -- Doxorubicin for Patient 13 (Breast Cancer, Oncology)
+    (7, 14, 10, '2022-04-16'), -- Ferrous Sulfate for Patient 14 (Anemia, Hematology)
+    (8, 15, 50, '2022-05-21'), -- Cetirizine for Patient 15 (Allergic Rhinitis, Allergy)
+    (12, 16, 50, '2022-06-26'), -- Metoprolol for Patient 16 (Heart Failure, Cardiothoracic)
+    (9, 17, 100, '2022-07-31'), -- Isoniazid for Patient 17 (Tuberculosis, Infectious Disease)
+    (19, 18, 90, '2022-08-06'), -- Gabapentin for Patient 18 (Neuropathic Pain, Neurosurgery)
+    (19, 19, 90, '2022-09-11'), -- Gabapentin for Patient 19 (Neuropathic Pain, Pediatric Surgery)
+    (20, 20, 30, '2022-10-16'), -- Warfarin for Patient 20 (Atrial Fibrillation, Plastic Surgery)
+    (21, 21, 60, '2022-11-21'), -- Fluoxetine for Patient 21 (Anxiety Disorder, Geriatric)
+    (22, 22, 50, '2022-12-26'), -- Pantoprazole for Patient 22 (GERD, Radiology)
+    (11, 23, 60, '2023-01-31'), -- Lisinopril for Patient 23 (Hypertension, Cardiology)
+    (15, 24, 30, '2023-02-06'), -- Citalopram for Patient 24 (Depression, Neurology)
+    (23, 25, 20, '2023-03-11'), -- Tramadol for Patient 25 (Acute Pain, Orthopedic)
+    (18, 26, 50, '2023-04-16'), -- Loratadine for Patient 26 (Seasonal Allergies, Dermatology)
+    (85, 27, 30, '2023-05-21'), -- Citalopram for Patient 27 (Depression, Pediatric)
+    (30, 28, 15, '2023-06-26'), -- Lidocaine for Patient 28 (Contact Dermatitis, Surgical)
+    (21, 29, 60, '2023-07-31'), -- Fluoxetine for Patient 29 (Anxiety Disorder, Gynecology)
+    (15, 30, 30, '2023-08-06'), -- Citalopram for Patient 30 (Depression, Psychiatric)
+    (1, 21, 10, '2024-01-16'), -- Levothyroxine for Patient 21 (Hypothyroidism, Endocrinology)
+    (22, 22, 50, '2024-02-21'), -- Pantoprazole for Patient 22 (GERD, Gastroenterology)
+    (3, 23, 5, '2024-03-26'), -- Doxorubicin for Patient 23 (Breast Cancer, Oncology)
+    (4, 24, 20, '2024-05-01'), -- Methotrexate for Patient 24 (Rheumatoid Arthritis, Rheumatology)
+    (5, 25, 30, '2024-05-06'), -- Tamsulosin for Patient 25 (Benign Prostatic Hyperplasia, Urology)
+    (27, 26, 50, '2024-06-11'), -- Furosemide for Patient 26 (Fluid Retention, Nephrology)
+    (13, 27, 10, '2024-07-16'), -- Albuterol for Patient 27 (Asthma, Pulmonology)
+    (7, 28, 10, '2024-08-21'), -- Ferrous Sulfate for Patient 28 (Anemia, Hematology)
+    (8, 29, 50, '2025-01-26'), -- Cetirizine for Patient 29 (Allergic Rhinitis, Allergy)
+    (12, 30, 50, '2025-03-01'), -- Metoprolol for Patient 30 (Heart Failure, Cardiothoracic)
+    (11, 31, 60, '2022-02-16'), -- Lisinopril for Patient 31 (Hypertension, Cardiology)
+    (15, 32, 30, '2022-03-21'), -- Citalopram for Patient 32 (Depression, Neurology)
+    (23, 33, 20, '2022-04-26'), -- Tramadol for Patient 33 (Acute Pain, Orthopedic)
+    (18, 34, 50, '2022-05-31'), -- Loratadine for Patient 34 (Seasonal Allergies, Dermatology)
+    (85, 35, 30, '2022-07-06'), -- Citalopram for Patient 35 (Depression, Pediatric)
+    (30, 36, 15, '2022-08-11'), -- Lidocaine for Patient 36 (Contact Dermatitis, Surgical)
+    (21, 37, 60, '2022-09-16'), -- Fluoxetine for Patient 37 (Anxiety Disorder, Gynecology)
+    (15, 38, 30, '2022-10-21'), -- Citalopram for Patient 38 (Depression, Psychiatric)
+    (19, 39, 90, '2022-11-26'), -- Gabapentin for Patient 39 (Neuropathic Pain, Ophthalmology)
+    (14, 40, 90, '2022-12-31'), -- Atorvastatin for Patient 40 (High Cholesterol, ENT)
+    (1, 41, 10, '2023-02-06'), -- Levothyroxine for Patient 41 (Hypothyroidism, Endocrinology)
+    (22, 42, 50, '2023-03-11'), -- Pantoprazole for Patient 42 (GERD, Gastroenterology)
+    (3, 43, 5, '2023-04-16'), -- Doxorubicin for Patient 43 (Breast Cancer, Oncology)
+    (4, 44, 20, '2023-05-21'), -- Methotrexate for Patient 44 (Rheumatoid Arthritis, Rheumatology)
+    (5, 45, 30, '2023-06-26'), -- Tamsulosin for Patient 45 (Benign Prostatic Hyperplasia, Urology)
+    (27, 46, 50, '2023-08-02'), -- Furosemide for Patient 46 (Fluid Retention, Nephrology)
+    (13, 47, 10, '2023-09-06'), -- Albuterol for Patient 47 (Asthma, Pulmonology)
+    (7, 48, 10, '2023-10-11'), -- Ferrous Sulfate for Patient 48 (Anemia, Hematology)
+    (8, 49, 50, '2023-11-16'), -- Cetirizine for Patient 49 (Allergic Rhinitis, Allergy)
+    (12, 50, 50, '2023-12-21'), -- Metoprolol for Patient 50 (Heart Failure, Cardiothoracic)
+    (9, 51, 100, '2024-02-11'), -- Isoniazid for Patient 51 (Tuberculosis, Infectious Disease)
+    (19, 52, 90, '2024-03-16'), -- Gabapentin for Patient 52 (Neuropathic Pain, Neurosurgery)
+    (19, 53, 90, '2024-04-21'), -- Gabapentin for Patient 53 (Neuropathic Pain, Pediatric Surgery)
+    (20, 54, 30, '2024-05-26'), -- Warfarin for Patient 54 (Atrial Fibrillation, Plastic Surgery)
+    (21, 55, 60, '2024-07-01'), -- Fluoxetine for Patient 55 (Anxiety Disorder, Geriatric)
+    (22, 56, 50, '2024-08-06'), -- Pantoprazole for Patient 56 (GERD, Radiology)
+    (11, 57, 60, '2024-09-11'), -- Lisinopril for Patient 57 (Hypertension, Cardiology)
+    (15, 58, 30, '2024-10-16'), -- Citalopram for Patient 58 (Depression, Neurology)
+    (23, 59, 20, '2025-01-21'), -- Tramadol for Patient 59 (Acute Pain, Orthopedic)
+    (18, 60, 50, '2025-02-26'), -- Loratadine for Patient 60 (Seasonal Allergies, Dermatology)
+    (11, 1, 60, '2025-03-04'), -- Lisinopril for Patient 1 (Hypertension, Cardiology)
+    (13, 2, 10, '2025-03-05'), -- Albuterol for Patient 2 (Asthma, Pulmonology)
+    (1, 3, 10, '2025-03-06'), -- Levothyroxine for Patient 3 (Hypothyroidism, Endocrinology)
+    (85, 4, 30, '2025-03-07'), -- Citalopram for Patient 4 (Depression, Pediatric)
+    (15, 5, 30, '2025-03-08'), -- Citalopram for Patient 5 (Depression, Neurology)
+    (4, 6, 20, '2025-03-11'), -- Methotrexate for Patient 6 (Rheumatoid Arthritis, Rheumatology)
+    (11, 7, 60, '2025-03-12'), -- Lisinopril for Patient 7 (Hypertension, Cardiology)
+    (40, 8, 100, '2025-03-13'), -- Acetaminophen for Patient 8 (Fever, General)
+    (11, 9, 60, '2025-03-14'), -- Lisinopril for Patient 9 (Hypertension, Cardiology)
+    (85, 10, 30, '2025-03-15'), -- Citalopram for Patient 10 (Depression, Pediatric)
+    (1, 11, 10, '2025-03-18'), -- Levothyroxine for Patient 11 (Hypothyroidism, Endocrinology)
+    (4, 12, 20, '2025-03-19'), -- Methotrexate for Patient 12 (Rheumatoid Arthritis, Rheumatology)
+    (40, 13, 100, '2025-03-20'), -- Acetaminophen for Patient 13 (Fever, General)
+    (22, 14, 50, '2025-03-21'), -- Pantoprazole for Patient 14 (GERD, Gastroenterology)
+    (8, 15, 50, '2025-03-22'), -- Cetirizine for Patient 15 (Allergic Rhinitis, Allergy)
+    (13, 16, 10, '2025-03-25'), -- Albuterol for Patient 16 (Asthma, Pulmonology)
+    (40, 17, 100, '2025-03-26'), -- Acetaminophen for Patient 17 (Fever, General)
+    (11, 18, 60, '2025-03-27'), -- Lisinopril for Patient 18 (Hypertension, Cardiology)
+    (15, 19, 30, '2025-03-28'), -- Citalopram for Patient 19 (Depression, Neurology)
+    (1, 20, 10, '2025-03-29'), -- Levothyroxine for Patient 20 (Hypothyroidism, Endocrinology)
+    (40, 21, 100, '2025-04-02'), -- Acetaminophen for Patient 21 (Fever, General)
+    (4, 22, 20, '2025-04-03'), -- Methotrexate for Patient 22 (Rheumatoid Arthritis, Rheumatology)
+    (40, 23, 100, '2025-04-04'), -- Acetaminophen for Patient 23 (Fever, General)
+    (11, 24, 60, '2025-04-05'), -- Lisinopril for Patient 24 (Hypertension, Cardiology)
+    (85, 25, 30, '2025-04-08'), -- Citalopram for Patient 25 (Depression, Pediatric)
+    (11, 26, 60, '2025-04-09'), -- Lisinopril for Patient 26 (Hypertension, Cardiology)
+    (13, 27, 10, '2025-04-10'), -- Albuterol for Patient 27 (Asthma, Pulmonology)
+    (40, 28, 100, '2025-04-11'), -- Acetaminophen for Patient 28 (Fever, General)
+    (11, 30, 60, '2025-04-15'), -- Lisinopril for Patient 30 (Hypertension, Cardiology)
+    (40, 31, 100, '2025-04-16'), -- Acetaminophen for Patient 31 (Fever, General)
+    (1, 32, 10, '2025-04-17'), -- Levothyroxine for Patient 32 (Hypothyroidism, Endocrinology)
+    (15, 33, 30, '2025-04-18'), -- Citalopram for Patient 33 (Depression, Neurology)
+    (40, 34, 100, '2025-04-19'), -- Acetaminophen for Patient 34 (Fever, General)
+    (4, 35, 20, '2025-04-22'), -- Methotrexate for Patient 35 (Rheumatoid Arthritis, Rheumatology)
+    (11, 36, 60, '2025-04-23'), -- Lisinopril for Patient 36 (Hypertension, Cardiology)
+    (40, 37, 100, '2025-04-24'), -- Acetaminophen for Patient 37 (Fever, General)
+    (13, 38, 10, '2025-04-25'), -- Albuterol for Patient 38 (Asthma, Pulmonology)
+    (40, 39, 100, '2025-04-26'), -- Acetaminophen for Patient 39 (Fever, General)
+    (11, 40, 60, '2025-05-02'), -- Lisinopril for Patient 40 (Hypertension, Cardiology)
+    (1, 42, 10, '2025-05-06'), -- Levothyroxine for Patient 42 (Hypothyroidism, Endocrinology)
+    (15, 43, 30, '2025-05-07'), -- Citalopram for Patient 43 (Depression, Neurology)
+    (11, 46, 60, '2025-05-10'), -- Lisinopril for Patient 46 (Hypertension, Cardiology)
+    (11, 48, 60, '2025-05-14'), -- Lisinopril for Patient 48 (Hypertension, Cardiology)
+    (11, 58, 60, '2025-07-11'), -- Lisinopril for Patient 58 (Hypertension, Cardiology)
+    (11, 11, 60, '2024-02-11'), -- Lisinopril for Patient 11 (Hypertension, Cardiology)
+    (1, 12, 10, '2024-03-16'), -- Levothyroxine for Patient 12 (Hypothyroidism, Endocrinology)
+    (40, 13, 100, '2024-04-21'), -- Acetaminophen for Patient 13 (Fever, General)
+    (15, 14, 30, '2024-05-26'), -- Citalopram for Patient 14 (Depression, Neurology)
+    (13, 15, 10, '2024-07-01'), -- Albuterol for Patient 15 (Asthma, Pulmonology)
+    (11, 16, 60, '2024-07-06'), -- Lisinopril for Patient 16 (Hypertension, Cardiology)
+    (40, 17, 100, '2024-08-11'), -- Acetaminophen for Patient 17 (Fever, General)
+    (4, 18, 20, '2024-09-16'), -- Methotrexate for Patient 18 (Rheumatoid Arthritis, Rheumatology)
+    (85, 19, 30, '2024-10-21'), -- Citalopram for Patient 19 (Depression, Pediatric)
+    (11, 20, 60, '2024-11-26'), -- Lisinopril for Patient 20 (Hypertension, Cardiology)
+    (40, 21, 100, '2025-01-11'), -- Acetaminophen for Patient 21 (Fever, General)
+    (13, 22, 10, '2025-02-16'), -- Albuterol for Patient 22 (Asthma, Pulmonology)
+    (11, 23, 60, '2025-03-21'), -- Lisinopril for Patient 23 (Hypertension, Cardiology)
+    (1, 24, 10, '2025-04-26'), -- Levothyroxine for Patient 24 (Hypothyroidism, Endocrinology)
+    (15, 25, 30, '2025-05-31'), -- Citalopram for Patient 25 (Depression, Neurology)
+    (1, 26, 10, '2024-01-16'), -- Levothyroxine for Patient 26 (Hypothyroidism, Endocrinology)
+    (40, 27, 100, '2024-02-21'), -- Acetaminophen for Patient 27 (Fever, General)
+    (11, 28, 60, '2024-03-26'), -- Lisinopril for Patient 28 (Hypertension, Cardiology)
+    (4, 29, 20, '2024-05-01'), -- Methotrexate for Patient 29 (Rheumatoid Arthritis, Rheumatology)
+    (40, 30, 100, '2024-06-06'), -- Acetaminophen for Patient 30 (Fever, General)
+    (11, 31, 60, '2024-07-11'), -- Lisinopril for Patient 31 (Hypertension, Cardiology)
+    (85, 32, 30, '2024-08-16'), -- Citalopram for Patient 32 (Depression, Pediatric)
+    (13, 33, 10, '2024-09-21'), -- Albuterol for Patient 33 (Asthma, Pulmonology)
+    (1, 34, 10, '2024-10-26'), -- Levothyroxine for Patient 34 (Hypothyroidism, Endocrinology)
+    (40, 35, 100, '2024-12-01'), -- Acetaminophen for Patient 35 (Fever, General)
+    (15, 36, 30, '2025-01-06'), -- Citalopram for Patient 36 (Depression, Neurology)
+    (11, 37, 60, '2025-02-11'), -- Lisinopril for Patient 37 (Hypertension, Cardiology)
+    (11, 38, 60, '2025-03-16'), -- Lisinopril for Patient 38 (Hypertension, Cardiology)
+    (40, 39, 100, '2025-04-21'), -- Acetaminophen for Patient 39 (Fever, General)
+    (4, 40, 20, '2025-05-26'), -- Methotrexate for Patient 40 (Rheumatoid Arthritis, Rheumatology)
+    (13, 41, 10, '2024-01-21'), -- Albuterol for Patient 41 (Asthma, Pulmonology)
+    (40, 42, 100, '2024-02-26'), -- Acetaminophen for Patient 42 (Fever, General)
+    (85, 43, 30, '2024-03-31'), -- Citalopram for Patient 43 (Depression, Pediatric)
+    (11, 44, 60, '2024-05-06'), -- Lisinopril for Patient 44 (Hypertension, Cardiology)
+    (1, 45, 10, '2024-06-11'), -- Levothyroxine for Patient 45 (Hypothyroidism, Endocrinology)
+    (15, 46, 30, '2024-07-16'), -- Citalopram for Patient 46 (Depression, Neurology)
+    (11, 47, 60, '2024-08-21'), -- Lisinopril for Patient 47 (Hypertension, Cardiology)
+    (13, 48, 10, '2024-09-26'), -- Albuterol for Patient 48 (Asthma, Pulmonology)
+    (40, 49, 100, '2024-10-31'), -- Acetaminophen for Patient 49 (Fever, General)
+    (4, 50, 20, '2024-12-06'), -- Methotrexate for Patient 50 (Rheumatoid Arthritis, Rheumatology)
+    (11, 51, 60, '2025-01-11'), -- Lisinopril for Patient 51 (Hypertension, Cardiology)
+    (40, 52, 100, '2025-02-16'), -- Acetaminophen for Patient 52 (Fever, General)
+    (85, 53, 30, '2025-03-21'), -- Citalopram for Patient 53 (Depression, Pediatric)
+    (1, 54, 10, '2025-04-26'), -- Levothyroxine for Patient 54 (Hypothyroidism, Endocrinology)
+    (13, 55, 10, '2025-05-31'), -- Albuterol for Patient 55 (Asthma, Pulmonology)
+    (15, 56, 30, '2024-01-16'), -- Citalopram for Patient 56 (Depression, Neurology)
+    (11, 57, 60, '2024-02-21'), -- Lisinopril for Patient 57 (Hypertension, Cardiology)
+    (40, 58, 100, '2024-03-26'), -- Acetaminophen for Patient 58 (Fever, General)
+    (11, 59, 60, '2024-05-01'), -- Lisinopril for Patient 59 (Hypertension, Cardiology)
+    (4, 60, 20, '2024-06-06'), -- Methotrexate for Patient 60 (Rheumatoid Arthritis, Rheumatology)
+    (11, 1, 60, '2024-07-11'), -- Lisinopril for Patient 1 (Hypertension, Cardiology)
+    (13, 2, 10, '2024-08-16'), -- Albuterol for Patient 2 (Asthma, Pulmonology)
+    (1, 3, 10, '2024-09-21'), -- Levothyroxine for Patient 3 (Hypothyroidism, Endocrinology)
+    (85, 4, 30, '2024-10-26'), -- Citalopram for Patient 4 (Depression, Pediatric)
+    (15, 5, 30, '2024-12-01'), -- Citalopram for Patient 5 (Depression, Neurology)
+    (4, 6, 20, '2025-01-06'), -- Methotrexate for Patient 6 (Rheumatoid Arthritis, Rheumatology)
+    (11, 7, 60, '2025-02-11'), -- Lisinopril for Patient 7 (Hypertension, Cardiology)
+    (40, 8, 100, '2025-03-16'), -- Acetaminophen for Patient 8 (Fever, General)
+    (11, 9, 60, '2025-04-21'), -- Lisinopril for Patient 9 (Hypertension, Cardiology)
+    (40, 10, 100, '2025-05-26'), -- Acetaminophen for Patient 10 (Fever, General)
+    (11, 1, 60, '2024-01-15'), -- Lisinopril for Patient 1 (Hypertension, Cardiology)
+    (13, 2, 10, '2024-02-21'), -- Albuterol for Patient 2 (Asthma, Pulmonology)
+    (1, 3, 10, '2024-03-26'), -- Levothyroxine for Patient 3 (Hypothyroidism, Endocrinology)
+    (85, 4, 30, '2024-05-01'), -- Citalopram for Patient 4 (Depression, Pediatric)
+    (15, 5, 30, '2024-05-06'), -- Citalopram for Patient 5 (Depression, Neurology)
+    (4, 6, 20, '2024-06-11'), -- Methotrexate for Patient 6 (Rheumatoid Arthritis, Rheumatology)
+    (11, 7, 60, '2024-07-16'), -- Lisinopril for Patient 7 (Hypertension, Cardiology)
+    (40, 8, 100, '2024-08-21'), -- Acetaminophen for Patient 8 (Fever, General)
+    (11, 9, 60, '2024-09-26'), -- Lisinopril for Patient 9 (Hypertension, Cardiology)
+    (40, 10, 100, '2024-10-31'), -- Acetaminophen for Patient 10 (Fever, General)
+    (1, 11, 10, '2024-11-06'), -- Levothyroxine for Patient 11 (Hypothyroidism, Endocrinology)
+    (4, 12, 20, '2024-12-11'), -- Methotrexate for Patient 12 (Rheumatoid Arthritis, Rheumatology)
+    (40, 13, 100, '2025-01-16'), -- Acetaminophen for Patient 13 (Fever, General)
+    (22, 14, 50, '2025-02-21'), -- Pantoprazole for Patient 14 (GERD, Gastroenterology)
+    (8, 15, 50, '2025-03-26'), -- Cetirizine for Patient 15 (Allergic Rhinitis, Allergy)
+    (13, 16, 10, '2025-05-01'), -- Albuterol for Patient 16 (Asthma, Pulmonology)
+    (85, 17, 30, '2025-05-06'), -- Citalopram for Patient 17 (Depression, Pediatric)
+    (11, 18, 60, '2025-06-11'), -- Lisinopril for Patient 18 (Hypertension, Cardiology)
+    (15, 19, 30, '2024-01-21'), -- Citalopram for Patient 19 (Depression, Neurology)
+    (1, 20, 10, '2024-02-26'), -- Levothyroxine for Patient 20 (Hypothyroidism, Endocrinology)
+    (40, 21, 100, '2024-03-31'), -- Acetaminophen for Patient 21 (Fever, General)
+    (4, 22, 20, '2024-04-06'), -- Methotrexate for Patient 22 (Rheumatoid Arthritis, Rheumatology)
+    (11, 23, 60, '2024-05-11'), -- Lisinopril for Patient 23 (Hypertension, Cardiology)
+    (40, 24, 100, '2024-06-16'), -- Acetaminophen for Patient 24 (Fever, General)
+    (85, 25, 30, '2024-07-21'), -- Citalopram for Patient 25 (Depression, Pediatric)
+    (11, 26, 60, '2024-08-26'), -- Lisinopril for Patient 26 (Hypertension, Cardiology)
+    (13, 27, 10, '2024-10-01'), -- Albuterol for Patient 27 (Asthma, Pulmonology)
+    (40, 28, 100, '2024-10-06'), -- Acetaminophen for Patient 28 (Fever, General)
+    (8, 29, 50, '2024-11-11'), -- Cetirizine for Patient 29 (Allergic Rhinitis, Allergy)
+    (11, 30, 60, '2024-12-16'), -- Lisinopril for Patient 30 (Hypertension, Cardiology)
+    (40, 31, 100, '2025-01-21'), -- Acetaminophen for Patient 31 (Fever, General)
+    (1, 32, 10, '2025-02-26'), -- Levothyroxine for Patient 32 (Hypothyroidism, Endocrinology)
+    (15, 33, 30, '2025-03-31'), -- Citalopram for Patient 33 (Depression, Neurology)
+    (40, 34, 100, '2025-04-06'), -- Acetaminophen for Patient 34 (Fever, General)
+    (4, 35, 20, '2025-05-11'), -- Methotrexate for Patient 35 (Rheumatoid Arthritis, Rheumatology)
+    (11, 36, 60, '2025-06-16'), -- Lisinopril for Patient 36 (Hypertension, Cardiology)
+    (85, 37, 30, '2024-01-26'), -- Citalopram for Patient 37 (Depression, Pediatric)
+    (13, 38, 10, '2024-02-11'), -- Albuterol for Patient 38 (Asthma, Pulmonology)
+    (40, 39, 100, '2024-03-16'), -- Acetaminophen for Patient 39 (Fever, General)
+    (11, 40, 60, '2024-04-21'), -- Lisinopril for Patient 40 (Hypertension, Cardiology)
+    (1, 41, 10, '2024-05-26'), -- Levothyroxine for Patient 41 (Hypothyroidism, Endocrinology)
+    (1, 42, 10, '2024-07-01'), -- Levothyroxine for Patient 42 (Hypothyroidism, Endocrinology)
+    (15, 43, 30, '2024-07-06'), -- Citalopram for Patient 43 (Depression, Neurology)
+    (40, 44, 100, '2024-08-11'), -- Acetaminophen for Patient 44 (Fever, General)
+    (8, 45, 50, '2024-09-16'), -- Cetirizine for Patient 45 (Allergic Rhinitis, Allergy)
+    (11, 46, 60, '2024-10-21'), -- Lisinopril for Patient 46 (Hypertension, Cardiology)
+    (11, 47, 60, '2024-11-26'), -- Lisinopril for Patient 47 (Hypertension, Cardiology)
+    (13, 48, 10, '2024-12-31'), -- Albuterol for Patient 48 (Asthma, Pulmonology)
+    (40, 49, 100, '2025-01-06'), -- Acetaminophen for Patient 49 (Fever, General)
+    (4, 50, 20, '2025-02-11'), -- Methotrexate for Patient 50 (Rheumatoid Arthritis, Rheumatology)
+    (11, 51, 60, '2025-03-16'), -- Lisinopril for Patient 51 (Hypertension, Cardiology)
+    (40, 52, 100, '2025-04-21'), -- Acetaminophen for Patient 52 (Fever, General)
+    (85, 53, 30, '2025-05-26'), -- Citalopram for Patient 53 (Depression, Pediatric)
+    (1, 54, 10, '2025-06-30'), -- Levothyroxine for Patient 54 (Hypothyroidism, Endocrinology)
+    (13, 55, 10, '2024-01-31'), -- Albuterol for Patient 55 (Asthma, Pulmonology)
+    (15, 56, 30, '2024-02-06'), -- Citalopram for Patient 56 (Depression, Neurology)
+    (11, 57, 60, '2024-03-11'), -- Lisinopril for Patient 57 (Hypertension, Cardiology)
+    (40, 58, 100, '2024-04-16'), -- Acetaminophen for Patient 58 (Fever, General)
+    (11, 59, 60, '2024-05-21'), -- Lisinopril for Patient 59 (Hypertension, Cardiology)
+    (4, 60, 20, '2024-06-26'), -- Methotrexate for Patient 60 (Rheumatoid Arthritis, Rheumatology)
+    (11, 1, 60, '2024-07-31'), -- Lisinopril for Patient 1 (Hypertension, Cardiology)
+    (13, 2, 10, '2024-08-06'), -- Albuterol for Patient 2 (Asthma, Pulmonology)
+    (1, 3, 10, '2024-09-11'), -- Levothyroxine for Patient 3 (Hypothyroidism, Endocrinology)
+    (40, 4, 100, '2024-10-16'), -- Acetaminophen for Patient 4 (Fever, General)
+    (15, 5, 30, '2024-11-21'), -- Citalopram for Patient 5 (Depression, Neurology)
+    (4, 6, 20, '2024-12-26'), -- Methotrexate for Patient 6 (Rheumatoid Arthritis, Rheumatology)
+    (11, 7, 60, '2025-01-31'), -- Lisinopril for Patient 7 (Hypertension, Cardiology)
+    (40, 8, 100, '2025-02-06'), -- Acetaminophen for Patient 8 (Fever, General)
+    (11, 9, 60, '2025-03-11'), -- Lisinopril for Patient 9 (Hypertension, Cardiology)
+    (85, 10, 30, '2025-04-16'), -- Citalopram for Patient 10 (Depression, Pediatric)
+    (13, 11, 10, '2025-05-21'), -- Albuterol for Patient 11 (Asthma, Pulmonology)
+    (15, 12, 30, '2025-06-26'); -- Citalopram for Patient 12 (Depression, Neurology)
 
 INSERT INTO Workers (staff_id, job_title, work_schedule) 
 VALUES
@@ -1204,7 +1871,631 @@ VALUES
     (47, '2026-03-01', '08:00', 20, 'Daily ward cleaning'),                     -- WRD607
     (48, '2026-04-01', '09:00', 30, 'Post-testing cleaning in Laboratory'),     -- LAB207
     (49, '2026-05-01', '10:30', 50, 'Post-surgery cleanup in Operating Room'),  -- OPR407
-    (50, '2026-05-02', '11:00', 70, 'Child-safe cleaning in Pediatric Ward');   -- PED907
+    (50, '2026-05-02', '11:00', 70, 'Child-safe cleaning in Pediatric Ward'),   -- PED907
+	(41, '2024-11-20', '09:00', 1, 'Post-cardiology consultation cleaning'), -- STF506
+    (42, '2024-11-22', '10:00', 2, 'Post-neurology consultation cleaning'), -- STF507
+    (43, '2024-11-23', '11:00', 3, 'Post-orthopedic consultation cleaning'), -- STF508
+    (44, '2024-11-24', '08:30', 4, 'Post-dermatology consultation cleaning'), -- STF506
+    (15, '2024-11-25', '07:30', 5, 'Child-safe ward cleaning'), -- PED906
+    (10, '2024-11-26', '13:00', 6, 'Post-surgical sterilization'), -- OPR406
+    (41, '2024-11-27', '09:30', 7, 'Post-gynecology consultation cleaning'), -- STF506
+    (42, '2024-11-28', '10:30', 8, 'Post-psychiatric consultation cleaning'), -- STF507
+    (43, '2024-11-29', '08:00', 9, 'Post-ophthalmology consultation cleaning'), -- STF508
+    (44, '2024-11-30', '11:30', 10, 'Post-ENT consultation cleaning'), -- STF506
+    (41, '2022-01-20', '09:00', 11, 'Post-endocrinology consultation cleaning'), -- STF506
+    (12, '2022-02-26', '07:00', 12, 'Post-consultation ward cleaning'), -- WRD606
+    (13, '2022-03-31', '12:00', 13, 'Post-oncology consultation cleaning'), -- RAD706
+    (14, '2022-04-16', '08:30', 14, 'Post-hematology consultation cleaning'), -- EMR806
+    (15, '2022-05-21', '07:30', 15, 'Post-allergy testing cleaning'), -- PED906
+    (16, '2022-06-26', '10:00', 16, 'Post-cardiothoracic consultation cleaning'), -- REH1006
+    (17, '2022-07-31', '09:00', 17, 'Daily cleaning for ICU'), -- ICU108
+    (18, '2022-08-06', '11:00', 18, 'Post-neurosurgery consultation cleaning'), -- LAB207
+    (19, '2022-09-11', '08:00', 19, 'Post-pediatric surgery consultation cleaning'), -- COS307
+    (20, '2022-10-16', '13:00', 20, 'Post-plastic surgery sterilization'), -- OPR407
+    (41, '2022-11-21', '09:30', 1, 'Post-geriatric consultation cleaning'), -- STF506
+    (42, '2022-12-26', '10:30', 2, 'Post-radiology consultation cleaning'), -- STF507
+    (41, '2023-01-31', '08:00', 3, 'Post-cardiology consultation cleaning'), -- STF506
+    (42, '2023-02-06', '11:30', 4, 'Post-neurology consultation cleaning'), -- STF507
+    (43, '2023-03-11', '09:00', 5, 'Post-orthopedic consultation cleaning'), -- STF508
+    (44, '2023-04-16', '07:30', 6, 'Post-dermatology consultation cleaning'), -- STF506
+    (15, '2023-05-21', '08:30', 7, 'Child-safe ward cleaning'), -- PED906
+    (10, '2023-06-26', '13:00', 8, 'Post-surgical sterilization'), -- OPR406
+    (41, '2023-07-31', '10:00', 9, 'Post-gynecology consultation cleaning'), -- STF506
+    (42, '2023-08-06', '11:00', 10, 'Post-psychiatric consultation cleaning'), -- STF507
+    (41, '2024-01-16', '09:00', 11, 'Post-endocrinology consultation cleaning'), -- STF506
+    (12, '2024-02-21', '07:00', 12, 'Post-consultation ward cleaning'), -- WRD606
+    (13, '2024-03-26', '12:00', 13, 'Post-oncology consultation cleaning'), -- RAD706
+    (14, '2024-05-01', '08:30', 14, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (41, '2024-05-06', '07:30', 15, 'Post-urology consultation cleaning'), -- STF506
+    (12, '2024-06-11', '10:00', 16, 'Post-consultation ward cleaning'), -- WRD606
+    (13, '2024-07-16', '09:00', 17, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (14, '2024-08-21', '11:00', 18, 'Post-hematology consultation cleaning'), -- EMR806
+    (15, '2025-01-26', '08:00', 19, 'Post-allergy testing cleaning'), -- PED906
+    (16, '2025-03-01', '13:00', 20, 'Post-cardiothoracic consultation cleaning'), -- REH1006
+    (41, '2022-02-16', '09:30', 1, 'Post-cardiology consultation cleaning'), -- STF506
+    (42, '2022-03-21', '10:30', 2, 'Post-neurology consultation cleaning'), -- STF507
+    (43, '2022-04-26', '08:00', 3, 'Post-orthopedic consultation cleaning'), -- STF508
+    (44, '2022-05-31', '11:30', 4, 'Post-dermatology consultation cleaning'), -- STF506
+    (15, '2022-07-06', '09:00', 5, 'Child-safe ward cleaning'), -- PED906
+    (10, '2022-08-11', '07:30', 6, 'Post-surgical sterilization'), -- OPR406
+    (41, '2022-09-16', '08:30', 7, 'Post-gynecology consultation cleaning'), -- STF506
+    (42, '2022-10-21', '10:00', 8, 'Post-psychiatric consultation cleaning'), -- STF507
+    (43, '2022-11-26', '11:00', 9, 'Post-ophthalmology consultation cleaning'), -- STF508
+    (44, '2022-12-31', '09:00', 10, 'Post-ENT consultation cleaning'), -- STF506
+    (41, '2023-02-06', '07:30', 11, 'Post-endocrinology consultation cleaning'), -- STF506
+    (12, '2023-03-11', '08:00', 12, 'Post-consultation ward cleaning'), -- WRD606
+    (13, '2023-04-16', '13:00', 13, 'Post-oncology consultation cleaning'), -- RAD706
+    (14, '2023-05-21', '09:30', 14, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (41, '2023-06-26', '10:30', 15, 'Post-urology consultation cleaning'), -- STF506
+    (12, '2023-08-02', '11:30', 16, 'Post-consultation ward cleaning'), -- WRD606
+    (13, '2023-09-06', '09:00', 17, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (14, '2023-10-11', '08:00', 18, 'Post-hematology consultation cleaning'), -- EMR806
+    (15, '2023-11-16', '07:30', 19, 'Post-allergy testing cleaning'), -- PED906
+    (16, '2023-12-21', '10:00', 20, 'Post-cardiothoracic consultation cleaning'), -- REH1006
+    (17, '2024-02-11', '11:00', 1, 'Daily cleaning for ICU'), -- ICU108
+    (18, '2024-03-16', '09:00', 2, 'Post-neurosurgery consultation cleaning'), -- LAB207
+    (19, '2024-04-21', '08:30', 3, 'Post-pediatric surgery consultation cleaning'), -- COS307
+    (20, '2024-05-26', '13:00', 4, 'Post-plastic surgery sterilization'), -- OPR407
+    (41, '2024-07-01', '07:30', 5, 'Post-geriatric consultation cleaning'), -- STF506
+    (42, '2024-08-06', '10:30', 6, 'Post-radiology consultation cleaning'), -- STF507
+    (41, '2024-09-11', '11:30', 7, 'Post-cardiology consultation cleaning'), -- STF506
+    (42, '2024-10-16', '09:00', 8, 'Post-neurology consultation cleaning'), -- STF507
+    (43, '2025-01-21', '08:00', 9, 'Post-orthopedic consultation cleaning'), -- STF508
+    (44, '2025-02-26', '07:30', 10, 'Post-dermatology consultation cleaning'), -- STF506
+    (41, '2025-03-04', '10:00', 11, 'Post-cardiology consultation cleaning'), -- STF506
+    (12, '2025-03-05', '11:00', 12, 'Post-consultation ward cleaning'), -- WRD606
+    (13, '2025-03-06', '09:30', 13, 'Post-endocrinology consultation cleaning'), -- RAD706
+    (15, '2025-03-07', '08:30', 14, 'Child-safe ward cleaning'), -- PED906
+    (42, '2025-03-08', '07:30', 15, 'Post-neurology consultation cleaning'), -- STF507
+    (14, '2025-03-11', '10:30', 16, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (41, '2025-03-12', '11:30', 17, 'Post-cardiology consultation cleaning'), -- STF506
+    (12, '2025-03-13', '09:00', 18, 'Post-consultation ward cleaning'), -- WRD606
+    (41, '2025-03-14', '08:00', 19, 'Post-cardiology consultation cleaning'), -- STF506
+    (15, '2025-03-15', '07:30', 20, 'Child-safe ward cleaning'), -- PED906
+    (41, '2025-03-18', '10:00', 1, 'Post-endocrinology consultation cleaning'), -- STF506
+    (14, '2025-03-19', '11:00', 2, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (12, '2025-03-20', '09:30', 3, 'Post-consultation ward cleaning'), -- WRD606
+    (12, '2025-03-21', '08:30', 4, 'Post-consultation ward cleaning'), -- WRD606
+    (15, '2025-03-22', '07:30', 5, 'Post-allergy testing cleaning'), -- PED906
+    (13, '2025-03-25', '10:30', 6, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (12, '2025-03-26', '11:30', 7, 'Post-consultation ward cleaning'), -- WRD606
+    (41, '2025-03-27', '09:00', 8, 'Post-cardiology consultation cleaning'), -- STF506
+    (42, '2025-03-28', '08:00', 9, 'Post-neurology consultation cleaning'), -- STF507
+    (41, '2025-03-29', '07:30', 10, 'Post-endocrinology consultation cleaning'), -- STF506
+    (12, '2025-04-02', '10:00', 11, 'Post-consultation ward cleaning'), -- WRD606
+    (14, '2025-04-03', '11:00', 12, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (12, '2025-04-04', '09:30', 13, 'Post-consultation ward cleaning'), -- WRD606
+    (41, '2025-04-05', '08:30', 14, 'Post-cardiology consultation cleaning'), -- STF506
+    (15, '2025-04-08', '07:30', 15, 'Child-safe ward cleaning'), -- PED906
+    (41, '2025-04-09', '10:30', 16, 'Post-cardiology consultation cleaning'), -- STF506
+    (13, '2025-04-10', '11:30', 17, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (12, '2025-04-11', '09:00', 18, 'Post-consultation ward cleaning'), -- WRD606
+    (41, '2025-04-15', '08:00', 19, 'Post-cardiology consultation cleaning'), -- STF506
+    (12, '2025-04-16', '07:30', 20, 'Post-consultation ward cleaning'), -- WRD606
+    (41, '2025-04-17', '10:00', 1, 'Post-endocrinology consultation cleaning'), -- STF506
+    (42, '2025-04-18', '11:00', 2, 'Post-neurology consultation cleaning'), -- STF507
+    (12, '2025-04-19', '09:30', 3, 'Post-consultation ward cleaning'), -- WRD606
+    (14, '2025-04-22', '08:30', 4, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (41, '2025-04-23', '07:30', 5, 'Post-cardiology consultation cleaning'), -- STF506
+    (12, '2025-04-24', '10:30', 6, 'Post-consultation ward cleaning'), -- WRD606
+    (13, '2025-04-25', '11:30', 7, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (12, '2025-04-26', '09:00', 8, 'Post-consultation ward cleaning'), -- WRD606
+    (41, '2025-05-02', '08:00', 9, 'Post-cardiology consultation cleaning'), -- STF506
+    (41, '2025-05-06', '07:30', 10, 'Post-endocrinology consultation cleaning'), -- STF506
+    (42, '2025-05-07', '10:00', 11, 'Post-neurology consultation cleaning'), -- STF507
+    (41, '2025-05-10', '11:00', 12, 'Post-cardiology consultation cleaning'), -- STF506
+    (41, '2025-05-14', '09:30', 13, 'Post-cardiology consultation cleaning'), -- STF506
+    (41, '2025-07-11', '08:30', 14, 'Post-cardiology consultation cleaning'), -- STF506
+    (41, '2024-02-11', '07:30', 15, 'Post-cardiology consultation cleaning'), -- STF506
+    (41, '2024-03-16', '10:30', 16, 'Post-endocrinology consultation cleaning'), -- STF506
+    (12, '2024-04-21', '11:30', 17, 'Post-consultation ward cleaning'), -- WRD606
+    (42, '2024-05-26', '09:00', 18, 'Post-neurology consultation cleaning'), -- STF507
+    (13, '2024-07-01', '08:00', 19, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (41, '2024-07-06', '07:30', 20, 'Post-cardiology consultation cleaning'), -- STF506
+    (12, '2024-08-11', '10:00', 1, 'Post-consultation ward cleaning'), -- WRD606
+    (14, '2024-09-16', '11:00', 2, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (15, '2024-10-21', '09:30', 3, 'Child-safe ward cleaning'), -- PED906
+    (41, '2024-11-26', '08:30', 4, 'Post-cardiology consultation cleaning'), -- STF506
+    (12, '2025-01-11', '07:30', 5, 'Post-consultation ward cleaning'), -- WRD606
+    (13, '2025-02-16', '10:30', 6, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (41, '2025-03-21', '11:30', 7, 'Post-cardiology consultation cleaning'), -- STF506
+    (41, '2025-04-26', '09:00', 8, 'Post-endocrinology consultation cleaning'), -- STF506
+    (42, '2025-05-31', '08:00', 9, 'Post-neurology consultation cleaning'), -- STF507
+    (41, '2024-01-16', '07:30', 10, 'Post-endocrinology consultation cleaning'), -- STF506
+    (12, '2024-02-21', '10:00', 11, 'Post-consultation ward cleaning'), -- WRD606
+    (41, '2024-03-26', '11:00', 12, 'Post-cardiology consultation cleaning'), -- STF506
+    (14, '2024-05-01', '09:30', 13, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (12, '2024-06-06', '08:30', 14, 'Post-consultation ward cleaning'), -- WRD606
+    (41, '2024-07-11', '07:30', 15, 'Post-cardiology consultation cleaning'), -- STF506
+    (15, '2024-08-16', '10:30', 16, 'Child-safe ward cleaning'), -- PED906
+    (13, '2024-09-21', '11:30', 17, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (41, '2024-10-26', '09:00', 18, 'Post-endocrinology consultation cleaning'), -- STF506
+    (12, '2024-12-01', '08:00', 19, 'Post-consultation ward cleaning'), -- WRD606
+    (42, '2025-01-06', '07:30', 20, 'Post-neurology consultation cleaning'), -- STF507
+    (41, '2025-02-11', '10:00', 1, 'Post-cardiology consultation cleaning'), -- STF506
+    (41, '2025-03-16', '11:00', 2, 'Post-cardiology consultation cleaning'), -- STF506
+    (12, '2025-04-21', '09:30', 3, 'Post-consultation ward cleaning'), -- WRD606
+    (14, '2025-05-26', '08:30', 4, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (13, '2024-01-21', '07:30', 5, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (12, '2024-02-26', '10:30', 6, 'Post-consultation ward cleaning'), -- WRD606
+    (15, '2024-03-31', '11:30', 7, 'Child-safe ward cleaning'), -- PED906
+    (41, '2024-05-06', '09:00', 8, 'Post-cardiology consultation cleaning'), -- STF506
+    (41, '2024-06-11', '08:00', 9, 'Post-endocrinology consultation cleaning'), -- STF506
+    (42, '2024-07-16', '07:30', 10, 'Post-neurology consultation cleaning'), -- STF507
+    (41, '2024-08-21', '10:00', 11, 'Post-cardiology consultation cleaning'), -- STF506
+    (13, '2024-09-26', '11:00', 12, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (12, '2024-10-31', '09:30', 13, 'Post-consultation ward cleaning'), -- WRD606
+    (14, '2024-12-06', '08:30', 14, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (41, '2025-01-11', '07:30', 15, 'Post-cardiology consultation cleaning'), -- STF506
+    (12, '2025-02-16', '10:30', 16, 'Post-consultation ward cleaning'), -- WRD606
+    (15, '2025-03-21', '11:30', 17, 'Child-safe ward cleaning'), -- PED906
+    (41, '2025-04-26', '09:00', 18, 'Post-endocrinology consultation cleaning'), -- STF506
+    (13, '2025-05-31', '08:00', 19, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (42, '2024-01-16', '07:30', 20, 'Post-neurology consultation cleaning'), -- STF507
+    (41, '2024-02-21', '10:00', 1, 'Post-cardiology consultation cleaning'), -- STF506
+    (12, '2024-03-26', '11:00', 2, 'Post-consultation ward cleaning'), -- WRD606
+    (41, '2024-05-01', '09:30', 3, 'Post-cardiology consultation cleaning'), -- STF506
+    (14, '2024-06-06', '08:30', 4, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (41, '2024-07-11', '07:30', 5, 'Post-cardiology consultation cleaning'), -- STF506
+    (13, '2024-08-16', '10:30', 6, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (41, '2024-09-21', '11:30', 7, 'Post-endocrinology consultation cleaning'), -- STF506
+    (15, '2024-10-26', '09:00', 8, 'Child-safe ward cleaning'), -- PED906
+    (12, '2024-12-01', '08:00', 9, 'Post-consultation ward cleaning'), -- WRD606
+    (42, '2025-01-06', '07:30', 10, 'Post-neurology consultation cleaning'), -- STF507
+    (41, '2025-02-11', '10:00', 11, 'Post-cardiology consultation cleaning'), -- STF506
+    (12, '2025-03-16', '11:00', 12, 'Post-consultation ward cleaning'), -- WRD606
+    (15, '2025-04-21', '09:30', 13, 'Child-safe ward cleaning'), -- PED906
+    (41, '2025-05-26', '08:30', 14, 'Post-endocrinology consultation cleaning'), -- STF506
+    (13, '2024-01-15', '07:30', 15, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (42, '2024-02-21', '10:30', 16, 'Post-neurology consultation cleaning'), -- STF507
+    (41, '2024-03-26', '11:30', 17, 'Post-endocrinology consultation cleaning'), -- STF506
+    (15, '2024-05-01', '09:00', 18, 'Child-safe ward cleaning'), -- PED906
+    (42, '2024-05-06', '08:00', 19, 'Post-neurology consultation cleaning'), -- STF507
+    (14, '2024-06-11', '07:30', 20, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (41, '2024-07-16', '10:00', 1, 'Post-cardiology consultation cleaning'), -- STF506
+    (12, '2024-08-21', '11:00', 2, 'Post-consultation ward cleaning'), -- WRD606
+    (41, '2024-09-26', '09:30', 3, 'Post-cardiology consultation cleaning'), -- STF506
+    (12, '2024-10-31', '08:30', 4, 'Post-consultation ward cleaning'), -- WRD606
+    (41, '2024-11-06', '07:30', 5, 'Post-endocrinology consultation cleaning'), -- STF506
+    (14, '2024-12-11', '10:30', 6, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (12, '2025-01-16', '11:30', 7, 'Post-consultation ward cleaning'), -- WRD606
+    (12, '2025-02-21', '09:00', 8, 'Post-consultation ward cleaning'), -- WRD606
+    (15, '2025-03-26', '08:00', 9, 'Post-allergy testing cleaning'), -- PED906
+    (13, '2025-05-01', '07:30', 10, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (15, '2025-05-06', '10:00', 11, 'Child-safe ward cleaning'), -- PED906
+    (41, '2025-06-11', '11:00', 12, 'Post-cardiology consultation cleaning'), -- STF506
+    (42, '2024-01-21', '09:30', 13, 'Post-neurology consultation cleaning'), -- STF507
+    (41, '2024-02-26', '08:30', 14, 'Post-endocrinology consultation cleaning'), -- STF506
+    (12, '2024-03-31', '07:30', 15, 'Post-consultation ward cleaning'), -- WRD606
+    (14, '2024-04-06', '10:30', 16, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (41, '2024-05-11', '11:30', 17, 'Post-cardiology consultation cleaning'), -- STF506
+    (12, '2024-06-16', '09:00', 18, 'Post-consultation ward cleaning'), -- WRD606
+    (15, '2024-07-21', '08:00', 19, 'Child-safe ward cleaning'), -- PED906
+    (41, '2024-08-26', '07:30', 20, 'Post-cardiology consultation cleaning'), -- STF506
+    (13, '2024-10-01', '10:00', 1, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (12, '2024-10-06', '11:00', 2, 'Post-consultation ward cleaning'), -- WRD606
+    (15, '2024-11-11', '09:30', 3, 'Post-allergy testing cleaning'), -- PED906
+    (41, '2024-12-16', '08:30', 4, 'Post-cardiology consultation cleaning'), -- STF506
+    (12, '2025-01-21', '07:30', 5, 'Post-consultation ward cleaning'), -- WRD606
+    (41, '2025-02-26', '10:30', 6, 'Post-endocrinology consultation cleaning'), -- STF506
+    (42, '2025-03-31', '11:30', 7, 'Post-neurology consultation cleaning'), -- STF507
+    (12, '2025-04-06', '09:00', 8, 'Post-consultation ward cleaning'), -- WRD606
+    (14, '2025-05-11', '08:00', 9, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (41, '2025-06-16', '07:30', 10, 'Post-cardiology consultation cleaning'), -- STF506
+    (15, '2024-01-26', '10:00', 11, 'Child-safe ward cleaning'), -- PED906
+    (13, '2024-02-11', '11:00', 12, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (12, '2024-03-16', '09:30', 13, 'Post-consultation ward cleaning'), -- WRD606
+    (41, '2024-04-21', '08:30', 14, 'Post-cardiology consultation cleaning'), -- STF506
+    (41, '2024-05-26', '07:30', 15, 'Post-endocrinology consultation cleaning'), -- STF506
+    (41, '2024-07-01', '10:30', 16, 'Post-endocrinology consultation cleaning'), -- STF506
+    (42, '2024-07-06', '11:30', 17, 'Post-neurology consultation cleaning'), -- STF507
+    (12, '2024-08-11', '09:00', 18, 'Post-consultation ward cleaning'), -- WRD606
+    (15, '2024-09-16', '08:00', 19, 'Post-allergy testing cleaning'), -- PED906
+    (41, '2024-10-21', '07:30', 20, 'Post-cardiology consultation cleaning'), -- STF506
+    (41, '2024-11-26', '10:00', 1, 'Post-cardiology consultation cleaning'), -- STF506
+    (13, '2024-12-31', '11:00', 2, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (12, '2025-01-06', '09:30', 3, 'Post-consultation ward cleaning'), -- WRD606
+    (14, '2025-02-11', '08:30', 4, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (41, '2025-03-16', '07:30', 5, 'Post-cardiology consultation cleaning'), -- STF506
+    (12, '2025-04-21', '10:30', 6, 'Post-consultation ward cleaning'), -- WRD606
+    (15, '2025-05-26', '11:30', 7, 'Child-safe ward cleaning'), -- PED906
+    (41, '2025-06-30', '09:00', 8, 'Post-endocrinology consultation cleaning'), -- STF506
+    (13, '2024-01-31', '08:00', 9, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (42, '2024-02-06', '07:30', 10, 'Post-neurology consultation cleaning'), -- STF507
+    (41, '2024-03-11', '10:00', 11, 'Post-cardiology consultation cleaning'), -- STF506
+    (12, '2024-04-16', '11:00', 12, 'Post-consultation ward cleaning'), -- WRD606
+    (41, '2024-05-21', '09:30', 13, 'Post-cardiology consultation cleaning'), -- STF506
+    (14, '2024-06-26', '08:30', 14, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (41, '2024-07-31', '07:30', 15, 'Post-cardiology consultation cleaning'), -- STF506
+    (13, '2024-08-06', '10:30', 16, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (41, '2024-09-11', '11:30', 17, 'Post-endocrinology consultation cleaning'), -- STF506
+    (12, '2024-10-16', '09:00', 18, 'Post-consultation ward cleaning'), -- WRD606
+    (42, '2024-11-21', '08:00', 19, 'Post-neurology consultation cleaning'), -- STF507
+    (14, '2024-12-26', '07:30', 20, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (41, '2025-01-31', '10:00', 1, 'Post-cardiology consultation cleaning'), -- STF506
+    (12, '2025-02-06', '11:00', 2, 'Post-consultation ward cleaning'), -- WRD606
+    (41, '2025-03-11', '09:30', 3, 'Post-cardiology consultation cleaning'), -- STF506
+    (15, '2025-04-16', '08:30', 4, 'Child-safe ward cleaning'), -- PED906
+    (13, '2025-05-21', '07:30', 5, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (42, '2025-06-26', '10:30', 6, 'Post-neurology consultation cleaning'), -- STF507
+	(12, '2024-11-20', '11:00', 1, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (22, '2024-11-22', '12:00', 2, 'Secondary cleaning post-neurology consultation'), -- WRD607
+    (32, '2024-11-23', '13:00', 3, 'Secondary cleaning post-orthopedic consultation'), -- WRD608
+    (44, '2024-11-24', '14:00', 4, 'Secondary cleaning post-dermatology consultation'), -- STF506
+    (15, '2024-11-25', '15:00', 5, 'Child-safe ward cleaning'), -- PED906
+    (20, '2024-11-26', '11:30', 6, 'Post-surgical ward cleaning'), -- OPR407
+    (12, '2024-11-27', '12:30', 7, 'Secondary cleaning post-gynecology consultation'), -- WRD606
+    (22, '2024-11-28', '13:30', 8, 'Secondary cleaning post-psychiatric consultation'), -- WRD607
+    (32, '2024-11-29', '14:30', 9, 'Secondary cleaning post-ophthalmology consultation'), -- WRD608
+    (44, '2024-11-30', '15:30', 10, 'Secondary cleaning post-ENT consultation'), -- STF506
+    (12, '2022-01-20', '11:00', 11, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (22, '2022-02-26', '12:00', 12, 'Post-consultation ward cleaning'), -- WRD607
+    (13, '2022-03-31', '13:00', 13, 'Post-oncology diagnostic cleaning'), -- RAD706
+    (14, '2022-04-16', '14:00', 14, 'Post-hematology consultation cleaning'), -- EMR806
+    (15, '2022-05-21', '15:00', 15, 'Child-safe ward cleaning'), -- PED906
+    (16, '2022-06-26', '11:30', 16, 'Post-cardiothoracic consultation cleaning'), -- REH1006
+    (17, '2022-07-31', '12:30', 17, 'Secondary cleaning for ICU'), -- ICU108
+    (18, '2022-08-06', '13:30', 18, 'Post-neurosurgery lab cleaning'), -- LAB207
+    (19, '2022-09-11', '14:30', 19, 'Post-pediatric surgery consultation cleaning'), -- COS307
+    (20, '2022-10-16', '15:30', 20, 'Post-plastic surgery ward cleaning'), -- OPR407
+    (12, '2022-11-21', '11:00', 1, 'Secondary cleaning post-geriatric consultation'), -- WRD606
+    (22, '2022-12-26', '12:00', 2, 'Post-radiology consultation cleaning'), -- WRD607
+    (12, '2023-01-31', '13:00', 3, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (22, '2023-02-06', '14:00', 4, 'Secondary cleaning post-neurology consultation'), -- WRD607
+    (32, '2023-03-11', '15:00', 5, 'Secondary cleaning post-orthopedic consultation'), -- WRD608
+    (44, '2023-04-16', '11:30', 6, 'Secondary cleaning post-dermatology consultation'), -- STF506
+    (15, '2023-05-21', '12:30', 7, 'Child-safe ward cleaning'), -- PED906
+    (20, '2023-06-26', '13:30', 8, 'Post-surgical ward cleaning'), -- OPR407
+    (12, '2023-07-31', '14:30', 9, 'Secondary cleaning post-gynecology consultation'), -- WRD606
+    (22, '2023-08-06', '15:30', 10, 'Secondary cleaning post-psychiatric consultation'), -- WRD607
+    (12, '2024-01-16', '11:00', 11, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (22, '2024-02-21', '12:00', 12, 'Post-consultation ward cleaning'), -- WRD607
+    (13, '2024-03-26', '13:00', 13, 'Post-oncology diagnostic cleaning'), -- RAD706
+    (14, '2024-05-01', '14:00', 14, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (12, '2024-05-06', '15:00', 15, 'Secondary cleaning post-urology consultation'), -- WRD606
+    (22, '2024-06-11', '11:30', 16, 'Post-consultation ward cleaning'), -- WRD607
+    (13, '2024-07-16', '12:30', 17, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (14, '2024-08-21', '13:30', 18, 'Post-hematology consultation cleaning'), -- EMR806
+    (15, '2025-01-26', '14:30', 19, 'Child-safe ward cleaning'), -- PED906
+    (16, '2025-03-01', '15:30', 20, 'Post-cardiothoracic consultation cleaning'), -- REH1006
+    (12, '2022-02-16', '11:00', 1, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (22, '2022-03-21', '12:00', 2, 'Secondary cleaning post-neurology consultation'), -- WRD607
+    (32, '2022-04-26', '13:00', 3, 'Secondary cleaning post-orthopedic consultation'), -- WRD608
+    (44, '2022-05-31', '14:00', 4, 'Secondary cleaning post-dermatology consultation'), -- STF506
+    (15, '2022-07-06', '15:00', 5, 'Child-safe ward cleaning'), -- PED906
+    (20, '2022-08-11', '11:30', 6, 'Post-surgical ward cleaning'), -- OPR407
+    (12, '2022-09-16', '12:30', 7, 'Secondary cleaning post-gynecology consultation'), -- WRD606
+    (22, '2022-10-21', '13:30', 8, 'Secondary cleaning post-psychiatric consultation'), -- WRD607
+    (32, '2022-11-26', '14:30', 9, 'Secondary cleaning post-ophthalmology consultation'), -- WRD608
+    (44, '2022-12-31', '15:30', 10, 'Secondary cleaning post-ENT consultation'), -- STF506
+    (12, '2023-02-06', '11:00', 11, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (22, '2023-03-11', '12:00', 12, 'Post-consultation ward cleaning'), -- WRD607
+    (13, '2023-04-16', '13:00', 13, 'Post-oncology diagnostic cleaning'), -- RAD706
+    (14, '2023-05-21', '14:00', 14, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (12, '2023-06-26', '15:00', 15, 'Secondary cleaning post-urology consultation'), -- WRD606
+    (22, '2023-08-02', '11:30', 16, 'Post-consultation ward cleaning'), -- WRD607
+    (13, '2023-09-06', '12:30', 17, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (14, '2023-10-11', '13:30', 18, 'Post-hematology consultation cleaning'), -- EMR806
+    (15, '2023-11-16', '14:30', 19, 'Child-safe ward cleaning'), -- PED906
+    (16, '2023-12-21', '15:30', 20, 'Post-cardiothoracic consultation cleaning'), -- REH1006
+    (17, '2024-02-11', '11:00', 1, 'Secondary cleaning for ICU'), -- ICU108
+    (18, '2024-03-16', '12:00', 2, 'Post-neurosurgery lab cleaning'), -- LAB207
+    (19, '2024-04-21', '13:00', 3, 'Post-pediatric surgery consultation cleaning'), -- COS307
+    (20, '2024-05-26', '14:00', 4, 'Post-plastic surgery ward cleaning'), -- OPR407
+    (12, '2024-07-01', '15:00', 5, 'Secondary cleaning post-geriatric consultation'), -- WRD606
+    (22, '2024-08-06', '11:30', 6, 'Post-radiology consultation cleaning'), -- WRD607
+    (12, '2024-09-11', '12:30', 7, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (22, '2024-10-16', '13:30', 8, 'Secondary cleaning post-neurology consultation'), -- WRD607
+    (32, '2025-01-21', '14:30', 9, 'Secondary cleaning post-orthopedic consultation'), -- WRD608
+    (44, '2025-02-26', '15:30', 10, 'Secondary cleaning post-dermatology consultation'), -- STF506
+    (12, '2025-03-04', '11:00', 11, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (22, '2025-03-05', '12:00', 12, 'Post-consultation ward cleaning'), -- WRD607
+    (12, '2025-03-06', '13:00', 13, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (15, '2025-03-07', '14:00', 14, 'Child-safe ward cleaning'), -- PED906
+    (22, '2025-03-08', '15:00', 15, 'Secondary cleaning post-neurology consultation'), -- WRD607
+    (14, '2025-03-11', '11:30', 16, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (12, '2025-03-12', '12:30', 17, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (22, '2025-03-13', '13:30', 18, 'Post-consultation ward cleaning'), -- WRD607
+    (12, '2025-03-14', '14:30', 19, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (15, '2025-03-15', '15:30', 20, 'Child-safe ward cleaning'), -- PED906
+    (12, '2025-03-18', '11:00', 1, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (14, '2025-03-19', '12:00', 2, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (22, '2025-03-20', '13:00', 3, 'Post-consultation ward cleaning'), -- WRD607
+    (32, '2025-03-21', '14:00', 4, 'Post-consultation ward cleaning'), -- WRD608
+    (15, '2025-03-22', '15:00', 5, 'Child-safe ward cleaning'), -- PED906
+    (13, '2025-03-25', '11:30', 6, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (22, '2025-03-26', '12:30', 7, 'Post-consultation ward cleaning'), -- WRD607
+    (12, '2025-03-27', '13:30', 8, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (22, '2025-03-28', '14:30', 9, 'Secondary cleaning post-neurology consultation'), -- WRD607
+    (12, '2025-03-29', '15:30', 10, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (22, '2025-04-02', '11:00', 11, 'Post-consultation ward cleaning'), -- WRD607
+    (14, '2025-04-03', '12:00', 12, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (32, '2025-04-04', '13:00', 13, 'Post-consultation ward cleaning'), -- WRD608
+    (12, '2025-04-05', '14:00', 14, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (15, '2025-04-08', '15:00', 15, 'Child-safe ward cleaning'), -- PED906
+    (12, '2025-04-09', '11:30', 16, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (13, '2025-04-10', '12:30', 17, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (22, '2025-04-11', '13:30', 18, 'Post-consultation ward cleaning'), -- WRD607
+    (12, '2025-04-15', '14:30', 19, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (22, '2025-04-16', '15:30', 20, 'Post-consultation ward cleaning'), -- WRD607
+    (12, '2025-04-17', '11:00', 1, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (22, '2025-04-18', '12:00', 2, 'Secondary cleaning post-neurology consultation'), -- WRD607
+    (32, '2025-04-19', '13:00', 3, 'Post-consultation ward cleaning'), -- WRD608
+    (14, '2025-04-22', '14:00', 4, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (12, '2025-04-23', '15:00', 5, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (22, '2025-04-24', '11:30', 6, 'Post-consultation ward cleaning'), -- WRD607
+    (13, '2025-04-25', '12:30', 7, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (32, '2025-04-26', '13:30', 8, 'Post-consultation ward cleaning'), -- WRD608
+    (12, '2025-05-02', '14:30', 9, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (12, '2025-05-06', '15:30', 10, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (22, '2025-05-07', '11:00', 11, 'Secondary cleaning post-neurology consultation'), -- WRD607
+    (12, '2025-05-10', '12:00', 12, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (12, '2025-05-14', '13:00', 13, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (12, '2025-07-11', '14:00', 14, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (12, '2024-02-11', '15:00', 15, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (12, '2024-03-16', '11:30', 16, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (22, '2024-04-21', '12:30', 17, 'Post-consultation ward cleaning'), -- WRD607
+    (22, '2024-05-26', '13:30', 18, 'Secondary cleaning post-neurology consultation'), -- WRD607
+    (13, '2024-07-01', '14:30', 19, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (12, '2024-07-06', '15:30', 20, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (22, '2024-08-11', '11:00', 1, 'Post-consultation ward cleaning'), -- WRD607
+    (14, '2024-09-16', '12:00', 2, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (15, '2024-10-21', '13:00', 3, 'Child-safe ward cleaning'), -- PED906
+    (12, '2024-11-26', '14:00', 4, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (22, '2025-01-11', '15:00', 5, 'Post-consultation ward cleaning'), -- WRD607
+    (13, '2025-02-16', '11:30', 6, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (12, '2025-03-21', '12:30', 7, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (12, '2025-04-26', '13:30', 8, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (22, '2025-05-31', '14:30', 9, 'Secondary cleaning post-neurology consultation'), -- WRD607
+    (12, '2024-01-16', '15:30', 10, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (22, '2024-02-21', '11:00', 11, 'Post-consultation ward cleaning'), -- WRD607
+    (12, '2024-03-26', '12:00', 12, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (14, '2024-05-01', '13:00', 13, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (22, '2024-06-06', '14:00', 14, 'Post-consultation ward cleaning'), -- WRD607
+    (12, '2024-07-11', '15:00', 15, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (15, '2024-08-16', '11:30', 16, 'Child-safe ward cleaning'), -- PED906
+    (13, '2024-09-21', '12:30', 17, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (12, '2024-10-26', '13:30', 18, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (22, '2024-12-01', '14:30', 19, 'Post-consultation ward cleaning'), -- WRD607
+    (22, '2025-01-06', '15:30', 20, 'Secondary cleaning post-neurology consultation'), -- WRD607
+    (12, '2025-02-11', '11:00', 1, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (12, '2025-03-16', '12:00', 2, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (22, '2025-04-21', '13:00', 3, 'Post-consultation ward cleaning'), -- WRD607
+    (14, '2025-05-26', '14:00', 4, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (13, '2024-01-21', '15:00', 5, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (22, '2024-02-26', '11:30', 6, 'Post-consultation ward cleaning'), -- WRD607
+    (15, '2024-03-31', '12:30', 7, 'Child-safe ward cleaning'), -- PED906
+    (12, '2024-05-06', '13:30', 8, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (12, '2024-06-11', '14:30', 9, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (22, '2024-07-16', '15:30', 10, 'Secondary cleaning post-neurology consultation'), -- WRD607
+    (12, '2024-08-21', '11:00', 11, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (13, '2024-09-26', '12:00', 12, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (22, '2024-10-31', '13:00', 13, 'Post-consultation ward cleaning'), -- WRD607
+    (14, '2024-12-06', '14:00', 14, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (12, '2025-01-11', '15:00', 15, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (22, '2025-02-16', '11:30', 16, 'Post-consultation ward cleaning'), -- WRD607
+    (15, '2025-03-21', '12:30', 17, 'Child-safe ward cleaning'), -- PED906
+    (12, '2025-04-26', '13:30', 18, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (13, '2025-05-31', '14:30', 19, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (22, '2024-01-16', '15:30', 20, 'Secondary cleaning post-neurology consultation'), -- WRD607
+    (12, '2024-02-21', '11:00', 1, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (22, '2024-03-26', '12:00', 2, 'Post-consultation ward cleaning'), -- WRD607
+    (12, '2024-05-01', '13:00', 3, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (14, '2024-06-06', '14:00', 4, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (12, '2024-07-11', '15:00', 5, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (13, '2024-08-16', '11:30', 6, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (12, '2024-09-21', '12:30', 7, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (15, '2024-10-26', '13:30', 8, 'Child-safe ward cleaning'), -- PED906
+    (22, '2024-12-01', '14:30', 9, 'Post-consultation ward cleaning'), -- WRD607
+    (22, '2025-01-06', '15:30', 10, 'Secondary cleaning post-neurology consultation'), -- WRD607
+    (12, '2025-02-11', '11:00', 11, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (22, '2025-03-16', '12:00', 12, 'Post-consultation ward cleaning'), -- WRD607
+    (15, '2025-04-21', '13:00', 13, 'Child-safe ward cleaning'), -- PED906
+    (12, '2025-05-26', '14:00', 14, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (13, '2024-01-15', '15:00', 15, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (22, '2024-02-21', '11:30', 16, 'Secondary cleaning post-neurology consultation'), -- WRD607
+    (12, '2024-03-26', '12:30', 17, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (15, '2024-05-01', '13:30', 18, 'Child-safe ward cleaning'), -- PED906
+    (22, '2024-05-06', '14:30', 19, 'Secondary cleaning post-neurology consultation'), -- WRD607
+    (14, '2024-06-11', '15:30', 20, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (12, '2024-07-16', '11:00', 1, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (22, '2024-08-21', '12:00', 2, 'Post-consultation ward cleaning'), -- WRD607
+    (12, '2024-09-26', '13:00', 3, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (22, '2024-10-31', '14:00', 4, 'Post-consultation ward cleaning'), -- WRD607
+    (12, '2024-11-06', '15:00', 5, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (14, '2024-12-11', '11:30', 6, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (22, '2025-01-16', '12:30', 7, 'Post-consultation ward cleaning'), -- WRD607
+    (32, '2025-02-21', '13:30', 8, 'Post-consultation ward cleaning'), -- WRD608
+    (15, '2025-03-26', '14:30', 9, 'Child-safe ward cleaning'), -- PED906
+    (13, '2025-05-01', '15:30', 10, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (15, '2025-05-06', '11:00', 11, 'Child-safe ward cleaning'), -- PED906
+    (12, '2025-06-11', '12:00', 12, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (22, '2024-01-21', '13:00', 13, 'Secondary cleaning post-neurology consultation'), -- WRD607
+    (12, '2024-02-26', '14:00', 14, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (22, '2024-03-31', '15:00', 15, 'Post-consultation ward cleaning'), -- WRD607
+    (14, '2024-04-06', '11:30', 16, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (12, '2024-05-11', '12:30', 17, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (22, '2024-06-16', '13:30', 18, 'Post-consultation ward cleaning'), -- WRD607
+    (15, '2024-07-21', '14:30', 19, 'Child-safe ward cleaning'), -- PED906
+    (12, '2024-08-26', '15:30', 20, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (13, '2024-10-01', '11:00', 1, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (22, '2024-10-06', '12:00', 2, 'Post-consultation ward cleaning'), -- WRD607
+    (15, '2024-11-11', '13:00', 3, 'Child-safe ward cleaning'), -- PED906
+    (12, '2024-12-16', '14:00', 4, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (22, '2025-01-21', '15:00', 5, 'Post-consultation ward cleaning'), -- WRD607
+    (12, '2025-02-26', '11:30', 6, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (22, '2025-03-31', '12:30', 7, 'Secondary cleaning post-neurology consultation'), -- WRD607
+    (22, '2025-04-06', '13:30', 8, 'Post-consultation ward cleaning'), -- WRD607
+    (14, '2025-05-11', '14:30', 9, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (12, '2025-06-16', '15:30', 10, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (15, '2024-01-26', '11:00', 11, 'Child-safe ward cleaning'), -- PED906
+    (13, '2024-02-11', '12:00', 12, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (22, '2024-03-16', '13:00', 13, 'Post-consultation ward cleaning'), -- WRD607
+    (12, '2024-04-21', '14:00', 14, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (12, '2024-05-26', '15:00', 15, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (12, '2024-07-01', '11:30', 16, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (22, '2024-07-06', '12:30', 17, 'Secondary cleaning post-neurology consultation'), -- WRD607
+    (22, '2024-08-11', '13:30', 18, 'Post-consultation ward cleaning'), -- WRD607
+    (15, '2024-09-16', '14:30', 19, 'Child-safe ward cleaning'), -- PED906
+    (12, '2024-10-21', '15:30', 20, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (12, '2024-11-26', '11:00', 1, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (13, '2024-12-31', '12:00', 2, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (22, '2025-01-06', '13:00', 3, 'Post-consultation ward cleaning'), -- WRD607
+    (14, '2025-02-11', '14:00', 4, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (12, '2025-03-16', '15:00', 5, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (22, '2025-04-21', '11:30', 6, 'Post-consultation ward cleaning'), -- WRD607
+    (15, '2025-05-26', '12:30', 7, 'Child-safe ward cleaning'), -- PED906
+    (12, '2025-06-30', '13:30', 8, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (13, '2024-01-31', '14:30', 9, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (22, '2024-02-06', '15:30', 10, 'Secondary cleaning post-neurology consultation'), -- WRD607
+    (12, '2024-03-11', '11:00', 11, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (22, '2024-04-16', '12:00', 12, 'Post-consultation ward cleaning'), -- WRD607
+    (12, '2024-05-21', '13:00', 13, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (14, '2024-06-26', '14:00', 14, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (12, '2024-07-31', '15:00', 15, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (13, '2024-08-06', '11:30', 16, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (12, '2024-09-11', '12:30', 17, 'Secondary cleaning post-endocrinology consultation'), -- WRD606
+    (22, '2024-10-16', '13:30', 18, 'Post-consultation ward cleaning'), -- WRD607
+    (22, '2024-11-21', '14:30', 19, 'Secondary cleaning post-neurology consultation'), -- WRD607
+    (14, '2024-12-26', '15:30', 20, 'Post-rheumatology consultation cleaning'), -- EMR806
+    (12, '2025-01-31', '11:00', 1, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (22, '2025-02-06', '12:00', 2, 'Post-consultation ward cleaning'), -- WRD607
+    (12, '2025-03-11', '13:00', 3, 'Secondary cleaning post-cardiology consultation'), -- WRD606
+    (15, '2025-04-16', '14:00', 4, 'Child-safe ward cleaning'), -- PED906
+    (13, '2025-05-21', '15:00', 5, 'Post-pulmonology consultation cleaning'), -- RAD706
+    (22, '2025-06-26', '11:30', 6, 'Secondary cleaning post-neurology consultation'), -- WRD607
+	(1, '2024-11-20', '06:00', 1, 'Routine ICU maintenance'), -- ICU101
+    (12, '2024-11-20', '12:00', 1, 'Tertiary cleaning post-cardiology consultation'), -- WRD606
+    (41, '2024-11-22', '07:00', 1, 'Routine consultation room cleaning'), -- STF506
+    (15, '2024-11-23', '14:00', 1, 'Child-safe ward cleaning'), -- PED906
+    (10, '2024-11-24', '08:00', 1, 'Post-surgical sterilization'), -- OPR406
+    (13, '2024-11-25', '16:00', 1, 'Post-diagnostic cleaning'), -- RAD706
+    (17, '2024-11-26', '06:00', 1, 'Routine ICU maintenance'), -- ICU108
+    (22, '2024-11-27', '12:00', 1, 'Tertiary cleaning post-neurology consultation'), -- WRD607
+    (44, '2024-11-28', '07:00', 1, 'Routine consultation room cleaning'), -- STF506
+    (15, '2024-11-29', '14:00', 1, 'Child-safe ward cleaning'), -- PED906
+    (20, '2024-11-30', '08:00', 1, 'Post-surgical ward cleaning'), -- OPR407
+    (14, '2022-01-20', '16:00', 1, 'Post-emergency cleaning'), -- EMR806
+    (32, '2022-02-26', '06:00', 1, 'Routine ward cleaning'), -- WRD608
+    (18, '2022-03-31', '12:00', 1, 'Routine lab cleaning'), -- LAB207
+    (19, '2022-04-16', '07:00', 1, 'Post-cosmetic procedure cleaning'), -- COS307
+    (16, '2022-05-21', '14:00', 1, 'Post-rehabilitation cleaning'), -- REH1006
+    (1, '2022-06-26', '08:00', 1, 'Routine ICU maintenance'), -- ICU101
+    (12, '2022-07-31', '16:00', 1, 'Tertiary cleaning post-consultation'), -- WRD606
+    (41, '2022-08-06', '06:00', 1, 'Routine consultation room cleaning'), -- STF506
+    (15, '2022-09-11', '12:00', 1, 'Child-safe ward cleaning'), -- PED906
+    (10, '2022-10-16', '07:00', 1, 'Post-surgical sterilization'), -- OPR406
+    (13, '2022-11-21', '14:00', 1, 'Post-diagnostic cleaning'), -- RAD706
+    (17, '2022-12-26', '08:00', 1, 'Routine ICU maintenance'), -- ICU108
+    (2, '2024-11-20', '06:00', 2, 'Routine ICU maintenance'), -- ICU102
+    (22, '2024-11-20', '12:00', 2, 'Tertiary cleaning post-cardiology consultation'), -- WRD607
+    (42, '2024-11-22', '07:00', 2, 'Routine consultation room cleaning'), -- STF507
+    (15, '2024-11-23', '14:00', 2, 'Child-safe ward cleaning'), -- PED906
+    (20, '2024-11-24', '08:00', 2, 'Post-surgical ward cleaning'), -- OPR407
+    (14, '2024-11-25', '16:00', 2, 'Post-emergency cleaning'), -- EMR806
+    (18, '2024-11-26', '06:00', 2, 'Routine lab cleaning'), -- LAB207
+    (32, '2024-11-27', '12:00', 2, 'Routine ward cleaning'), -- WRD608
+    (19, '2024-11-28', '07:00', 2, 'Post-cosmetic procedure cleaning'), -- COS307
+    (16, '2024-11-29', '14:00', 2, 'Post-rehabilitation cleaning'), -- REH1006
+    (1, '2024-11-30', '08:00', 2, 'Routine ICU maintenance'), -- ICU101
+    (12, '2022-01-20', '16:00', 2, 'Tertiary cleaning post-consultation'), -- WRD606
+    (41, '2022-02-26', '06:00', 2, 'Routine consultation room cleaning'), -- STF506
+    (15, '2022-04-16', '07:00', 2, 'Child-safe ward cleaning'), -- PED906
+    (10, '2022-05-21', '14:00', 2, 'Post-surgical sterilization'), -- OPR406
+    (13, '2022-06-26', '08:00', 2, 'Post-diagnostic cleaning'), -- RAD706
+    (17, '2022-07-31', '16:00', 2, 'Routine ICU maintenance'), -- ICU108
+    (22, '2022-08-06', '06:00', 2, 'Tertiary cleaning post-neurology consultation'), -- WRD607
+    (44, '2022-09-11', '12:00', 2, 'Routine consultation room cleaning'), -- STF506
+    (15, '2022-10-16', '07:00', 2, 'Child-safe ward cleaning'), -- PED906
+    (20, '2022-11-21', '14:00', 2, 'Post-surgical ward cleaning'), -- OPR407
+    (14, '2022-12-26', '08:00', 2, 'Post-emergency cleaning'), -- EMR806
+    (3, '2024-11-20', '06:00', 3, 'Routine ICU maintenance'), -- ICU103
+    (32, '2024-11-20', '12:00', 3, 'Tertiary cleaning post-cardiology consultation'), -- WRD608
+    (43, '2024-11-22', '07:00', 3, 'Routine consultation room cleaning'), -- STF508
+    (15, '2024-11-23', '14:00', 3, 'Child-safe ward cleaning'), -- PED906
+    (10, '2024-11-24', '08:00', 3, 'Post-surgical sterilization'), -- OPR406
+    (13, '2024-11-25', '16:00', 3, 'Post-diagnostic cleaning'), -- RAD706
+    (17, '2024-11-26', '06:00', 3, 'Routine ICU maintenance'), -- ICU108
+    (12, '2024-11-27', '12:00', 3, 'Tertiary cleaning post-neurology consultation'), -- WRD606
+    (44, '2024-11-28', '07:00', 3, 'Routine consultation room cleaning'), -- STF506
+    (15, '2024-11-29', '14:00', 3, 'Child-safe ward cleaning'), -- PED906
+    (20, '2024-11-30', '08:00', 3, 'Post-surgical ward cleaning'), -- OPR407
+    (14, '2022-01-20', '16:00', 3, 'Post-emergency cleaning'), -- EMR806
+    (22, '2022-02-26', '06:00', 3, 'Tertiary cleaning post-consultation'), -- WRD607
+    (41, '2022-03-31', '12:00', 3, 'Routine consultation room cleaning'), -- STF506
+    (15, '2022-04-16', '07:00', 3, 'Child-safe ward cleaning'), -- PED906
+    (10, '2022-05-21', '14:00', 3, 'Post-surgical sterilization'), -- OPR406
+    (13, '2022-06-26', '08:00', 3, 'Post-diagnostic cleaning'), -- RAD706
+    (17, '2022-07-31', '16:00', 3, 'Routine ICU maintenance'), -- ICU108
+    (32, '2022-08-06', '06:00', 3, 'Routine ward cleaning'), -- WRD608
+    (18, '2022-09-11', '12:00', 3, 'Routine lab cleaning'), -- LAB207
+    (19, '2022-10-16', '07:00', 3, 'Post-cosmetic procedure cleaning'), -- COS307
+    (16, '2022-11-21', '14:00', 3, 'Post-rehabilitation cleaning'), -- REH1006
+    (1, '2022-12-26', '08:00', 3, 'Routine ICU maintenance'), -- ICU101
+    (4, '2024-11-20', '06:00', 4, 'Routine ICU maintenance'), -- ICU104
+    (12, '2024-11-20', '12:00', 4, 'Tertiary cleaning post-cardiology consultation'), -- WRD606
+    (44, '2024-11-22', '07:00', 4, 'Routine consultation room cleaning'), -- STF506
+    (15, '2024-11-23', '14:00', 4, 'Child-safe ward cleaning'), -- PED906
+    (20, '2024-11-24', '08:00', 4, 'Post-surgical ward cleaning'), -- OPR407
+    (14, '2024-11-25', '16:00', 4, 'Post-emergency cleaning'), -- EMR806
+    (18, '2024-11-26', '06:00', 4, 'Routine lab cleaning'), -- LAB207
+    (32, '2024-11-27', '12:00', 4, 'Routine ward cleaning'), -- WRD608
+    (19, '2024-11-28', '07:00', 4, 'Post-cosmetic procedure cleaning'), -- COS307
+    (16, '2024-11-29', '14:00', 4, 'Post-rehabilitation cleaning'), -- REH1006
+    (1, '2024-11-30', '08:00', 4, 'Routine ICU maintenance'), -- ICU101
+    (22, '2022-01-20', '16:00', 4, 'Tertiary cleaning post-consultation'), -- WRD607
+    (41, '2022-02-26', '06:00', 4, 'Routine consultation room cleaning'), -- STF506
+	(1, '2024-11-20', '06:30', 1, 'Daily ICU cleaning'), -- ICU101
+    (12, '2024-11-20', '13:00', 1, 'Quaternary cleaning post-cardiology consultation'), -- WRD606
+    (41, '2024-11-22', '07:30', 1, 'Routine consultation room cleaning'), -- STF506
+    (15, '2024-11-23', '15:00', 1, 'Child-safe ward cleaning'), -- PED906
+    (10, '2024-11-24', '09:00', 1, 'Post-surgical sterilization'), -- OPR406
+    (13, '2024-11-25', '17:00', 1, 'Post-diagnostic cleaning'), -- RAD706
+    (17, '2024-11-26', '06:30', 1, 'Daily ICU cleaning'), -- ICU108
+    (22, '2024-11-27', '13:00', 1, 'Quaternary cleaning post-neurology consultation'), -- WRD607
+    (44, '2024-11-28', '07:30', 1, 'Routine consultation room cleaning'), -- STF506
+    (15, '2024-11-29', '15:00', 1, 'Child-safe ward cleaning'), -- PED906
+    (20, '2024-11-30', '09:00', 1, 'Post-surgical ward cleaning'), -- OPR407
+    (14, '2022-01-20', '17:00', 1, 'Post-emergency cleaning'), -- EMR806
+    (32, '2022-02-26', '06:30', 1, 'Daily ward cleaning'), -- WRD608
+    (18, '2022-03-31', '13:00', 1, 'Routine lab cleaning'), -- LAB207
+    (19, '2022-04-16', '07:30', 1, 'Post-cosmetic procedure cleaning'), -- COS307
+    (16, '2022-05-21', '15:00', 1, 'Post-rehabilitation cleaning'), -- REH1006
+    (1, '2022-06-26', '09:00', 1, 'Daily ICU cleaning'), -- ICU101
+    (2, '2024-11-20', '06:30', 2, 'Daily ICU cleaning'), -- ICU102
+    (22, '2024-11-20', '13:00', 2, 'Quaternary cleaning post-cardiology consultation'), -- WRD607
+    (42, '2024-11-22', '07:30', 2, 'Routine consultation room cleaning'), -- STF507
+    (15, '2024-11-23', '15:00', 2, 'Child-safe ward cleaning'), -- PED906
+    (20, '2024-11-24', '09:00', 2, 'Post-surgical ward cleaning'), -- OPR407
+    (14, '2024-11-25', '17:00', 2, 'Post-emergency cleaning'), -- EMR806
+    (18, '2024-11-26', '06:30', 2, 'Routine lab cleaning'), -- LAB207
+    (32, '2024-11-27', '13:00', 2, 'Daily ward cleaning'), -- WRD608
+    (19, '2024-11-28', '07:30', 2, 'Post-cosmetic procedure cleaning'), -- COS307
+    (16, '2024-11-29', '15:00', 2, 'Post-rehabilitation cleaning'), -- REH1006
+    (1, '2024-11-30', '09:00', 2, 'Daily ICU cleaning'), -- ICU101
+    (12, '2022-01-20', '17:00', 2, 'Quaternary cleaning post-consultation'), -- WRD606
+    (41, '2022-02-26', '06:30', 2, 'Routine consultation room cleaning'), -- STF506
+    (15, '2022-03-31', '13:00', 2, 'Child-safe ward cleaning'), -- PED906
+    (10, '2022-04-16', '07:30', 2, 'Post-surgical sterilization'), -- OPR406
+    (13, '2022-05-21', '15:00', 2, 'Post-diagnostic cleaning'), -- RAD706
+    (17, '2022-06-26', '09:00', 2, 'Daily ICU cleaning'), -- ICU108
+    (3, '2024-11-20', '06:30', 3, 'Daily ICU cleaning'), -- ICU103
+    (32, '2024-11-20', '13:00', 3, 'Quaternary cleaning post-cardiology consultation'), -- WRD608
+    (43, '2024-11-22', '07:30', 3, 'Routine consultation room cleaning'), -- STF508
+    (15, '2024-11-23', '15:00', 3, 'Child-safe ward cleaning'), -- PED906
+    (10, '2024-11-24', '09:00', 3, 'Post-surgical sterilization'), -- OPR406
+    (13, '2024-11-25', '17:00', 3, 'Post-diagnostic cleaning'), -- RAD706
+    (17, '2024-11-26', '06:30', 3, 'Daily ICU cleaning'), -- ICU108
+    (12, '2024-11-27', '13:00', 3, 'Quaternary cleaning post-neurology consultation'), -- WRD606
+    (44, '2024-11-28', '07:30', 3, 'Routine consultation room cleaning'), -- STF506
+    (15, '2024-11-29', '15:00', 3, 'Child-safe ward cleaning'), -- PED906
+    (20, '2024-11-30', '09:00', 3, 'Post-surgical ward cleaning'), -- OPR407
+    (14, '2022-01-20', '17:00', 3, 'Post-emergency cleaning'), -- EMR806
+    (22, '2022-02-26', '06:30', 3, 'Quaternary cleaning post-consultation'), -- WRD607
+    (41, '2022-03-31', '13:00', 3, 'Routine consultation room cleaning'), -- STF506
+    (15, '2022-04-16', '07:30', 3, 'Child-safe ward cleaning'), -- PED906
+    (10, '2022-05-21', '15:00', 3, 'Post-surgical sterilization'), -- OPR406
+    (13, '2022-06-26', '09:00', 3, 'Post-diagnostic cleaning'); -- RAD706
 
 INSERT INTO Prescription (patient_id, doctor_id, prescription_date, medication_name, dosage, frequency, duration, notes)
 VALUES
